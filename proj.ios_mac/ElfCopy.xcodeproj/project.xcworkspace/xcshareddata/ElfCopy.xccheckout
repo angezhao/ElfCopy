@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7674236C-BDBC-4EB5-A84C-5DF97A2C8434</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ElfCopy</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BDCA43C2-D64F-4FEB-9EE2-10133E5A4DB7</key>
+		<string>../../ElfCopy</string>
+	</dict>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BDCA43C2-D64F-4FEB-9EE2-10133E5A4DB7</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDCA43C2-D64F-4FEB-9EE2-10133E5A4DB7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ElfCopy</string>
+		</dict>
+	</array>
+</dict>
+</plist>
