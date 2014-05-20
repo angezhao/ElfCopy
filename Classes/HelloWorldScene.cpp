@@ -12,28 +12,27 @@ Scene* HelloWorld::createScene()
 
     Size winSize = Director::getInstance()->getWinSize();
 
-
-    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
-    cocostudio::Armature *armature = cocostudio::Armature::create("yuanshiren1");
+    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
+    cocostudio::Armature *armature = cocostudio::Armature::create("yuanshiren2");
     armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
     armature->getAnimation()->playWithIndex(0);
     scene->addChild(armature);
     
-    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
-    cocostudio::Armature *armature2 = cocostudio::Armature::create("yuanshiren2");
+    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
+    cocostudio::Armature *armature2 = cocostudio::Armature::create("yuanshiren1");
     armature2->setPosition(Point(winSize.width / 2, winSize.height / 2));
     armature2->getAnimation()->playWithIndex(0);
     scene->addChild(armature2);
     
-//    cocostudio::Bone *tou1 = armature->getBone("tou1");
-//    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou02.png");
-//    tou1->addDisplay(face1, 1);
-//    tou1->changeDisplayWithIndex(1, true);
-//    
-//    cocostudio::Bone *tou2 = armature->getBone("tou2");
-//    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou01.png");
-//    tou2->addDisplay(face2, 1);
-//    tou2->changeDisplayWithIndex(1, true);
+    cocostudio::Bone *tou1 = armature2->getBone("tou1");
+    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou01.png");
+    tou1->addDisplay(face1, 1);
+    tou1->changeDisplayWithIndex(1, true);
+    
+    cocostudio::Bone *tou2 = armature->getBone("tou2");
+    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou02.png");
+    tou2->addDisplay(face2, 1);
+    tou2->changeDisplayWithIndex(1, true);
     
     //Node *node = cocostudio::SceneReader::getInstance()->createNodeWithSceneFile("publish/test.json");
     //scene->addChild(node);
