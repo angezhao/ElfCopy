@@ -65,8 +65,16 @@
 		B73151E91926270B0070EC4D /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B73151E71926270B0070EC4D /* yuanshiren1 */; };
 		B73151EA1926270B0070EC4D /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B73151E81926270B0070EC4D /* yuanshiren2 */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
+		B79F9F8F192B2D32002517BF /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B79F9F8E192B2D32002517BF /* ElfYourSelfUi */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
+		B7A49FD3192CAFDC005C23E3 /* PhotoMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */; };
+		B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */; };
+		B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515DF192B880B00D44C31 /* GameScene.cpp */; };
+		B7A515E4192B882200D44C31 /* MainLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515E2192B882200D44C31 /* MainLayer.cpp */; };
+		B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515E7192B9D1D00D44C31 /* Constants.cpp */; };
+		B7A515EC192BA70500D44C31 /* PhotoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */; };
+		B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */; };
 		B7A5EDD31908EDDE0068ACA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
 		B7B174FD1920F5570010B350 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = B7B174FC1920F5570010B350 /* publish */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -270,8 +278,23 @@
 		B73151E71926270B0070EC4D /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B73151E81926270B0070EC4D /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
+		B79F9F8E192B2D32002517BF /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A430D81921B16200D3CDAB /* yuanshiren */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren; sourceTree = "<group>"; };
+		B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhotoMenu.cpp; path = ../Classes/PhotoMenu.cpp; sourceTree = "<group>"; };
+		B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoMenu.h; path = ../Classes/PhotoMenu.h; sourceTree = "<group>"; };
+		B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StartLayer.cpp; path = ../Classes/StartLayer.cpp; sourceTree = "<group>"; };
+		B7A49FD8192CC3A2005C23E3 /* StartLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartLayer.h; path = ../Classes/StartLayer.h; sourceTree = "<group>"; };
+		B7A515DF192B880B00D44C31 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameScene.cpp; path = ../Classes/GameScene.cpp; sourceTree = "<group>"; };
+		B7A515E0192B880B00D44C31 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = ../Classes/GameScene.h; sourceTree = "<group>"; };
+		B7A515E2192B882200D44C31 /* MainLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainLayer.cpp; path = ../Classes/MainLayer.cpp; sourceTree = "<group>"; };
+		B7A515E3192B882200D44C31 /* MainLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainLayer.h; path = ../Classes/MainLayer.h; sourceTree = "<group>"; };
+		B7A515E7192B9D1D00D44C31 /* Constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Constants.cpp; path = ../Classes/Constants.cpp; sourceTree = "<group>"; };
+		B7A515E8192B9D1D00D44C31 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = ../Classes/Constants.h; sourceTree = "<group>"; };
+		B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhotoLayer.cpp; path = ../Classes/PhotoLayer.cpp; sourceTree = "<group>"; };
+		B7A515EB192BA70500D44C31 /* PhotoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoLayer.h; path = ../Classes/PhotoLayer.h; sourceTree = "<group>"; };
+		B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VidioLayer.cpp; path = ../Classes/VidioLayer.cpp; sourceTree = "<group>"; };
+		B7A515EE192BA73A00D44C31 /* VidioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidioLayer.h; path = ../Classes/VidioLayer.h; sourceTree = "<group>"; };
 		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -350,8 +373,22 @@
 			isa = PBXGroup;
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				B7A515DF192B880B00D44C31 /* GameScene.cpp */,
+				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
+				B7A515E3192B882200D44C31 /* MainLayer.h */,
+				B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */,
+				B7A49FD8192CC3A2005C23E3 /* StartLayer.h */,
+				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
+				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
+				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
+				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
+				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
+				B7A515EE192BA73A00D44C31 /* VidioLayer.h */,
+				B7A515E7192B9D1D00D44C31 /* Constants.cpp */,
+				B7A515E8192B9D1D00D44C31 /* Constants.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
+				B7A515E0192B880B00D44C31 /* GameScene.h */,
+				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
 			name = Classes;
@@ -468,6 +505,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B79F9F8E192B2D32002517BF /* ElfYourSelfUi */,
 				B73151E71926270B0070EC4D /* yuanshiren1 */,
 				B73151E81926270B0070EC4D /* yuanshiren2 */,
 				B7A430D81921B16200D3CDAB /* yuanshiren */,
@@ -658,6 +696,7 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				B79F9F8F192B2D32002517BF /* ElfYourSelfUi in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				B79CDBFE191E492F00311E24 /* scene in Resources */,
@@ -709,10 +748,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A515E4192B882200D44C31 /* MainLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */,
+				B7A49FD3192CAFDC005C23E3 /* PhotoMenu.cpp in Sources */,
+				B7A515EC192BA70500D44C31 /* PhotoLayer.cpp in Sources */,
+				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
+				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

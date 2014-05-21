@@ -9,6 +9,8 @@ using namespace cocos2d::ui;
 class HelloWorld : public cocos2d::Layer
 {
 public:
+    static Layer* m_pLayer;
+    
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
     static cocos2d::Scene* createScene();
 
@@ -20,6 +22,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    void startGame(cocos2d::Object* pSender,TouchEventType type);
 	
 };
 
