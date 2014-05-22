@@ -11,7 +11,7 @@
 #include "VidioLayer.h"
 #include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 MainLayer::MainLayer()
@@ -39,18 +39,24 @@ MainLayer::~MainLayer()
 
 void MainLayer::goBack(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new StartLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new StartLayer();
+        pLayer->autorelease();
+    }
 }
 
 void MainLayer::goNext(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new VidioLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new VidioLayer();
+        pLayer->autorelease();
+    }
 }
 
 void MainLayer::changePhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new PhotoMenu();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new PhotoMenu();
+        pLayer->autorelease();
+    }
 }

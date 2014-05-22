@@ -9,7 +9,7 @@
 #include "StartLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 StartLayer::StartLayer()
@@ -28,6 +28,8 @@ StartLayer::~StartLayer()
 
 void StartLayer::startGame(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new MainLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new MainLayer();
+        pLayer->autorelease();
+    }
 }

@@ -21,7 +21,8 @@ public:
     ~PhotoMenu();
     
     void goBack(cocos2d::Ref* pSender,TouchEventType type);
-    void changePhoto(cocos2d::Ref* pSender,TouchEventType type);
+    void takePhoto(cocos2d::Ref* pSender,TouchEventType type);//拍照
+    void selectPhoto(cocos2d::Ref* pSender,TouchEventType type);//相册选照
     
 };
 

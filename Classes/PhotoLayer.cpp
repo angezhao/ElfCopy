@@ -10,7 +10,7 @@
 #include "MainLayer.h"
 #include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 PhotoLayer::PhotoLayer()
@@ -32,13 +32,17 @@ PhotoLayer::~PhotoLayer()
 
 void PhotoLayer::goBack(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new PhotoMenu();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new PhotoMenu();
+        pLayer->autorelease();
+    }
 }
 
 
 void PhotoLayer::changeOk(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new MainLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new MainLayer();
+        pLayer->autorelease();
+    }
 }

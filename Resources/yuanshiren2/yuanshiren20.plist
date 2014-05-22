@@ -938,13 +938,13 @@
 			<key>tou2.png</key>
 			<dict>
 				<key>width</key>
-				<integer>90</integer>
+				<integer>114</integer>
 				<key>height</key>
-				<integer>91</integer>
+				<integer>121</integer>
 				<key>originalWidth</key>
-				<integer>90</integer>
+				<integer>114</integer>
 				<key>originalHeight</key>
-				<integer>91</integer>
+				<integer>121</integer>
 				<key>x</key>
 				<integer>1052</integer>
 				<key>y</key>
@@ -965,7 +965,7 @@
 				<key>originalHeight</key>
 				<integer>146</integer>
 				<key>x</key>
-				<integer>1144</integer>
+				<integer>1168</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -984,7 +984,7 @@
 				<key>originalHeight</key>
 				<integer>142</integer>
 				<key>x</key>
-				<integer>1257</integer>
+				<integer>1281</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1003,7 +1003,7 @@
 				<key>originalHeight</key>
 				<integer>155</integer>
 				<key>x</key>
-				<integer>1355</integer>
+				<integer>1379</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1022,7 +1022,7 @@
 				<key>originalHeight</key>
 				<integer>162</integer>
 				<key>x</key>
-				<integer>1409</integer>
+				<integer>1433</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1041,7 +1041,7 @@
 				<key>originalHeight</key>
 				<integer>148</integer>
 				<key>x</key>
-				<integer>1475</integer>
+				<integer>1499</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1060,7 +1060,7 @@
 				<key>originalHeight</key>
 				<integer>143</integer>
 				<key>x</key>
-				<integer>1579</integer>
+				<integer>1603</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1079,7 +1079,7 @@
 				<key>originalHeight</key>
 				<integer>154</integer>
 				<key>x</key>
-				<integer>1665</integer>
+				<integer>1689</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1098,7 +1098,7 @@
 				<key>originalHeight</key>
 				<integer>156</integer>
 				<key>x</key>
-				<integer>1719</integer>
+				<integer>1743</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1117,7 +1117,7 @@
 				<key>originalHeight</key>
 				<integer>147</integer>
 				<key>x</key>
-				<integer>1796</integer>
+				<integer>1820</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>
@@ -1136,7 +1136,7 @@
 				<key>originalHeight</key>
 				<integer>156</integer>
 				<key>x</key>
-				<integer>1904</integer>
+				<integer>1928</integer>
 				<key>y</key>
 				<integer>606</integer>
 				<key>offsetX</key>

@@ -2,6 +2,7 @@
 #include "cocostudio/CocoStudio.h"
 // #include "cocostudio/CocoStudio.h"
 // #include "cocostudio/ComRender.h"
+#include "TakePhoto.h"
 
 USING_NS_CC;
 
@@ -9,9 +10,12 @@ Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-
+    HelloWorld *layer = HelloWorld::create();
+    scene->addChild(layer);
+    
+    /*
     Size winSize = Director::getInstance()->getWinSize();
-
+    
     cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
     cocostudio::Armature *armature = cocostudio::Armature::create("yuanshiren2");
     armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
@@ -25,14 +29,17 @@ Scene* HelloWorld::createScene()
     scene->addChild(armature2);
     
     cocostudio::Bone *tou1 = armature2->getBone("tou1");
-    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou01.png");
+    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou1.png");
+    face1->setAnchorPoint(Point(0.04, 1.26));
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
     
     cocostudio::Bone *tou2 = armature->getBone("tou2");
-    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou02.png");
+    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou2.png");
+    face2->setAnchorPoint(Point(0.23, 1.4));
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
+    */
     
     //Node *node = cocostudio::SceneReader::getInstance()->createNodeWithSceneFile("publish/test.json");
     //scene->addChild(node);
@@ -95,6 +102,7 @@ bool HelloWorld::init()
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
 
+    /*
     /////////////////////////////
     // 3. add your codes below...
 
@@ -118,6 +126,7 @@ bool HelloWorld::init()
 
     // add the sprite as a child to this layer
     this->addChild(sprite, 0);
+    */
     
     return true;
 }
@@ -125,6 +134,8 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
+    //TakePhoto::takePhoto();
+    /*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
     return;
@@ -135,4 +146,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+     */
 }
