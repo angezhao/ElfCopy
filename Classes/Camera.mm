@@ -24,16 +24,20 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    if (!hasLoadedCamera){
+        [self performSelector:@selector(OpenCamera) withObject:nil afterDelay:5];
+        hasLoadedCamera = true;
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (!hasLoadedCamera){
-        [self performSelector:@selector(OpenCamera) withObject:nil afterDelay:0.3];
-        hasLoadedCamera = true;
-    }
+//    if (!hasLoadedCamera){
+//        [self performSelector:@selector(OpenCamera) withObject:nil afterDelay:1];
+//        hasLoadedCamera = true;
+//    }
 
 }
 
