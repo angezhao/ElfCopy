@@ -24,69 +24,53 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //show camera...
-    //if (!hasLoadedCamera)
-    //    [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //if (!hasLoadedCamera)
-    //    [self performSelector:@selector(showcamera) withObject:nil afterDelay:0.3];
+    if (!hasLoadedCamera){
+        [self performSelector:@selector(OpenCamera) withObject:nil afterDelay:0.3];
+        hasLoadedCamera = true;
+    }
 
 }
 
++(Camera*)PickPhoto
+{
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    Camera *viewController = [[Camera alloc] init];
+    [window addSubview:viewController.view];
+    //[viewController OpenCamera];
+    
+    return viewController;
+}
 
-- (void)showcamera {
+-(void)OpenCamera
+{
     hasLoadedCamera=true;
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    [imagePicker setDelegate:self];
-    [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-    [imagePicker setAllowsEditing:YES];
-    [self presentModalViewController:imagePicker animated:YES];
-}
+    NSLog(@"启动相机");
+    UIImagePickerController *picker= [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.wantsFullScreenLayout = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        
+    }
+    else
+    {
+        NSLog(@"模拟器无法打开相机");
+    }
 
-//+(Camera*)PickPhoto
-//{
-//    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-//    Camera *viewController = [[Camera alloc] init];
-//    [window addSubview:viewController.view];
-//    [viewController OpenCamera];
-//    
-//    return viewController;
-//}
-//
-//-(void)OpenCamera
-//{
-//    NSLog(@"启动相机");
-//    UIImagePickerController *picker= [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    
-//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-//    {
-//        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//        
-//    }
-//    else
-//    {
-//        NSLog(@"模拟器无法打开相机");
-//    }
-//
-//    [self presentViewController:picker animated:YES completion:^{}];
-//    //[self presentViewController:picker animated:YES completion:nil];
-//    [picker release];
-//    
-////    UIImagePickerController * ipc = [[UIImagePickerController alloc]init];
-////    ipc.sourceType = UIImagePickerControllerSourceTypeCamera;
-////    ipc.delegate = self;
-////    ipc.wantsFullScreenLayout=YES;
-////    ipc.allowsImageEditing=NO;
-////    [self presentModalViewController:ipc animated:YES];
-//    
-//}
+    //[self presentViewController:picker animated:YES completion:nil];
+    [self presentModalViewController:picker animated:FALSE];
+    [picker release];
+    
+}
 
 //拍照
 - (void)imagePickerController:(UIImagePickerController *)picker

@@ -22,7 +22,7 @@ TakePhoto::TakePhoto()
     //iOS代码
     //[Camera PickPhoto];
     //Camera * photo = [[Camera alloc]init];
-    //[photo showcamera];//要手动添加，否则无法显示按钮
+    //[photo OpenCamera];//要手动添加，否则无法显示按钮
 #else
     //Android代码
 #endif

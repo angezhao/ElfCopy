@@ -36,19 +36,25 @@ PhotoMenu::~PhotoMenu()
 
 void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new MainLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new MainLayer();
+        pLayer->autorelease();
+    }
 }
 
 void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new TakePhoto();
-    pLayer->autorelease();
-    m_pLayer->addChild(pLayer);
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new TakePhoto();
+        pLayer->autorelease();
+        m_pLayer->addChild(pLayer);
+    }
 }
 
 void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
-    Layer * pLayer = new PhotoLayer();
-    pLayer->autorelease();
+    if(type == TOUCH_EVENT_ENDED){
+        Layer * pLayer = new PhotoLayer();
+        pLayer->autorelease();
+    }
 }

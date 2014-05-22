@@ -12,8 +12,9 @@
 @interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
     Boolean hasLoadedCamera;
 }
-//+(Camera*)PickPhoto;
+
++(Camera*)PickPhoto;
 //打开摄像头
--(void)showcamera;
-//-(void)OpenCamera;
+-(void)OpenCamera;
+
 @end
