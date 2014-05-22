@@ -9,7 +9,7 @@
 #include "VidioLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 VidioLayer::VidioLayer()

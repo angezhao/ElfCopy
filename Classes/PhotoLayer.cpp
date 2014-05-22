@@ -10,7 +10,7 @@
 #include "MainLayer.h"
 #include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 PhotoLayer::PhotoLayer()

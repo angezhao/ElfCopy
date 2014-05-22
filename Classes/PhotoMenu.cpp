@@ -8,9 +8,10 @@
 
 #include "PhotoMenu.h"
 #include "PhotoLayer.h"
+#include "TakePhoto.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 PhotoMenu::PhotoMenu()
@@ -22,10 +23,10 @@ PhotoMenu::PhotoMenu()
     btnBack->addTouchEventListener(this,toucheventselector(PhotoMenu::goBack));
     
     auto cameraBtn =  myLayout->getChildByName("cameraBtn");
-    cameraBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::changePhoto));
+    cameraBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::takePhoto));
     
     auto photoBtn =  myLayout->getChildByName("photoBtn");
-    photoBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::changePhoto));
+    photoBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::selectPhoto));
     
 }
 
@@ -39,7 +40,14 @@ void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
     pLayer->autorelease();
 }
 
-void PhotoMenu::changePhoto(cocos2d::Ref* pSender,TouchEventType type)
+void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
+{
+    Layer * pLayer = new TakePhoto();
+    pLayer->autorelease();
+    m_pLayer->addChild(pLayer);
+}
+
+void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     Layer * pLayer = new PhotoLayer();
     pLayer->autorelease();

@@ -11,7 +11,7 @@
 #include "VidioLayer.h"
 #include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 
 MainLayer::MainLayer()

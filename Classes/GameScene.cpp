@@ -8,7 +8,7 @@
 #include "GameScene.h"
 #include "StartLayer.h"
 #include "cocostudio/CocoStudio.h"
-#import "Constants.h"
+#include "Constants.h"
 
 USING_NS_CC;
 
