@@ -27,6 +27,38 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(void)OpenCamera
+{
+    NSLog(@"启动相机");
+    // 跳转到相机或相册页面
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else
+    {
+        NSLog(@"模拟器无法打开相机");
+    }
+    //[imagePickerController setautor]
+    //imagePickerController.shouldAutorotate = NO;
+    //[self presentViewController:imagePickerController animated:YES completion:^{}];
+    [self presentModalViewController:imagePickerController animated:YES];
+    //UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    //[keyWindow.rootViewController.view addSubview: imagePickerController.view];
+    
+    //auto director = cocos2d::Director::getInstance();
+    //UIView *glview = (UIView*)director->getOpenGLView();
+    //[glview addSubview:imagePickerController.view];
+    //[[[Director sharedDirector] _openGLView] addSubview:imagePickerController.view];
+    [imagePickerController release];
+}
+
+
 #pragma mark - 保存图片至沙盒
 - (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
 {
@@ -153,9 +185,9 @@
     
     // 判断是否支持相机
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        sheet  = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
-    }
+       {
+           sheet  = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
+       }
     else {
         
         sheet = [[UIActionSheet alloc] initWithTitle:@"选择" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
@@ -166,6 +198,7 @@
     [sheet showInView:self.view];
     
 }
+
 - (void)dealloc {
     [_imageView release];
     [super dealloc];

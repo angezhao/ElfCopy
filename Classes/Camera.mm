@@ -25,7 +25,7 @@
 {
     [super viewDidAppear:animated];
     if (!hasLoadedCamera){
-        [self performSelector:@selector(OpenCamera) withObject:nil afterDelay:5];
+        //[self performSelector:@selector(OpenCamera) withObject:nil afterDelay:3];
         hasLoadedCamera = true;
     }
 }
@@ -43,10 +43,21 @@
 
 +(Camera*)PickPhoto
 {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     Camera *viewController = [[Camera alloc] init];
-    [window addSubview:viewController.view];
-    //[viewController OpenCamera];
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    // Set ViewController to window
+    if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
+    {
+        // warning: addSubView doesn't work on iOS6
+        [window addSubview: viewController.view];
+    }
+    else
+    {
+        // use this method on ios6
+        [window setRootViewController:viewController];
+    }
+
+    [viewController OpenCamera];
     
     return viewController;
 }
@@ -55,25 +66,24 @@
 {
     hasLoadedCamera=true;
     NSLog(@"启动相机");
-    UIImagePickerController *picker= [[UIImagePickerController alloc] init];
+    UIImagePickerController *picker= [[[UIImagePickerController alloc] init] autorelease];
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.wantsFullScreenLayout = YES;
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;//UIImagePickerControllerSourceTypeCamera;//UIImagePickerControllerSourceTypePhotoLibrary
     }
     else
     {
         NSLog(@"模拟器无法打开相机");
     }
+    UIDeviceOrientation c = [[UIDevice currentDevice] orientation];
+    NSUInteger a = [self supportedInterfaceOrientations];
+    BOOL b = [self shouldAutorotate];
 
-    //[self presentViewController:picker animated:YES completion:nil];
-    [self presentModalViewController:picker animated:FALSE];
-    [picker release];
-    
+    [self presentModalViewController:picker animated:YES];
 }
 
 //拍照
@@ -105,5 +115,49 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     [self release];
     [super dealloc];
 }
+
+//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+//    // Return YES for supported orientations
+//    BOOL a = (interfaceOrientation == UIInterfaceOrientationPortrait);
+//    return a;
+//}
+//
+//- (NSUInteger)supportedInterfaceOrientations
+//{;
+//    NSUInteger a =UIInterfaceOrientationIsPortrait(UIInterfaceOrientationMaskPortrait|| UIInterfaceOrientationMaskPortraitUpsideDown);
+//    return a;
+//    
+//}
+
+
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
+//    if (self.interfaceOrientation == UIInterfaceOrientationPortrait)
+//    {
+//        return UIInterfaceOrientationPortrait;
+//    }
+//    else if ([self interfaceOrientation] == UIInterfaceOrientationLandscapeLeft||[self interfaceOrientation] == UIInterfaceOrientationLandscapeRight)
+//    {
+//        return UIInterfaceOrientationMaskAll;
+//    }
+//}
+
+//-(NSUInteger)supportedInterfaceOrientations{
+//    return UIInterfaceOrientationPortrait;
+//}
+
+//- (BOOL)shouldAutorotate
+//{
+//    return NO;
+//}
+
+//-(UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
+//    return UIInterfaceOrientationPortrait;
+//}
+
+//- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+//    return UIInterfaceOrientationPortrait;
+//}
 
 @end

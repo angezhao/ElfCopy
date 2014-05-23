@@ -15,4 +15,7 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageView;
 
+//打开摄像头
+-(void)OpenCamera;
+
 @end

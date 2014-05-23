@@ -11,9 +11,7 @@
 #define __ElfCopy__TakePhoto__
 
 #include "cocos2d.h"
-#include "ui/CocosGUI.h"
 
-using namespace cocos2d::ui;
 
 class TakePhoto : public cocos2d::Layer
 {

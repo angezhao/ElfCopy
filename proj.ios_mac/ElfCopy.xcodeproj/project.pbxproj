@@ -79,10 +79,10 @@
 		B7AB581C192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581D192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
 		B7AB581E192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
-		B7AB5821192DF3F500FEEC21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5820192DF3F500FEEC21 /* ViewController.m */; };
-		B7AB5822192DF3F500FEEC21 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5820192DF3F500FEEC21 /* ViewController.m */; };
 		B7B174FD1920F5570010B350 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = B7B174FC1920F5570010B350 /* publish */; };
 		B7BE3ADB192E21C60099382E /* TakePhoto.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7BE3AD9192E21C60099382E /* TakePhoto.mm */; };
+		B7BE3AE6192E68460099382E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE3AE4192E68460099382E /* ViewController.m */; };
+		B7BE3AE7192E68460099382E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BE3AE5192E68460099382E /* ViewController.xib */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -303,11 +303,12 @@
 		B7AB5806192DDC0200FEEC21 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../Classes/Camera.mm; sourceTree = "<group>"; };
 		B7AB5819192DF07E00FEEC21 /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B7AB581A192DF07E00FEEC21 /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
-		B7AB581F192DF3F500FEEC21 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../Classes/ViewController.h; sourceTree = "<group>"; };
-		B7AB5820192DF3F500FEEC21 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../Classes/ViewController.m; sourceTree = "<group>"; };
 		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
 		B7BE3AD9192E21C60099382E /* TakePhoto.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TakePhoto.mm; path = ../Classes/TakePhoto.mm; sourceTree = "<group>"; };
 		B7BE3ADA192E21C60099382E /* TakePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePhoto.h; path = ../Classes/TakePhoto.h; sourceTree = "<group>"; };
+		B7BE3AE3192E68460099382E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../Classes/ViewController.h; sourceTree = "<group>"; };
+		B7BE3AE4192E68460099382E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../Classes/ViewController.m; sourceTree = "<group>"; };
+		B7BE3AE5192E68460099382E /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ../Classes/ViewController.xib; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -392,12 +393,13 @@
 				B7A49FD8192CC3A2005C23E3 /* StartLayer.h */,
 				B7BE3AD9192E21C60099382E /* TakePhoto.mm */,
 				B7BE3ADA192E21C60099382E /* TakePhoto.h */,
-				B7AB581F192DF3F500FEEC21 /* ViewController.h */,
-				B7AB5820192DF3F500FEEC21 /* ViewController.m */,
 				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
 				B7AB5805192DDC0200FEEC21 /* Camera.h */,
 				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
 				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
+				B7BE3AE3192E68460099382E /* ViewController.h */,
+				B7BE3AE4192E68460099382E /* ViewController.m */,
+				B7BE3AE5192E68460099382E /* ViewController.xib */,
 				B7AB5806192DDC0200FEEC21 /* Camera.mm */,
 				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
 				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
@@ -704,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
+				B7BE3AE7192E68460099382E /* ViewController.xib in Resources */,
 				B7AB581B192DF07E00FEEC21 /* yuanshiren1 in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -776,8 +779,8 @@
 				B7A515EC192BA70500D44C31 /* PhotoLayer.cpp in Sources */,
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
-				B7AB5821192DF3F500FEEC21 /* ViewController.m in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				B7BE3AE6192E68460099382E /* ViewController.m in Sources */,
 				B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7BE3ADB192E21C60099382E /* TakePhoto.mm in Sources */,
@@ -794,7 +797,6 @@
 				5087E75817EB910900C73F5D /* HelloWorldScene.cpp in Sources */,
 				B7A5EDD31908EDDE0068ACA1 /* main.m in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
-				B7AB5822192DF3F500FEEC21 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
