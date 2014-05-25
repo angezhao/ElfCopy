@@ -14,7 +14,6 @@
 
 +(Camera*)PickPhoto;
 
-@property(nonatomic,retain) UIImageView *imageView;
 @property(nonatomic,retain) UIViewController *rootViewController;
 
 //打开摄像头

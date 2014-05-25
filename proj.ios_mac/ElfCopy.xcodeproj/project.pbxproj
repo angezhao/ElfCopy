@@ -75,7 +75,7 @@
 		B7A515EC192BA70500D44C31 /* PhotoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */; };
 		B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */; };
 		B7A5EDD31908EDDE0068ACA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
-		B7AB5807192DDC0200FEEC21 /* Camera.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5806192DDC0200FEEC21 /* Camera.m */; };
+		B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5806192DDC0200FEEC21 /* Camera.mm */; };
 		B7AB581B192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581C192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581D192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
@@ -301,7 +301,7 @@
 		B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VidioLayer.cpp; path = ../Classes/VidioLayer.cpp; sourceTree = "<group>"; };
 		B7A515EE192BA73A00D44C31 /* VidioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidioLayer.h; path = ../Classes/VidioLayer.h; sourceTree = "<group>"; };
 		B7AB5805192DDC0200FEEC21 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../Classes/Camera.h; sourceTree = "<group>"; };
-		B7AB5806192DDC0200FEEC21 /* Camera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Camera.m; path = ../Classes/Camera.m; sourceTree = "<group>"; };
+		B7AB5806192DDC0200FEEC21 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../Classes/Camera.mm; sourceTree = "<group>"; };
 		B7AB5819192DF07E00FEEC21 /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B7AB581A192DF07E00FEEC21 /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
 		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
@@ -397,7 +397,7 @@
 				B7AB5805192DDC0200FEEC21 /* Camera.h */,
 				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
 				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
-				B7AB5806192DDC0200FEEC21 /* Camera.m */,
+				B7AB5806192DDC0200FEEC21 /* Camera.mm */,
 				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
 				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
 				B7A515EE192BA73A00D44C31 /* VidioLayer.h */,
@@ -776,7 +776,7 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				B7AB5807192DDC0200FEEC21 /* Camera.m in Sources */,
+				B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7BE3ADB192E21C60099382E /* SelectPhoto.mm in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,

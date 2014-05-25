@@ -7,6 +7,9 @@
 //
 
 #import "Camera.h"
+#include "PhotoLayer.h"
+#include "Constants.h"
+#include "cocos2d.h"
 
 @implementation Camera
 
@@ -115,15 +118,14 @@
 //    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
 //    
 //    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-//    
-//    [self.imageView setImage:savedImage];
-//    
-//    self.imageView.tag = 100;
     
 
-//    UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-//    //保存原图到相册
-//    UIImageWriteToSavedPhotosAlbum(originImage, nil, nil, nil);
+    UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //判断是否原图到相册
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        UIImageWriteToSavedPhotosAlbum(originImage, nil, nil, nil);
+    }
     
     [self dismissViewControllerAnimated:false completion:nil];
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
@@ -139,9 +141,12 @@
         // use this method on ios6
         [window setRootViewController:[self rootViewController]];
     }
-
-    
+    //转到图片处理
+    cocos2d::Layer * pLayer = new PhotoLayer();
+    pLayer->autorelease();
+    m_pLayer->addChild(pLayer);
 }
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	NSLog(@"取消");
@@ -164,7 +169,6 @@
 
 -(void) dealloc
 {
-    [_imageView release];
     [self release];
     [super dealloc];
 }

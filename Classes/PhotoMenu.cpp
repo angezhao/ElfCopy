@@ -7,7 +7,6 @@
 //
 
 #include "PhotoMenu.h"
-#include "PhotoLayer.h"
 #include "PickPhoto.h"
 #include "SelectPhoto.h"
 #include "MainLayer.h"
