@@ -14,4 +14,9 @@
 //全局变量
 extern cocos2d::Layer * m_pLayer;
 
+//选择头像1
+extern bool m_bHead1;
+//选择头像2
+extern bool m_bHead2;
+
 #endif /* defined(__ElfCopy__Constants__) */

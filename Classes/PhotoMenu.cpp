@@ -12,6 +12,11 @@
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID) 
+#include <jni.h>
+#include "platform/android/jni/JniHelper.h"
+#endif
+
 
 
 PhotoMenu::PhotoMenu()
@@ -45,16 +50,36 @@ void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
 void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new TakePhoto();
-        pLayer->autorelease();
-        m_pLayer->addChild(pLayer);
+      //  Layer * pLayer = new TakePhoto();
+      //  pLayer->autorelease();
+      //  m_pLayer->addChild(pLayer);
     }
 }
 
 void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new PhotoLayer();
-        pLayer->autorelease();
+       
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+		cocos2d::JniMethodInfo methodInfo;
+		bool isHave = cocos2d::JniHelper::getStaticMethodInfo(methodInfo,
+			"org/cocos2dx/cpp/PicHandler",
+			"pickPhoto",
+			"()V"					
+			);
+
+		if(isHave){
+			//调用这个函数
+			methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+		}
+		
+
+#else
+		Layer * pLayer = new PhotoLayer();
+		pLayer->autorelease();
+		m_pLayer->addChild(pLayer);
+
+#endif
+
     }
 }
