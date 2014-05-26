@@ -65,6 +65,7 @@
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
 		B79F9F8F192B2D32002517BF /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B79F9F8E192B2D32002517BF /* ElfYourSelfUi */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
+		B7A1B2711931F8B300523FBF /* PickPhoto.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.mm */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
 		B7A49FD3192CAFDC005C23E3 /* PhotoMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */; };
 		B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */; };
@@ -80,9 +81,6 @@
 		B7AB581D192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
 		B7AB581E192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
 		B7B174FD1920F5570010B350 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = B7B174FC1920F5570010B350 /* publish */; };
-		B7BE3ADB192E21C60099382E /* TakePhoto.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7BE3AD9192E21C60099382E /* TakePhoto.mm */; };
-		B7BE3AE6192E68460099382E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B7BE3AE4192E68460099382E /* ViewController.m */; };
-		B7BE3AE7192E68460099382E /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7BE3AE5192E68460099382E /* ViewController.xib */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -284,6 +282,8 @@
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		B79F9F8E192B2D32002517BF /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
+		B7A1B26F1931F8B300523FBF /* PickPhoto.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto.mm; path = ../Classes/PickPhoto.mm; sourceTree = "<group>"; };
+		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
 		B7A430D81921B16200D3CDAB /* yuanshiren */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren; sourceTree = "<group>"; };
 		B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhotoMenu.cpp; path = ../Classes/PhotoMenu.cpp; sourceTree = "<group>"; };
 		B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoMenu.h; path = ../Classes/PhotoMenu.h; sourceTree = "<group>"; };
@@ -304,11 +304,6 @@
 		B7AB5819192DF07E00FEEC21 /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B7AB581A192DF07E00FEEC21 /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
 		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
-		B7BE3AD9192E21C60099382E /* TakePhoto.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = TakePhoto.mm; path = ../Classes/TakePhoto.mm; sourceTree = "<group>"; };
-		B7BE3ADA192E21C60099382E /* TakePhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TakePhoto.h; path = ../Classes/TakePhoto.h; sourceTree = "<group>"; };
-		B7BE3AE3192E68460099382E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../Classes/ViewController.h; sourceTree = "<group>"; };
-		B7BE3AE4192E68460099382E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../Classes/ViewController.m; sourceTree = "<group>"; };
-		B7BE3AE5192E68460099382E /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ViewController.xib; path = ../Classes/ViewController.xib; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -391,15 +386,12 @@
 				B7A515E3192B882200D44C31 /* MainLayer.h */,
 				B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */,
 				B7A49FD8192CC3A2005C23E3 /* StartLayer.h */,
-				B7BE3AD9192E21C60099382E /* TakePhoto.mm */,
-				B7BE3ADA192E21C60099382E /* TakePhoto.h */,
+				B7A1B26F1931F8B300523FBF /* PickPhoto.mm */,
+				B7A1B2701931F8B300523FBF /* PickPhoto.h */,
 				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
 				B7AB5805192DDC0200FEEC21 /* Camera.h */,
 				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
 				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
-				B7BE3AE3192E68460099382E /* ViewController.h */,
-				B7BE3AE4192E68460099382E /* ViewController.m */,
-				B7BE3AE5192E68460099382E /* ViewController.xib */,
 				B7AB5806192DDC0200FEEC21 /* Camera.mm */,
 				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
 				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
@@ -444,8 +436,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
+				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				080E96DDFE201D6D7F000001 /* ios */,
 				503AE10617EB990700D1A890 /* mac */,
@@ -706,7 +698,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
-				B7BE3AE7192E68460099382E /* ViewController.xib in Resources */,
 				B7AB581B192DF07E00FEEC21 /* yuanshiren1 in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -780,12 +771,11 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				B7BE3AE6192E68460099382E /* ViewController.m in Sources */,
 				B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
-				B7BE3ADB192E21C60099382E /* TakePhoto.mm in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				B7A1B2711931F8B300523FBF /* PickPhoto.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

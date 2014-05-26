@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#include "cocos2d.h"
 
-@interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
-    Boolean hasLoadedCamera;
-}
+@interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-+(Camera*)PickPhoto;
-//打开摄像头
--(void)OpenCamera;
+@property(nonatomic,retain) UIViewController *rootViewController;
+
+//打开摄像头或相册
+-(void)OpenPicker:(BOOL) takePhoto;
 
 @end

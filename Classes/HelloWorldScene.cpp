@@ -2,7 +2,6 @@
 #include "cocostudio/CocoStudio.h"
 // #include "cocostudio/CocoStudio.h"
 // #include "cocostudio/ComRender.h"
-#include "TakePhoto.h"
 
 USING_NS_CC;
 
@@ -10,10 +9,10 @@ Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    HelloWorld *layer = HelloWorld::create();
-    scene->addChild(layer);
+    //HelloWorld *layer = HelloWorld::create();
+    //scene->addChild(layer);
     
-    /*
+    
     Size winSize = Director::getInstance()->getWinSize();
     
     cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
@@ -30,16 +29,16 @@ Scene* HelloWorld::createScene()
     
     cocostudio::Bone *tou1 = armature2->getBone("tou1");
     cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou1.png");
-    face1->setAnchorPoint(Point(0.04, 1.26));
+    face1->setAnchorPoint(Point(-0.1, 1.2));
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
     
     cocostudio::Bone *tou2 = armature->getBone("tou2");
     cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou2.png");
-    face2->setAnchorPoint(Point(0.23, 1.4));
+    face2->setAnchorPoint(Point(-0.2, 1.5));
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
-    */
+    
     
     //Node *node = cocostudio::SceneReader::getInstance()->createNodeWithSceneFile("publish/test.json");
     //scene->addChild(node);
