@@ -8,17 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
-    Boolean hasLoadedCamera;
-}
-
-+(Camera*)PickPhoto;
+@interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,retain) UIViewController *rootViewController;
 
-//打开摄像头
--(void)OpenCamera;
-//打开相册
--(void)OpenPhotos;
+//打开摄像头或相册
+-(void)OpenPicker:(BOOL) takePhoto;
 
 @end

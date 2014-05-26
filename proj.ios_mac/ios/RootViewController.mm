@@ -58,15 +58,17 @@
     return UIInterfaceOrientationIsLandscape( interfaceOrientation );
 }
 
-// For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
 - (NSUInteger) supportedInterfaceOrientations{
-#ifdef __IPHONE_6_0
-    return UIInterfaceOrientationMaskAllButUpsideDown;
-#endif
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (BOOL) shouldAutorotate {
     return YES;
+}
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskLandscape;
 }
 
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {

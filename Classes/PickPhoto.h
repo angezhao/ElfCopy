@@ -14,7 +14,7 @@
 class PickPhoto : public cocos2d::Layer
 {
 public:
-    PickPhoto();
+    PickPhoto(bool takePhoto);//takePhoto:true拍照
     ~PickPhoto();
 };
 

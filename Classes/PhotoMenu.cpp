@@ -8,7 +8,6 @@
 
 #include "PhotoMenu.h"
 #include "PickPhoto.h"
-#include "SelectPhoto.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
@@ -45,7 +44,7 @@ void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
 void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new PickPhoto();
+        Layer * pLayer = new PickPhoto(true);
         pLayer->autorelease();
         m_pLayer->addChild(pLayer);
     }
@@ -54,7 +53,7 @@ void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
 void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new SelectPhoto();
+        Layer * pLayer = new PickPhoto(false);
         pLayer->autorelease();
     }
 }
