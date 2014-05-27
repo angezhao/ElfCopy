@@ -22,6 +22,7 @@ public:
     
     void goBack(cocos2d::Ref* pSender,TouchEventType type);
     void changeOk(cocos2d::Ref* pSender,TouchEventType type);
+    cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
 };
 
 

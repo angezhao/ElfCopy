@@ -108,6 +108,8 @@
         [window setRootViewController:[self rootViewController]];
     }
     //转到图片处理
+    NSURL* localUrl =(NSURL *)[info valueForKey:UIImagePickerControllerReferenceURL];
+    
     cocos2d::Layer * pLayer = new PhotoLayer();
     pLayer->autorelease();
     m_pLayer->addChild(pLayer);

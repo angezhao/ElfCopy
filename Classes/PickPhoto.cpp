@@ -8,7 +8,7 @@
 
 #include "PickPhoto.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#include "Camera.h"
+#include "PickPhoto4Ios.h"
 #endif
 
 
@@ -16,21 +16,7 @@ PickPhoto::PickPhoto(bool takePhoto)
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //iOS代码
-    Camera * camera = [[Camera alloc] init];
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    // Set RootViewController to window
-    if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
-    {
-        // warning: addSubView doesn't work on iOS6
-        [window addSubview: camera.view];
-    }
-    else
-    {
-        [camera setRootViewController:[window rootViewController]];
-        // use this method on ios6
-        [window setRootViewController:camera];
-    }
-    [camera OpenPicker:takePhoto];
+    PickPhoto4Ios * photo4Ios = new PickPhoto4Ios(takePhoto);
 #else //if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     //Android代码
     cocos2d::JniMethodInfo methodInfo;

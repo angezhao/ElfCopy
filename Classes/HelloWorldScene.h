@@ -20,6 +20,8 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
+    
+    cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
 	
 };
 

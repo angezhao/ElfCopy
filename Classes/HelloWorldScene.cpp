@@ -9,10 +9,10 @@ Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    //HelloWorld *layer = HelloWorld::create();
-    //scene->addChild(layer);
+    HelloWorld *layer = HelloWorld::create();
+    scene->addChild(layer);
     
-    
+    /*
     Size winSize = Director::getInstance()->getWinSize();
     
     cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
@@ -38,7 +38,7 @@ Scene* HelloWorld::createScene()
     face2->setAnchorPoint(Point(-0.2, 1.5));
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
-    
+    */
     
     //Node *node = cocostudio::SceneReader::getInstance()->createNodeWithSceneFile("publish/test.json");
     //scene->addChild(node);
@@ -83,6 +83,12 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
+    cocos2d::Sprite* src_sprite = cocos2d::Sprite::create("scene/bg.png");
+    cocos2d::Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
+    show_sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    this->addChild(show_sprite, 0);
+    
+    /*
     /////////////////////////////
     // 2. add a menu item with "X" image, which is clicked to quit the program
     //    you may modify it.
@@ -100,7 +106,8 @@ bool HelloWorld::init()
     auto menu = Menu::create(closeItem, NULL);
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
-
+    */
+    
     /*
     /////////////////////////////
     // 3. add your codes below...
@@ -146,4 +153,40 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
      */
+}
+
+cocos2d::Sprite* HelloWorld::createMaskedSprite(cocos2d::Sprite* src, const char* maskFile)
+{
+    cocos2d::Sprite* mask = cocos2d::Sprite::create(maskFile);
+    
+    assert(src);
+    assert(mask);
+    
+    cocos2d::Size srcContent = src->getContentSize();
+    cocos2d::Size maskContent = mask->getContentSize();
+    
+    cocos2d::RenderTexture* rt = cocos2d::RenderTexture::create(srcContent.width, srcContent.height, cocos2d::Texture2D::PixelFormat::RGBA8888);
+    
+    /*
+     float ratiow = srcContent.width / maskContent.width;
+     float ratioh = srcContent.height / maskContent.height;
+     mask->setScaleX(ratiow);
+     mask->setScaleY(ratioh);*/
+    
+    mask->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    src->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    
+    cocos2d::BlendFunc blendFunc2 = { GL_ONE, GL_ZERO };
+    mask->setBlendFunc(blendFunc2);
+    cocos2d::BlendFunc blendFunc3 = { GL_DST_ALPHA, GL_ZERO };
+    src->setBlendFunc(blendFunc3);
+    
+    rt->begin();
+    mask->visit();
+    src->visit();
+    rt->end();
+    
+    cocos2d::Sprite* retval = cocos2d::Sprite::createWithTexture(rt->getSprite()->getTexture());
+    retval->setFlippedY(true);
+    return retval;
 }
