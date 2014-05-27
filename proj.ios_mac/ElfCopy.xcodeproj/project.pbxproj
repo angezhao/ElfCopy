@@ -63,8 +63,8 @@
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
+		B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B77C6FEA193498700048B648 /* ElfYourSelfUi */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
-		B79F9F8F192B2D32002517BF /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B79F9F8E192B2D32002517BF /* ElfYourSelfUi */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
@@ -282,8 +282,8 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
+		B77C6FEA193498700048B648 /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
-		B79F9F8E192B2D32002517BF /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
@@ -522,9 +522,9 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B77C6FEA193498700048B648 /* ElfYourSelfUi */,
 				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
 				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
-				B79F9F8E192B2D32002517BF /* ElfYourSelfUi */,
 				B7A430D81921B16200D3CDAB /* yuanshiren */,
 				B7B174FC1920F5570010B350 /* publish */,
 				B7A0EB51190A6BC20009C47B /* face */,
@@ -712,8 +712,8 @@
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
-				B79F9F8F192B2D32002517BF /* ElfYourSelfUi in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				B79CDBFE191E492F00311E24 /* scene in Resources */,
 				B7A0EB54190A6BC20009C47B /* face in Resources */,

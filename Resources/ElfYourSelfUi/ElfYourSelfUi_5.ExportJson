@@ -10,14 +10,20 @@
   "designHeight": 768,
   "designWidth": 1024,
   "textures": [
-    "ElfYourSelfUi0.plist"
+    "ElfYourSelfUi0.plist",
+    "ElfYourSelfUi1.plist"
   ],
   "texturesPng": [
     "ElfYourSelfUi0.png",
+    "ElfYourSelfUi1.png",
     "ElfYourSelfUi0.png",
+    "ElfYourSelfUi1.png",
     "ElfYourSelfUi0.png",
+    "ElfYourSelfUi1.png",
     "ElfYourSelfUi0.png",
-    "ElfYourSelfUi0.png"
+    "ElfYourSelfUi1.png",
+    "ElfYourSelfUi0.png",
+    "ElfYourSelfUi1.png"
   ],
   "version": "1.4.0.1",
   "widgetTree": {
@@ -887,7 +893,7 @@
       "classname": "Panel",
       "name": "Panel_7",
       "ZOrder": 0,
-      "actiontag": 7,
+      "actiontag": -1,
       "anchorPointX": 0,
       "anchorPointY": 0,
       "classType": "CocoStudio.EngineAdapterWrap.CSPanel",

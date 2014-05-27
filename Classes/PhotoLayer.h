@@ -17,7 +17,7 @@ using namespace cocos2d::ui;
 class PhotoLayer : public cocos2d::Layer
 {
 public:
-    PhotoLayer();
+    PhotoLayer(const char *photofile);
     ~PhotoLayer();
     
     void goBack(cocos2d::Ref* pSender,TouchEventType type);

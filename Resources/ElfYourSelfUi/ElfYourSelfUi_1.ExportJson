@@ -10,10 +10,12 @@
   "designHeight": 768,
   "designWidth": 1024,
   "textures": [
-    "ElfYourSelfUi0.plist"
+    "ElfYourSelfUi0.plist",
+    "ElfYourSelfUi1.plist"
   ],
   "texturesPng": [
-    "ElfYourSelfUi0.png"
+    "ElfYourSelfUi0.png",
+    "ElfYourSelfUi1.png"
   ],
   "version": "1.4.0.1",
   "widgetTree": {

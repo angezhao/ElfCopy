@@ -11,9 +11,11 @@
 #include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
+#include "ui/CocosGUI.h"
 
+using namespace cocos2d::ui;
 
-PhotoLayer::PhotoLayer()
+PhotoLayer::PhotoLayer(const char *photofile)
 {
     auto myLayout = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_4.ExportJson");
     m_pLayer->addChild(myLayout);
@@ -24,13 +26,15 @@ PhotoLayer::PhotoLayer()
     auto okBtn =  myLayout->getChildByName("okBtn");
     okBtn->addTouchEventListener(this,toucheventselector(PhotoLayer::changeOk));
     
-    auto headBg =  myLayout->getChildByName("headBg");
+    auto head =  myLayout->getChildByName("head");
+    ImageView *mask =  (ImageView*)head->getChildByName("mask");
+    ImageView *userHead =  (ImageView*)head->getChildByName("userHead");
+    userHead->setTouchEnabled(true);
     
-    cocos2d::Sprite* src_sprite = cocos2d::Sprite::create("scene/bg.png");
-    cocos2d::Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
-    //headBg->getPosition()
-    show_sprite->setPosition(headBg->getPosition());
-    this->addChild(show_sprite, 0);
+//    cocos2d::Sprite* src_sprite = cocos2d::Sprite::create(photofile);
+//    cocos2d::Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
+//    show_sprite->setPosition(headBg->getPosition());
+//    this->addChild(show_sprite, 0);
     
 }
 

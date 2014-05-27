@@ -11,6 +11,7 @@
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
+#include "PhotoLayer.h"
 
 
 PhotoMenu::PhotoMenu()
@@ -53,7 +54,10 @@ void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
 void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new PickPhoto(false);
+        //Layer * pLayer = new PickPhoto(false);
+        //pLayer->autorelease();
+        cocos2d::Layer * pLayer = new PhotoLayer("");
         pLayer->autorelease();
+        m_pLayer->addChild(pLayer);
     }
 }

@@ -39,7 +39,7 @@
     // 跳转到相机或相册
     UIImagePickerController *imagePickerController = [[[UIImagePickerController alloc] init] autorelease];
     imagePickerController.delegate = self;
-    imagePickerController.allowsEditing = YES;
+    //imagePickerController.allowsEditing = YES;
 
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
@@ -108,9 +108,9 @@
         [window setRootViewController:[self rootViewController]];
     }
     //转到图片处理
-    NSURL* localUrl =(NSURL *)[info valueForKey:UIImagePickerControllerReferenceURL];
-    
-    cocos2d::Layer * pLayer = new PhotoLayer();
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    const char *photofile = [fullPath UTF8String];
+    cocos2d::Layer * pLayer = new PhotoLayer(photofile);
     pLayer->autorelease();
     m_pLayer->addChild(pLayer);
 }
