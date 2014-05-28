@@ -65,6 +65,7 @@
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B77C6FEA193498700048B648 /* ElfYourSelfUi */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
+		B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B79F0358193576FC00477F55 /* MoreTouches.cpp */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
@@ -284,6 +285,8 @@
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
 		B77C6FEA193498700048B648 /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
+		B79F0358193576FC00477F55 /* MoreTouches.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoreTouches.cpp; path = ../Classes/MoreTouches.cpp; sourceTree = "<group>"; };
+		B79F0359193576FC00477F55 /* MoreTouches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTouches.h; path = ../Classes/MoreTouches.h; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
@@ -384,29 +387,31 @@
 			isa = PBXGroup;
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				B7A515DF192B880B00D44C31 /* GameScene.cpp */,
-				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
-				B7A515E3192B882200D44C31 /* MainLayer.h */,
-				B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */,
-				B7A49FD8192CC3A2005C23E3 /* StartLayer.h */,
-				B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */,
-				B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */,
-				B77C6FE3193470890048B648 /* PickPhoto4Ios.h */,
-				B7A1B2701931F8B300523FBF /* PickPhoto.h */,
-				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
+				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				B7AB5805192DDC0200FEEC21 /* Camera.h */,
-				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
-				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
 				B7AB5806192DDC0200FEEC21 /* Camera.mm */,
-				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
-				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
-				B7A515EE192BA73A00D44C31 /* VidioLayer.h */,
 				B7A515E7192B9D1D00D44C31 /* Constants.cpp */,
 				B7A515E8192B9D1D00D44C31 /* Constants.h */,
-				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
+				B7A515DF192B880B00D44C31 /* GameScene.cpp */,
 				B7A515E0192B880B00D44C31 /* GameScene.h */,
-				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
+				B7A515E3192B882200D44C31 /* MainLayer.h */,
+				B79F0358193576FC00477F55 /* MoreTouches.cpp */,
+				B79F0359193576FC00477F55 /* MoreTouches.h */,
+				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
+				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
+				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
+				B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */,
+				B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */,
+				B7A1B2701931F8B300523FBF /* PickPhoto.h */,
+				B77C6FE3193470890048B648 /* PickPhoto4Ios.h */,
+				B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */,
+				B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */,
+				B7A49FD8192CC3A2005C23E3 /* StartLayer.h */,
+				B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */,
+				B7A515EE192BA73A00D44C31 /* VidioLayer.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -781,6 +786,7 @@
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
+				B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */,
 				B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
