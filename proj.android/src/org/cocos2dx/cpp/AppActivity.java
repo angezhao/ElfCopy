@@ -35,7 +35,9 @@ import java.io.IOException;
 import org.cocos2dx.lib.Cocos2dxActivity;
 import org.cocos2dx.lib.Cocos2dxHelper;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -46,22 +48,32 @@ public class AppActivity extends Cocos2dxActivity {
 	public final static int HANDLER_CALL_CAMERA = 1;
 	public final static int HANDLER_SELECT_PIC = 2;
 	public final static int PICTURE_CLIPPING = 3;
+	
+	public static native void setPhotoPath(String path);
 		
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data){
 		 super.onActivityResult(requestCode, resultCode, data);
 		  Log.d("值", "返回值:requestCode" + requestCode + "resultCode = "
 		    + resultCode);
-		  if (resultCode == RESULT_CANCELED) {
+		  if (resultCode != RESULT_OK) {
 			  return;
 		  }
+		  
+		  String path = null;
 		  switch (requestCode) {
 			  case AppActivity.HANDLER_CALL_CAMERA:
-				  startPhotoZoom(data.getData());
+				//  startPhotoZoom(data.getData());				 
+				  path = PicHandler.getPhotoPath();
+				  Log.d("AppActivity", path);
+				  setPhotoPath(path);
 				  break;
 			  // 取得裁剪后的图片
 			  case AppActivity.HANDLER_SELECT_PIC:
-				  startPhotoZoom(data.getData());
+				  path = this.getPhotoPath(data);
+				  Log.d("AppActivity", path);
+				  setPhotoPath(path);
+				//  startPhotoZoom(data.getData());
 				  /*
 				   if (data != null) {
 				    if (setPicToView(data) == RESULT_OK) {
@@ -71,11 +83,12 @@ public class AppActivity extends Cocos2dxActivity {
 				   //  JavaToC.touxiangIsOk(false);
 				    }
 				   }
-				   break;
 				   */
+				   break;
+				   
 				   
 			  case AppActivity.PICTURE_CLIPPING:
-				  if (data != null) {
+				/*  if (data != null) {
 					    if (setPicToView(data) == RESULT_OK) {
 					     //--选取头像成功，通知c++层
 					    // JavaToC.touxiangIsOk(true);
@@ -83,6 +96,7 @@ public class AppActivity extends Cocos2dxActivity {
 					   //  JavaToC.touxiangIsOk(false);
 					    }
 				  }
+				  */
 				  break;
 			   
 			  default:
@@ -131,6 +145,18 @@ public class AppActivity extends Cocos2dxActivity {
 	  }
 	  return result;
 	 }
+	 
+	 private String getPhotoPath(Intent data){
+		 Uri uri = data.getData();
+		 ContentResolver resolver = getContentResolver();
+		 
+		 Cursor cursor = resolver.query(uri, null, null, null, null);
+		 cursor.moveToFirst();
+		 String path =  cursor.getString(1);  //  获取的是图片的绝对路径
+		 cursor.close();
+		 
+		 return path;
+	 }
 
 	 /**
 	  * 将bitmap保存到本地png文件
@@ -161,5 +187,18 @@ public class AppActivity extends Cocos2dxActivity {
 	  }
 	  return result;
 	 }
+
+		@Override
+		public void onWindowFocusChanged(final boolean hasWindowFocus) {
+			super.onWindowFocusChanged(hasWindowFocus);
+			Log.d("AppActivity", "ACTIVITY ON WINDOW FOCUS CHANGED " + (hasWindowFocus ? "true" : "false"));
+			if (hasWindowFocus) {
+				Cocos2dxHelper.onResume();
+				this.mGLSurfaceView.onResume();
+			} else {
+				Cocos2dxHelper.onPause();
+				this.mGLSurfaceView.onPause();
+			}
+	  	}
 	 
 }
