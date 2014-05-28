@@ -62,6 +62,7 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		B73D37DB1935FE3D00D884B8 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B73D37DA1935FE3D00D884B8 /* Camera.mm */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B77C6FEA193498700048B648 /* ElfYourSelfUi */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
@@ -77,7 +78,6 @@
 		B7A515EC192BA70500D44C31 /* PhotoLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */; };
 		B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */; };
 		B7A5EDD31908EDDE0068ACA1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 503AE0FC17EB989F00D1A890 /* main.m */; };
-		B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7AB5806192DDC0200FEEC21 /* Camera.mm */; };
 		B7AB581B192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581C192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581D192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
@@ -281,6 +281,8 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		B73D37D91935FE3D00D884B8 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../Classes/Camera.h; sourceTree = "<group>"; };
+		B73D37DA1935FE3D00D884B8 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../Classes/Camera.mm; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
 		B77C6FEA193498700048B648 /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
@@ -305,8 +307,6 @@
 		B7A515EB192BA70500D44C31 /* PhotoLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoLayer.h; path = ../Classes/PhotoLayer.h; sourceTree = "<group>"; };
 		B7A515ED192BA73A00D44C31 /* VidioLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VidioLayer.cpp; path = ../Classes/VidioLayer.cpp; sourceTree = "<group>"; };
 		B7A515EE192BA73A00D44C31 /* VidioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidioLayer.h; path = ../Classes/VidioLayer.h; sourceTree = "<group>"; };
-		B7AB5805192DDC0200FEEC21 /* Camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = ../Classes/Camera.h; sourceTree = "<group>"; };
-		B7AB5806192DDC0200FEEC21 /* Camera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = Camera.mm; path = ../Classes/Camera.mm; sourceTree = "<group>"; };
 		B7AB5819192DF07E00FEEC21 /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B7AB581A192DF07E00FEEC21 /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
 		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
@@ -388,13 +388,13 @@
 			children = (
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				B7AB5805192DDC0200FEEC21 /* Camera.h */,
-				B7AB5806192DDC0200FEEC21 /* Camera.mm */,
 				B7A515E7192B9D1D00D44C31 /* Constants.cpp */,
 				B7A515E8192B9D1D00D44C31 /* Constants.h */,
 				B7A515DF192B880B00D44C31 /* GameScene.cpp */,
 				B7A515E0192B880B00D44C31 /* GameScene.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
+				B73D37D91935FE3D00D884B8 /* Camera.h */,
+				B73D37DA1935FE3D00D884B8 /* Camera.mm */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
 				B7A515E3192B882200D44C31 /* MainLayer.h */,
@@ -782,9 +782,9 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				B7AB5807192DDC0200FEEC21 /* Camera.mm in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,
+				B73D37DB1935FE3D00D884B8 /* Camera.mm in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */,
 				B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */,

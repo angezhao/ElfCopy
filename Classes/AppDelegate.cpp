@@ -2,6 +2,7 @@
 #include "GameScene.h"
 #include "HelloWorldScene.h"
 #include "MoreTouches.h"
+//#include "PhotoLayer.h"
 
 USING_NS_CC;
 
@@ -34,6 +35,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto scene = GameScene::createScene();
     //auto scene = HelloWorld::createScene();
     //auto scene = MoreTouches::scene();
+    //auto scene = PhotoLayer::scene();
     
     // run
     director->runWithScene(scene);

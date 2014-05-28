@@ -26,10 +26,10 @@ MainLayer::MainLayer()
     nextBtn->addTouchEventListener(this,toucheventselector(MainLayer::goNext));
     
     auto headBtn1 =  myLayout->getChildByName("headBtn1");
-    headBtn1->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto));
+    headBtn1->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto1));
     
     auto headBtn2 =  myLayout->getChildByName("headBtn2");
-    headBtn2->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto));
+    headBtn2->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto2));
 
 }
 
@@ -48,14 +48,26 @@ void MainLayer::goBack(cocos2d::Ref* pSender,TouchEventType type)
 void MainLayer::goNext(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
+        //if (spriteHead1 == NULL || spriteHead2 == NULL)
+        //    return;
         Layer * pLayer = new VidioLayer();
         pLayer->autorelease();
     }
 }
 
-void MainLayer::changePhoto(cocos2d::Ref* pSender,TouchEventType type)
+void MainLayer::changePhoto1(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
+        m_intHead = 1;
+        Layer * pLayer = new PhotoMenu();
+        pLayer->autorelease();
+    }
+}
+
+void MainLayer::changePhoto2(cocos2d::Ref* pSender,TouchEventType type)
+{
+    if(type == TOUCH_EVENT_ENDED){
+        m_intHead = 2;
         Layer * pLayer = new PhotoMenu();
         pLayer->autorelease();
     }

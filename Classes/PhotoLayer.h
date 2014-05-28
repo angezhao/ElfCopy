@@ -12,31 +12,32 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-USING_NS_CC;
-
-class PhotoLayer : public Layer
+class PhotoLayer : public cocos2d::Layer
 {
 public:
     PhotoLayer(const char *photofile);
     ~PhotoLayer();
+    
+    virtual void TouchesCancellnd(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
+    virtual void TouchesBegan(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);//注意这个方法和单点触控方法的返回类型不同
+    virtual void TouchesEnded(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
+    virtual void TouchesMoved(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
 
     void goBack(Ref* pSender,cocos2d::ui::TouchEventType type);
     void changeOk(Ref* pSender,cocos2d::ui::TouchEventType type);
-    void headTouch(Ref* pSender,cocos2d::ui::TouchEventType type);
-    bool onTouchBegan(Touch* touch, Event  *event);
-    void onTouchMoved(Touch* touch, Event  *event);
-    void onTouchEnded(Touch* touch, Event  *event);
+    bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event  *event);
+    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event  *event);
+    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event  *event);
     
-    Sprite* createMaskedSprite(Sprite* src, const char* maskFile);
+    cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
     
 private:
     double distance;    //两个触摸点之间的距离
     double deltax;    //目标x轴的改变值
     double deltay;    //目标y轴的改变值
-    Sprite *bg;     //目标精灵
     double mscale;   //初始地图缩放比例
-    ui::ImageView *userHead;
-    
+    cocos2d::ui::ImageView *mask;
+    cocos2d::ui::ImageView *userHead;
 };
 
 

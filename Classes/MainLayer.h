@@ -22,7 +22,8 @@ public:
     
     void goBack(cocos2d::Ref* pSender,TouchEventType type);
     void goNext(cocos2d::Ref* pSender,TouchEventType type);
-    void changePhoto(cocos2d::Ref* pSender,TouchEventType type);
+    void changePhoto1(cocos2d::Ref* pSender,TouchEventType type);
+    void changePhoto2(cocos2d::Ref* pSender,TouchEventType type);
 };
 
 #endif /* defined(__ElfCopy__MainLayer__) */

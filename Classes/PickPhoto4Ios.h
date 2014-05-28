@@ -15,4 +15,5 @@ public:
     PickPhoto4Ios(bool takePhoto);//takePhoto:true拍照
     ~PickPhoto4Ios();
 };
+
 #endif /* defined(__ElfCopy__PickPhoto4Ios__) */

@@ -2,14 +2,17 @@
 //  Camera.m
 //  ElfCopy
 //
-//  Created by Ange Zhao on 14-5-22.
+//  Created by Ange Zhao on 14-5-28.
 //
 //
 
 #import "Camera.h"
-#include "PhotoLayer.h"
 #include "Constants.h"
-#include "cocos2d.h"
+#include "PhotoLayer.h"
+
+@interface Camera ()
+
+@end
 
 @implementation Camera
 
@@ -22,16 +25,35 @@
     return self;
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 
 -(void)OpenPicker:(BOOL) takePhoto
 {
@@ -40,7 +62,7 @@
     UIImagePickerController *imagePickerController = [[[UIImagePickerController alloc] init] autorelease];
     imagePickerController.delegate = self;
     //imagePickerController.allowsEditing = YES;
-
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         if (takePhoto) {
@@ -63,29 +85,26 @@
 - (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
 {
     
-    //NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
+    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
     // 获取沙盒目录
-    
-    //NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
-    
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
     // 将图片写入文件
-    
-    //[imageData writeToFile:fullPath atomically:NO];
+    [imageData writeToFile:fullPath atomically:NO];
 }
 
 #pragma mark - image picker delegte
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog(@"拍照");
-//    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-//    
-//    [self saveImage:image withName:@"currentImage.png"];
-//    
-//    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-//    
-//    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
+    //    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    //
+    //    [self saveImage:image withName:@"currentImage.png"];
+    //
+    //    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    //
+    //    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
     
-
+    
     UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     //判断是否原图到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
@@ -108,7 +127,11 @@
         [window setRootViewController:[self rootViewController]];
     }
     //转到图片处理
+    // 获取沙盒目录
+    //NSData *imageData = UIImageJPEGRepresentation(originImage, 0.5);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    // 将图片写入文件
+    //[imageData writeToFile:fullPath atomically:NO];
     const char *photofile = [fullPath UTF8String];
     cocos2d::Layer * pLayer = new PhotoLayer(photofile);
     pLayer->autorelease();

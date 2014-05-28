@@ -21,5 +21,6 @@ public:
     ~VidioLayer();
     
     void goBack(cocos2d::Ref* pSender,TouchEventType type);
+    void playVidio(cocos2d::Ref* pSender,TouchEventType type);
 };
 #endif /* defined(__ElfCopy__VidioLayer__) */

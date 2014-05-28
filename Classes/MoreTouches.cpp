@@ -7,6 +7,10 @@
 //
 
 #include "MoreTouches.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
+
+USING_NS_CC;
 
 Scene *MoreTouches::scene()
 {
@@ -25,24 +29,26 @@ bool MoreTouches::init()
     }
     bg=Sprite::create("scene/bg.png");   //初始化目标图片
     this->addChild(bg);
+//    auto myLayout = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_4.ExportJson");
+//    this->addChild(myLayout);
+//    
+//    auto head =  myLayout->getChildByName("head");
+//    //ImageView *mask =  (ImageView*)head->getChildByName("mask");
+//    this->bg =  (ui::ImageView*)head->getChildByName("userHead");
+//    bg->setTouchEnabled(true);
     
     mscale=1.0;     //初始化图片的缩放比例
     
-//    auto dispatcher = Director::getInstance()->getEventDispatcher();
-//    auto listener = EventListenerTouchOneByOne::create();
-//    listener->onTouchBegan = CC_CALLBACK_2(MoreTouches::onTouchBegan,this);
-//    listener->onTouchMoved = CC_CALLBACK_2(MoreTouches::onTouchMoved,this);
-//    listener->onTouchEnded = CC_CALLBACK_2(MoreTouches::onTouchEnded,this);
-//    listener->setSwallowTouches(true);//不向下传递触摸
-//    dispatcher->addEventListenerWithSceneGraphPriority(listener,this);
+    this->setTouchEnabled(true);
+    this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
+    auto listener = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
+    listener->onTouchesBegan = CC_CALLBACK_2(MoreTouches::TouchesBegan, this);//指定触摸的回调函数
+    listener->onTouchesEnded = CC_CALLBACK_2(MoreTouches::TouchesEnded, this);
+    listener->onTouchesMoved = CC_CALLBACK_2(MoreTouches::TouchesMoved, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);//将listener放入事件委托中
     
     return true;
 }
-
-//void MoreTouches::registerWithTouchDispather()
-//{
-//    CCDirector::sharedDirector()->getTouchDispatcher()->addStandardDelegate(this, 0);
-//}
 
 void MoreTouches::TouchesBegan(const std::vector<Touch*>& pTouches, cocos2d::Event *pEvent)
 {
@@ -58,8 +64,7 @@ void MoreTouches::TouchesBegan(const std::vector<Touch*>& pTouches, cocos2d::Eve
         distance=sqrt((mPoint2.x-mPoint1.x)*(mPoint2.x-mPoint1.x)+(mPoint2.y-mPoint1.y)*(mPoint2.y-mPoint1.y));//计算两个触摸点距离
         deltax = (mPoint1.x + mPoint2.x)/2 - bg->getPositionX();     //得到两个触摸点中点和精灵锚点的差值
         deltay = (mPoint1.y + mPoint2.y)/2 - bg->getPositionY();
-        //CCLog("ccTouchesBegan  ...");
-        
+        log("ccTouchesBegan  ...");
     }
 }
 
@@ -83,7 +88,7 @@ void MoreTouches::TouchesMoved(const std::vector<Touch*>& pTouches, cocos2d::Eve
         bg->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
         deltax = (mPoint1.x+ mPoint2.x)/2 - bg->getPositionX();       //计算新的偏移量
         deltay = (mPoint2.y + mPoint1.y)/2 - bg->getPositionY();
-        //CCLog("ccTouchMoved  ....");
+        log("ccTouchMoved  ....");
     }
     if(pTouches.size()==1)                          //如果触摸点为一个
     {
@@ -102,18 +107,4 @@ void MoreTouches::TouchesEnded(const std::vector<Touch*>& pTouches, cocos2d::Eve
 void MoreTouches::TouchesCancellnd(const std::vector<Touch*>& pTouches, cocos2d::Event *pEvent)
 {
     
-    
-}
-void MoreTouches::onEnter()
-{
-    Layer::onEnter();
-    //Layer::setTouchEnabled(true);
-    //CCLog("onenter");
-}
-
-void MoreTouches::onExit()
-{
-    Layer::onExit();
-    //cocos2d::Director::getInstance()->gettou
-    //cocos2d::Director::getInstance()->getTouchDispatcher()->removeDelegate(this);     //移除触摸代理
 }

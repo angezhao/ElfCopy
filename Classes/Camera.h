@@ -2,11 +2,11 @@
 //  Camera.h
 //  ElfCopy
 //
-//  Created by Ange Zhao on 14-5-22.
+//  Created by Ange Zhao on 14-5-28.
 //
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
