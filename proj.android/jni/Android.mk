@@ -7,6 +7,7 @@ LOCAL_MODULE := cocos2dcpp_shared
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
+				   hellocpp/JavaToC.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/HelloWorldScene.cpp \
 				   ../../Classes/GameScene.cpp \
@@ -15,7 +16,9 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
 				   ../../Classes/PhotoLayer.cpp \
 				   ../../Classes/PhotoMenu.cpp \
 				   ../../Classes/StartLayer.cpp \
-				   ../../Classes/VidioLayer.cpp 
+				   ../../Classes/VidioLayer.cpp \
+				   ../../Classes/PickPhoto.cpp 
+				   
 				   
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

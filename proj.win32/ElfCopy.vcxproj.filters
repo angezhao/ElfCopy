@@ -42,6 +42,9 @@
     <ClCompile Include="..\Classes\VidioLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\PickPhoto.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -83,6 +86,15 @@
     <ClInclude Include="..\Classes\ViewController.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\PickPhoto.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\JavaCall.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PickPhoto4Ios.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
@@ -97,6 +109,12 @@
       <Filter>Classes</Filter>
     </None>
     <None Include="..\Classes\TakePhoto.m">
+      <Filter>Classes</Filter>
+    </None>
+    <None Include="..\Classes\PickPhoto.mm">
+      <Filter>Classes</Filter>
+    </None>
+    <None Include="..\Classes\PickPhoto4Ios.mm">
       <Filter>Classes</Filter>
     </None>
   </ItemGroup>
