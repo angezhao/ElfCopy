@@ -47,8 +47,8 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
 	// Fields
 	// ===========================================================
 	
-	private Cocos2dxGLSurfaceView mGLSurfaceView;
-	private Cocos2dxHandler mHandler;
+	protected Cocos2dxGLSurfaceView mGLSurfaceView;
+	protected Cocos2dxHandler mHandler;
 	private static Context sContext = null;
 	
 	public static Context getContext() {
@@ -183,6 +183,13 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
       }
       Log.d(TAG, "isEmulator=" + isEmulator);
       return isEmulator;
+   }
+   
+   
+   @Override
+   public void onWindowFocusChanged(boolean hasFocus) {
+       super.onResume();
+       super.onWindowFocusChanged(hasFocus);
    }
 
 	// ===========================================================
