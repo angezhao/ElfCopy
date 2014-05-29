@@ -25,13 +25,14 @@ PhotoLayer::PhotoLayer(const char *photofile)
     okBtn->addTouchEventListener(this,toucheventselector(PhotoLayer::changeOk));
     
     auto head =  myLayout->getChildByName("head");
-    this->mask =  (ImageView*)head->getChildByName("mask");
+    this->maskHead =  (ImageView*)head->getChildByName("mask");
     this->userHead =  (cocos2d::ui::ImageView*)head->getChildByName("userHead");
     userHead->setTouchEnabled(true);
     userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
     //userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
     
-    mscale=1.0;     //初始化图片的缩放比例
+    mscale=2;     //初始化图片的缩放比例
+    userHead->setScale(mscale);
     
     auto listener = cocos2d::EventListenerTouchOneByOne::create();//创建一个触摸监听(单点触摸）
     listener->onTouchBegan = CC_CALLBACK_2(PhotoLayer::onTouchBegan, this);//指定触摸的回调函数
@@ -66,14 +67,15 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
         //进行遮罩处理
-//        Sprite* src_sprite = Sprite::create(photofile);
-//        Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
-//        show_sprite->setPosition(headBg->getPosition());
-//        this->addChild(show_sprite, 0);
+        this->mask(userHead,maskHead);
+        userHead->setPosition(cocos2d::Point(0, 0));
+
         if(m_intHead==1){
             //spriteHead1
+            userHead1 = userHead;
         }else if(m_intHead==2){
             //spriteHead2
+            userHead2 = userHead;
         }
         Layer * pLayer = new MainLayer();
         pLayer->autorelease();
@@ -219,4 +221,44 @@ cocos2d::Sprite* PhotoLayer::createMaskedSprite(cocos2d::Sprite* src, const char
     retval->setFlippedY(true);
     return retval;
 }
+
+void PhotoLayer::mask(cocos2d::ui::ImageView* userHead,cocos2d::ui::ImageView* maskHead)
+{
+    //ImageView* maskHead = ImageView::create();
+    //maskHead->loadTexture("face/mask.png");
+    
+    assert(userHead);
+    assert(maskHead);
+    
+    cocos2d::Sprite* src_sprite = static_cast<cocos2d::Sprite*>(userHead->getVirtualRenderer());
+    cocos2d::Sprite* msk_sprite = static_cast<cocos2d::Sprite*>(maskHead->getVirtualRenderer());
+    cocos2d::Size srcContent = src_sprite->getContentSize();
+    cocos2d::Size maskContent = msk_sprite->getContentSize();
+    
+    cocos2d::RenderTexture* rt = cocos2d::RenderTexture::create(srcContent.width, srcContent.height, cocos2d::Texture2D::PixelFormat::RGBA8888);
+    
+    /*
+     float ratiow = srcContent.width / maskContent.width;
+     float ratioh = srcContent.height / maskContent.height;
+     mask->setScaleX(ratiow);
+     mask->setScaleY(ratioh);*/
+    
+    maskHead->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    userHead->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    
+    cocos2d::BlendFunc blendFunc2 = { GL_ONE, GL_ZERO };
+    src_sprite->setBlendFunc(blendFunc2);
+    cocos2d::BlendFunc blendFunc3 = { GL_DST_ALPHA, GL_ZERO };
+    msk_sprite->setBlendFunc(blendFunc3);
+    
+    rt->begin();
+    msk_sprite->visit();
+    src_sprite->visit();
+    rt->end();
+    
+    cocos2d::Texture2D* texture = rt->getSprite()->getTexture();
+    cocos2d::SpriteFrame* spriteFrame = cocos2d::SpriteFrame::createWithTexture(texture, cocos2d::Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
+    src_sprite->setSpriteFrame(spriteFrame);
+}
+
 

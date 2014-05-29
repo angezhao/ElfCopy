@@ -7,7 +7,7 @@
 //
 
 #include "VidioLayer.h"
-#include "MainLayer.h"
+#include "StartLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
 
@@ -31,7 +31,7 @@ VidioLayer::~VidioLayer()
 void VidioLayer::goBack(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new MainLayer();
+        Layer * pLayer = new StartLayer();
         pLayer->autorelease();
     }
 }
@@ -53,13 +53,15 @@ void VidioLayer::playVidio(cocos2d::Ref* pSender,TouchEventType type)
     m_pLayer->addChild(armature2);
     
     cocostudio::Bone *tou1 = armature2->getBone("tou1");
-    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou1.png");
+    //cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou1.png");
+    cocostudio::Skin* face1 = static_cast<cocostudio::Skin*>(userHead1->getVirtualRenderer());
     face1->setAnchorPoint(cocos2d::Point(-0.1, 1.2));
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
     
     cocostudio::Bone *tou2 = armature->getBone("tou2");
-    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou2.png");
+    //cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou2.png");
+    cocostudio::Skin* face2 = static_cast<cocostudio::Skin*>(userHead2->getVirtualRenderer());
     face2->setAnchorPoint(cocos2d::Point(-0.2, 1.5));
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);

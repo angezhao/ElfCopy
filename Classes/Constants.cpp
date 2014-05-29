@@ -14,6 +14,6 @@ cocos2d::Layer * m_pLayer = NULL;
 //选择头像次号
 int m_intHead = 0;
 //头像1
-cocos2d::Sprite* spriteHead1 = NULL;
+cocos2d::ui::ImageView* userHead1 = NULL;
 //头像2
-cocos2d::Sprite* spriteHead2 = NULL;
+cocos2d::ui::ImageView* userHead2 = NULL;

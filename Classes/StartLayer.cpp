@@ -20,6 +20,9 @@ StartLayer::StartLayer()
     auto startBtn =  myLayout->getChildByName("startBtn");
     startBtn->addTouchEventListener(this,toucheventselector(StartLayer::startGame));
     
+    m_intHead = 0;
+    userHead1 = NULL;
+    userHead2 = NULL;
 }
 
 StartLayer::~StartLayer()

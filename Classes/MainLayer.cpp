@@ -25,12 +25,29 @@ MainLayer::MainLayer()
     auto nextBtn =  myLayout->getChildByName("nextBtn");
     nextBtn->addTouchEventListener(this,toucheventselector(MainLayer::goNext));
     
-    auto headBtn1 =  myLayout->getChildByName("headBtn1");
+    Button* headBtn1 =  (Button*)myLayout->getChildByName("headBtn1");
     headBtn1->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto1));
     
     auto headBtn2 =  myLayout->getChildByName("headBtn2");
     headBtn2->addTouchEventListener(this,toucheventselector(MainLayer::changePhoto2));
+    
+    if(userHead1 != NULL)
+    {
+        
+        //headBtn1->addChild(userHead1);
+//        Button* tmp = static_cast<Button*>(userHead1->getVirtualRenderer());
+//        userHead1->getUserData()
+//        headBtn1->loadTextureNormal(tmp->_normalFileName.c_str(), tmp->_normalTexType);
+//        headBtn1->loadTexturePressed(tmp->_clickedFileName.c_str(), tmp->_pressedTexType);
+//        
+//        
+//        headBtn1->copySpecialProperties(tmp);
+    }
 
+    if(userHead2 != NULL)
+    {
+        //headBtn2->addChild(userHead2);
+    }
 }
 
 MainLayer::~MainLayer()
@@ -48,8 +65,8 @@ void MainLayer::goBack(cocos2d::Ref* pSender,TouchEventType type)
 void MainLayer::goNext(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        //if (spriteHead1 == NULL || spriteHead2 == NULL)
-        //    return;
+        if (userHead1 == NULL || userHead2 == NULL)
+            return;
         Layer * pLayer = new VidioLayer();
         pLayer->autorelease();
     }

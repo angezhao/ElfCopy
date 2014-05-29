@@ -10,6 +10,7 @@
 #define __ElfCopy__Constants__
 
 #include "cocos2d.h"
+#include "ui/CocosGUI.h"
 
 //全局变量
 extern cocos2d::Layer * m_pLayer;
@@ -17,8 +18,8 @@ extern cocos2d::Layer * m_pLayer;
 //选择头像次号
 extern int m_intHead;
 //头像1
-extern cocos2d::Sprite* spriteHead1;
+extern cocos2d::ui::ImageView* userHead1;
 //头像2
-extern cocos2d::Sprite* spriteHead2;
+extern cocos2d::ui::ImageView* userHead2;
 
 #endif /* defined(__ElfCopy__Constants__) */

@@ -30,13 +30,13 @@ public:
     void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event  *event);
     
     cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
-    
+    void mask(cocos2d::ui::ImageView* src,cocos2d::ui::ImageView* maskHead);
 private:
     double distance;    //两个触摸点之间的距离
     double deltax;    //目标x轴的改变值
     double deltay;    //目标y轴的改变值
     double mscale;   //初始地图缩放比例
-    cocos2d::ui::ImageView *mask;
+    cocos2d::ui::ImageView *maskHead;
     cocos2d::ui::ImageView *userHead;
 };
 
