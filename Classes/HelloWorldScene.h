@@ -22,6 +22,7 @@ public:
     CREATE_FUNC(HelloWorld);
     
     cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
+    cocos2d::Sprite* mask(cocos2d::ui::ImageView* srcImg);
 	
 };
 

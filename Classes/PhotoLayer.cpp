@@ -31,7 +31,7 @@ PhotoLayer::PhotoLayer(const char *photofile)
     userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
     //userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
     
-    mscale=2;     //初始化图片的缩放比例
+    mscale=3;     //初始化图片的缩放比例
     userHead->setScale(mscale);
     
     auto listener = cocos2d::EventListenerTouchOneByOne::create();//创建一个触摸监听(单点触摸）
@@ -68,16 +68,20 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
     if(type == TOUCH_EVENT_ENDED){
         //进行遮罩处理
         this->mask(userHead,maskHead);
-        userHead->setPosition(cocos2d::Point(0, 0));
+        //userHead->setPosition(cocos2d::Point(0, 0));
 
+        cocos2d::Sprite* face1;
+        cocos2d::Sprite* face2;
         if(m_intHead==1){
-            //spriteHead1
-            userHead1 = userHead;
+            //userHead1 = userHead;
+            cocos2d::Sprite* src_sprite = static_cast<cocos2d::Sprite*>(userHead->getVirtualRenderer());
+            face1 = cocos2d::Sprite::createWithTexture(src_sprite->getTexture());
         }else if(m_intHead==2){
-            //spriteHead2
-            userHead2 = userHead;
+            //userHead2 = userHead;
+            cocos2d::Sprite* src_sprite = static_cast<cocos2d::Sprite*>(userHead->getVirtualRenderer());
+            face2 = cocos2d::Sprite::createWithTexture(src_sprite->getTexture());
         }
-        Layer * pLayer = new MainLayer();
+        Layer * pLayer = new MainLayer(face1,face2);
         pLayer->autorelease();
     }
 }
@@ -224,9 +228,6 @@ cocos2d::Sprite* PhotoLayer::createMaskedSprite(cocos2d::Sprite* src, const char
 
 void PhotoLayer::mask(cocos2d::ui::ImageView* userHead,cocos2d::ui::ImageView* maskHead)
 {
-    //ImageView* maskHead = ImageView::create();
-    //maskHead->loadTexture("face/mask.png");
-    
     assert(userHead);
     assert(maskHead);
     
@@ -247,9 +248,9 @@ void PhotoLayer::mask(cocos2d::ui::ImageView* userHead,cocos2d::ui::ImageView* m
     userHead->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
     
     cocos2d::BlendFunc blendFunc2 = { GL_ONE, GL_ZERO };
-    src_sprite->setBlendFunc(blendFunc2);
+    msk_sprite->setBlendFunc(blendFunc2);
     cocos2d::BlendFunc blendFunc3 = { GL_DST_ALPHA, GL_ZERO };
-    msk_sprite->setBlendFunc(blendFunc3);
+    src_sprite->setBlendFunc(blendFunc3);
     
     rt->begin();
     msk_sprite->visit();

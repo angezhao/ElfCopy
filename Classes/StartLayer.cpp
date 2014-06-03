@@ -21,8 +21,8 @@ StartLayer::StartLayer()
     startBtn->addTouchEventListener(this,toucheventselector(StartLayer::startGame));
     
     m_intHead = 0;
-    userHead1 = NULL;
-    userHead2 = NULL;
+    //face1 = NULL;
+    //face2 = NULL;
 }
 
 StartLayer::~StartLayer()
@@ -32,7 +32,7 @@ StartLayer::~StartLayer()
 void StartLayer::startGame(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new MainLayer();
+        Layer * pLayer = new MainLayer(NULL,NULL);
         pLayer->autorelease();
     }
 }

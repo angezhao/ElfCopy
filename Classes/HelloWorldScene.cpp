@@ -83,10 +83,16 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
-    cocos2d::Sprite* src_sprite = cocos2d::Sprite::create("scene/bg.png");
-    cocos2d::Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
+    ImageView* face = ImageView::create();
+    face->loadTexture("scene/bg.png");
+    cocos2d::Sprite* show_sprite = this->mask(face);
     show_sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     this->addChild(show_sprite, 0);
+    
+//    cocos2d::Sprite* src_sprite = cocos2d::Sprite::create("scene/bg.png");
+//    cocos2d::Sprite* show_sprite = this->createMaskedSprite(src_sprite, "face/mask.png");
+//    show_sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+//    this->addChild(show_sprite, 0);
     
     /*
     /////////////////////////////
@@ -163,7 +169,7 @@ cocos2d::Sprite* HelloWorld::createMaskedSprite(cocos2d::Sprite* src, const char
     assert(mask);
     
     cocos2d::Size srcContent = src->getContentSize();
-    cocos2d::Size maskContent = mask->getContentSize();
+    //cocos2d::Size maskContent = mask->getContentSize();
     
     cocos2d::RenderTexture* rt = cocos2d::RenderTexture::create(srcContent.width, srcContent.height, cocos2d::Texture2D::PixelFormat::RGBA8888);
     
@@ -189,4 +195,48 @@ cocos2d::Sprite* HelloWorld::createMaskedSprite(cocos2d::Sprite* src, const char
     cocos2d::Sprite* retval = cocos2d::Sprite::createWithTexture(rt->getSprite()->getTexture());
     retval->setFlippedY(true);
     return retval;
+}
+
+cocos2d::Sprite* HelloWorld::mask(cocos2d::ui::ImageView* srcImg)
+{
+    ImageView* maskImg = ImageView::create();
+    maskImg->loadTexture("face/mask.png");
+    
+    assert(srcImg);
+    assert(maskImg);
+    
+    cocos2d::Sprite* src = static_cast<cocos2d::Sprite*>(srcImg->getVirtualRenderer());
+    cocos2d::Sprite* mask = static_cast<cocos2d::Sprite*>(maskImg->getVirtualRenderer());
+    cocos2d::Size srcContent = src->getContentSize();
+    cocos2d::Size maskContent = mask->getContentSize();
+    
+    cocos2d::RenderTexture* rt = cocos2d::RenderTexture::create(srcContent.width, srcContent.height, cocos2d::Texture2D::PixelFormat::RGBA8888);
+    
+    /*
+     float ratiow = srcContent.width / maskContent.width;
+     float ratioh = srcContent.height / maskContent.height;
+     mask->setScaleX(ratiow);
+     mask->setScaleY(ratioh);*/
+    
+    mask->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    src->setPosition(cocos2d::Point(srcContent.width / 2, srcContent.height / 2));
+    
+    cocos2d::BlendFunc blendFunc2 = { GL_ONE, GL_ZERO };
+    mask->setBlendFunc(blendFunc2);
+    cocos2d::BlendFunc blendFunc3 = { GL_DST_ALPHA, GL_ZERO };
+    src->setBlendFunc(blendFunc3);
+    
+    rt->begin();
+    mask->visit();
+    src->visit();
+    rt->end();
+    
+//    cocos2d::Sprite* retval = cocos2d::Sprite::createWithTexture(rt->getSprite()->getTexture());
+//    retval->setFlippedY(true);
+//    return retval;
+    
+    cocos2d::Texture2D* texture = rt->getSprite()->getTexture();
+    cocos2d::SpriteFrame* spriteFrame = cocos2d::SpriteFrame::createWithTexture(texture, cocos2d::Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
+    src->setSpriteFrame(spriteFrame);
+    return src;
 }

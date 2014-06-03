@@ -36,7 +36,7 @@ PhotoMenu::~PhotoMenu()
 void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new MainLayer();
+        Layer * pLayer = new MainLayer(NULL,NULL);
         pLayer->autorelease();
     }
 }
