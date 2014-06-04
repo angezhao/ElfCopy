@@ -12,32 +12,36 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
-class PhotoLayer : public cocos2d::Layer
+using namespace cocos2d;
+using namespace cocos2d::ui;
+
+class PhotoLayer : public Layer
 {
 public:
-    PhotoLayer(const char *photofile);
-    ~PhotoLayer();
+    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    virtual bool init();
+    // implement the "static create()" method manually
+    CREATE_FUNC(PhotoLayer);
     
-    virtual void TouchesCancellnd(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
-    virtual void TouchesBegan(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);//注意这个方法和单点触控方法的返回类型不同
-    virtual void TouchesEnded(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
-    virtual void TouchesMoved(const std::vector<cocos2d::Touch*>& pTouches,cocos2d::Event *pEvent);
+    virtual void TouchesCancellnd(const std::vector<Touch*>& pTouches,Event *pEvent);
+    virtual void TouchesBegan(const std::vector<Touch*>& pTouches,Event *pEvent);//注意这个方法和单点触控方法的返回类型不同
+    virtual void TouchesEnded(const std::vector<Touch*>& pTouches,Event *pEvent);
+    virtual void TouchesMoved(const std::vector<Touch*>& pTouches,Event *pEvent);
 
-    void goBack(Ref* pSender,cocos2d::ui::TouchEventType type);
-    void changeOk(Ref* pSender,cocos2d::ui::TouchEventType type);
-    bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event  *event);
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event  *event);
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event  *event);
-    
-    cocos2d::Sprite* createMaskedSprite(cocos2d::Sprite* src, const char* maskFile);
-    void mask(cocos2d::ui::ImageView* src,cocos2d::ui::ImageView* maskHead);
+    void goBack(Ref* pSender,TouchEventType type);
+    void changeOk(Ref* pSender,TouchEventType type);
+    bool onTouchBegan(Touch* touch, Event  *event);
+    void onTouchMoved(Touch* touch, Event  *event);
+    void onTouchEnded(Touch* touch, Event  *event);
+
+    Sprite* mask();
 private:
     double distance;    //两个触摸点之间的距离
     double deltax;    //目标x轴的改变值
     double deltay;    //目标y轴的改变值
     double mscale;   //初始地图缩放比例
-    cocos2d::ui::ImageView *maskHead;
-    cocos2d::ui::ImageView *userHead;
+    ImageView *maskHead;
+    ImageView *userHead;
 };
 
 

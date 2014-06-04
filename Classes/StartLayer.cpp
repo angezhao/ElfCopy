@@ -9,30 +9,33 @@
 #include "StartLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
-#include "Constants.h"
 
-
-StartLayer::StartLayer()
+bool StartLayer::init()
 {
-    auto myLayout = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_1.ExportJson");
-    m_pLayer->addChild(myLayout);
+    //////////////////////////////
+    // 1. super init first
+    if ( !Layer::init() )
+    {
+        return false;
+    }
     
-    auto startBtn =  myLayout->getChildByName("startBtn");
-    startBtn->addTouchEventListener(this,toucheventselector(StartLayer::startGame));
+    /////////////////////////////////
+    Widget *node = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_1.ExportJson");
+	if (node == nullptr)
+	{
+		return false;
+	}
     
-    m_intHead = 0;
-    //face1 = NULL;
-    //face2 = NULL;
+    Button* startButton = (Button*)node->getChildByName("startBtn");
+    startButton->addTouchEventListener(this, toucheventselector(StartLayer::startGame));
+    this->addChild(node);
+    return true;
 }
 
-StartLayer::~StartLayer()
+void StartLayer::startGame(Ref* pSender,TouchEventType type)
 {
-}
-
-void StartLayer::startGame(cocos2d::Ref* pSender,TouchEventType type)
-{
-    if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new MainLayer(NULL,NULL);
-        pLayer->autorelease();
+    if (type == TOUCH_EVENT_ENDED){
+        MainLayer * layer = MainLayer::create();
+        this->addChild(layer);
     }
 }

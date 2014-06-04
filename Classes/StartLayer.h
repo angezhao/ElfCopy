@@ -12,15 +12,18 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class StartLayer : public cocos2d::Layer
+class StartLayer : public Layer
 {
 public:
-    StartLayer();
-    ~StartLayer();
+    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    virtual bool init();
+    // implement the "static create()" method manually
+    CREATE_FUNC(StartLayer);
     
-    void startGame(cocos2d::Ref* pSender,TouchEventType type);
+    void startGame(Ref* pSender, TouchEventType type);
 };
 
 #endif /* defined(__ElfCopy__StartLayer__) */

@@ -10,8 +10,6 @@
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
 
-USING_NS_CC;
-
 Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
@@ -37,9 +35,8 @@ bool GameScene::init()
     }
     
     /////////////////////////////////
-    m_pLayer = this;
-    Layer * pLayer = new StartLayer();
-    pLayer->autorelease();
+    StartLayer * layer = StartLayer::create();
+    this->addChild(layer);
     
     return true;
 }

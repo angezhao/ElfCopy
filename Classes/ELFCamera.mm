@@ -6,15 +6,14 @@
 //
 //
 
-#import "Camera.h"
-#include "Constants.h"
-#include "PhotoLayer.h"
+#import "ELFCamera.h"
+#include "PickPhoto.h"
 
-@interface Camera ()
+@interface ELFCamera ()
 
 @end
 
-@implementation Camera
+@implementation ELFCamera
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,30 +80,10 @@
     [self presentModalViewController:imagePickerController animated:YES];
 }
 
-#pragma mark - 保存图片至沙盒
-- (void) saveImage:(UIImage *)currentImage withName:(NSString *)imageName
-{
-    
-    NSData *imageData = UIImageJPEGRepresentation(currentImage, 0.5);
-    // 获取沙盒目录
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imageName];
-    // 将图片写入文件
-    [imageData writeToFile:fullPath atomically:NO];
-}
-
 #pragma mark - image picker delegte
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     NSLog(@"拍照");
-    //    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //
-    //    [self saveImage:image withName:@"currentImage.png"];
-    //
-    //    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    //
-    //    UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-    
-    
     UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     //判断是否原图到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
@@ -127,15 +106,11 @@
         [window setRootViewController:[self rootViewController]];
     }
     //转到图片处理
-    // 获取沙盒目录
-    //NSData *imageData = UIImageJPEGRepresentation(originImage, 0.5);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    // 将图片写入文件
-    //[imageData writeToFile:fullPath atomically:NO];
     const char *photofile = [fullPath UTF8String];
-    cocos2d::Layer * pLayer = new PhotoLayer(photofile);
-    pLayer->autorelease();
-    m_pLayer->addChild(pLayer);
+    
+    //PickPhoto* layer = (PickPhoto*)this->getParent()->getParent();
+    //layer->pickOk(photofile);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

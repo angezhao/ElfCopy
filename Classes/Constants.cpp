@@ -9,11 +9,8 @@
 #include "Constants.h"
 
 //全局变量
-cocos2d::Layer * m_pLayer = NULL;
 
 //选择头像次号
 int m_intHead = 0;
-//头像1
-//cocos2d::Sprite* face1 = NULL;
-//头像2
-//cocos2d::Sprite* face2 = NULL;
+bool selectOrPick = false;//true拍照,false相册
+const char *photofile = nullptr;

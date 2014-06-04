@@ -13,13 +13,11 @@
 #include "ui/CocosGUI.h"
 
 //全局变量
-extern cocos2d::Layer * m_pLayer;
 
 //选择头像次号
 extern int m_intHead;
-//头像1
-//extern cocos2d::Sprite* face1;
-//头像2
-//extern cocos2d::Sprite* face2;
-
+//拍照还是相册
+extern bool selectOrPick;
+//照片路径
+extern const char *photofile;
 #endif /* defined(__ElfCopy__Constants__) */

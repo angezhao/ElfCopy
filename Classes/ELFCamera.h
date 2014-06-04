@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Camera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface ELFCamera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property(nonatomic,retain) UIViewController *rootViewController;
 

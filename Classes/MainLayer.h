@@ -12,19 +12,25 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class MainLayer : public cocos2d::Layer
+class MainLayer : public Layer
 {
 public:
-    MainLayer(cocos2d::Sprite* face1,cocos2d::Sprite* face2);
-    ~MainLayer();
+    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    virtual bool init();
+    // implement the "static create()" method manually
+    CREATE_FUNC(MainLayer);
+
+    void changeFace(Sprite* sprite);
+    void goBack(Ref* pSender,TouchEventType type);
+    void goNext(Ref* pSender,TouchEventType type);
+    void changePhoto1(Ref* pSender,TouchEventType type);
+    void changePhoto2(Ref* pSender,TouchEventType type);
     
-    void goBack(cocos2d::Ref* pSender,TouchEventType type);
-    void goNext(cocos2d::Ref* pSender,TouchEventType type);
-    void changePhoto1(cocos2d::Ref* pSender,TouchEventType type);
-    void changePhoto2(cocos2d::Ref* pSender,TouchEventType type);
-    void mask(cocos2d::ui::ImageView* src);
+    bool hasFace1;
+    bool hasFace2;
 };
 
 #endif /* defined(__ElfCopy__MainLayer__) */

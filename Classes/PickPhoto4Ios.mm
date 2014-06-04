@@ -7,13 +7,13 @@
 //
 
 #include "PickPhoto4Ios.h"
-#include "Camera.h"
+#include "ELFCamera.h"
 #include "cocos2d.h"
 
 PickPhoto4Ios::PickPhoto4Ios(bool takePhoto)
 {
     //iOS代码
-    Camera * camera = [[Camera alloc] init];
+    ELFCamera * camera = [[ELFCamera alloc] init];
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     // Set RootViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)

@@ -13,52 +13,59 @@
 #include "Constants.h"
 #include "PhotoLayer.h"
 
-PhotoMenu::PhotoMenu()
+bool PhotoMenu::init()
 {
-    auto myLayout = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_3.ExportJson");
-    m_pLayer->addChild(myLayout);
+    //////////////////////////////
+    // 1. super init first
+    if ( !Layer::init() )
+    {
+        return false;
+    }
     
-    auto btnBack =  myLayout->getChildByName("btnBack");
-    btnBack->addTouchEventListener(this,toucheventselector(PhotoMenu::goBack));
+    /////////////////////////////////
+    Widget *node = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_3.ExportJson");
+	if (node == nullptr)
+	{
+		return false;
+	}
     
-    auto cameraBtn =  myLayout->getChildByName("cameraBtn");
-    cameraBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::takePhoto));
+    Button* btnBack = (Button*)node->getChildByName("btnBack");
+    btnBack->addTouchEventListener(this, toucheventselector(PhotoMenu::goBack));
     
-    auto photoBtn =  myLayout->getChildByName("photoBtn");
-    photoBtn->addTouchEventListener(this,toucheventselector(PhotoMenu::selectPhoto));
+    Button* cameraBtn = (Button*)node->getChildByName("cameraBtn");
+    cameraBtn->addTouchEventListener(this, toucheventselector(PhotoMenu::takePhoto));
     
+    Button* photoBtn = (Button*)node->getChildByName("photoBtn");
+    photoBtn->addTouchEventListener(this, toucheventselector(PhotoMenu::selectPhoto));
+    
+    this->addChild(node);
+    
+    return true;
 }
 
-PhotoMenu::~PhotoMenu()
+void PhotoMenu::goBack(Ref* pSender,TouchEventType type)
 {
-}
-
-void PhotoMenu::goBack(cocos2d::Ref* pSender,TouchEventType type)
-{
-    if(type == TOUCH_EVENT_ENDED){
-        Layer * pLayer = new MainLayer(NULL,NULL);
-        pLayer->autorelease();
+    if (type == TOUCH_EVENT_ENDED){
+        this->removeFromParentAndCleanup(true);
     }
 }
 
-void PhotoMenu::takePhoto(cocos2d::Ref* pSender,TouchEventType type)
+void PhotoMenu::takePhoto(Ref* pSender,TouchEventType type)
 {
-    if(type == TOUCH_EVENT_ENDED){
-        //Layer * pLayer = new PickPhoto(true);
-        //pLayer->autorelease();
-        Layer * pLayer = new PhotoLayer("");
-        pLayer->autorelease();
-        m_pLayer->addChild(pLayer);
+    if (type == TOUCH_EVENT_ENDED){
+        selectOrPick = true;
+        //PickPhoto * layer = PickPhoto::create();
+        PhotoLayer * layer = PhotoLayer::create();
+        this->addChild(layer);
     }
 }
 
-void PhotoMenu::selectPhoto(cocos2d::Ref* pSender,TouchEventType type)
+void PhotoMenu::selectPhoto(Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
-        //Layer * pLayer = new PickPhoto(false);
-        //pLayer->autorelease();
-        Layer * pLayer = new PhotoLayer("");
-        pLayer->autorelease();
-        m_pLayer->addChild(pLayer);
+        selectOrPick = false;
+        //PickPhoto * layer = PickPhoto::create();
+        PhotoLayer * layer = PhotoLayer::create();
+        this->addChild(layer);
     }
 }

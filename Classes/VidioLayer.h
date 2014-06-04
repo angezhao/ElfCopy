@@ -12,15 +12,18 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 
+using namespace cocos2d;
 using namespace cocos2d::ui;
 
-class VidioLayer : public cocos2d::Layer
+class VidioLayer : public Layer
 {
 public:
-    VidioLayer();
-    ~VidioLayer();
+    // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
+    virtual bool init();
+    // implement the "static create()" method manually
+    CREATE_FUNC(VidioLayer);
     
-    void goBack(cocos2d::Ref* pSender,TouchEventType type);
-    void playVidio(cocos2d::Ref* pSender,TouchEventType type);
+    void goBack(Ref* pSender,TouchEventType type);
+    void playVidio(Ref* pSender,TouchEventType type);
 };
 #endif /* defined(__ElfCopy__VidioLayer__) */

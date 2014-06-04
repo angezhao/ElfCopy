@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>A588EA73-4708-47FE-8FC9-28B2C68B0798</string>
+	<string>A6ABCDBD-5A70-443D-A7DF-759D7462EAE3</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ElfCopy</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -18,7 +18,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5DF87317-0128-4C7A-B51C-33E73C8CF4E2</key>
-		<string>../../../../ElfCopy1</string>
+		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>ssh://github.com/angezhao/ElfCopy.git</string>
@@ -28,14 +28,6 @@
 	<string>5DF87317-0128-4C7A-B51C-33E73C8CF4E2</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
-		<dict>
-			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
-			<string>public.vcs.git</string>
-			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5DF87317-0128-4C7A-B51C-33E73C8CF4E2</string>
-			<key>IDESourceControlWCCName</key>
-			<string>ElfCopy</string>
-		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
