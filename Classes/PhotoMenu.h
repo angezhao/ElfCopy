@@ -26,7 +26,6 @@ public:
     void goBack(Ref* pSender,TouchEventType type);
     void takePhoto(Ref* pSender,TouchEventType type);//拍照
     void selectPhoto(Ref* pSender,TouchEventType type);//相册选照
-    
 };
 
 

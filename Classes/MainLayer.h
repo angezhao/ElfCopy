@@ -29,6 +29,8 @@ public:
     void changePhoto1(Ref* pSender,TouchEventType type);
     void changePhoto2(Ref* pSender,TouchEventType type);
     
+    Button* headBtn1;
+    Button* headBtn2;
     bool hasFace1;
     bool hasFace2;
 };

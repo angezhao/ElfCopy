@@ -35,13 +35,13 @@ bool MainLayer::init()
     Button* nextBtn = (Button*)node->getChildByName("nextBtn");
     nextBtn->addTouchEventListener(this, toucheventselector(MainLayer::goNext));
     
-    Button* headBtn1 = (Button*)node->getChildByName("headBtn1");
+    headBtn1 = (Button*)node->getChildByName("headBtn1");
     headBtn1->addTouchEventListener(this, toucheventselector(MainLayer::changePhoto1));
     
-    Button* headBtn2 = (Button*)node->getChildByName("headBtn2");
+    headBtn2 = (Button*)node->getChildByName("headBtn2");
     headBtn2->addTouchEventListener(this, toucheventselector(MainLayer::changePhoto2));
     
-    this->addChild(node, 0, 1);
+    this->addChild(node);
     
     return true;
 }
@@ -72,14 +72,11 @@ void MainLayer::changeFace(Sprite* sprite)
     ((Sprite*)face->getVirtualRenderer())->setSpriteFrame(spriteFrame);
     ((Sprite*)face->getVirtualRenderer())->setFlippedY(true);
 
-    Widget* node = (Widget*)this->getChildByTag(1);
     if(m_intHead == 1){
         hasFace1 = true;
-        Button* headBtn1 = (Button*)node->getChildByName("headBtn1");
         headBtn1->addChild(face);
     }else if(m_intHead == 2){
         hasFace2 = true;
-        Button* headBtn2 = (Button*)node->getChildByName("headBtn2");
         headBtn2->addChild(face);
     }
 }

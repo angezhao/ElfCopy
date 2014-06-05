@@ -116,8 +116,6 @@
     // 将图片写入文件
     [imageData writeToFile:fullPath atomically:NO];
     const char *photofile = [fullPath UTF8String];
-    Image* image = new Image();
-    image->initWithImageFile(photofile);
 
     auto director = Director::getInstance();
     GameScene* layer1 = (GameScene*)director->getRunningScene()->getChildByTag(1);
@@ -125,7 +123,7 @@
     MainLayer* layer3 = (MainLayer*)layer2->getChildByTag(1);
     PhotoMenu* layer4 = (PhotoMenu*)layer3->getChildByTag(1);
     PickPhoto* layer = (PickPhoto*)layer4->getChildByTag(1);
-    layer->pickOk(image);
+    layer->pickOk(photofile);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

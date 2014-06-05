@@ -49,13 +49,22 @@ bool PickPhoto::init()
     return true;
 }
 
-void PickPhoto::pickOk(Image* image)
+void PickPhoto::pickOk(const char *pf)
 {
-    Texture2D* texture = new Texture2D();
-    texture->initWithImage(image);
-
-    Sprite* textureSprite = Sprite::createWithTexture(texture);
-    // PhotoLayer * layer = PhotoLayer::create();
-    this->addChild(textureSprite, 2);
+    /*
+     Image* image = new Image();
+     image->initWithImageFile(photofile);
+     
+     Texture2D* texture = new Texture2D();
+     texture->initWithImage(image);
+     
+     Sprite* textureSprite = Sprite::createWithTexture(texture);
+     this->addChild(textureSprite, 2);
+     */
+    photofile = pf;
+    //退回上一层
+    Layer* parent = (Layer*)this->getParent();
+    this->removeFromParentAndCleanup(true);
+    PhotoLayer * layer = PhotoLayer::create();
+    parent->addChild(layer, 0, 1);
 }
-

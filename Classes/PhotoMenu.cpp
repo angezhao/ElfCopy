@@ -8,10 +8,10 @@
 
 #include "PhotoMenu.h"
 #include "PickPhoto.h"
+#include "PhotoLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
-#include "PhotoLayer.h"
 
 bool PhotoMenu::init()
 {
@@ -55,8 +55,7 @@ void PhotoMenu::takePhoto(Ref* pSender,TouchEventType type)
     if (type == TOUCH_EVENT_ENDED){
         selectOrPick = true;
         PickPhoto * layer = PickPhoto::create();
-        //PhotoLayer * layer = PhotoLayer::create();
-        this->addChild(layer);
+        this->addChild(layer,0,1);
     }
 }
 
@@ -64,8 +63,8 @@ void PhotoMenu::selectPhoto(Ref* pSender,TouchEventType type)
 {
     if(type == TOUCH_EVENT_ENDED){
         selectOrPick = false;
-        //PickPhoto * layer = PickPhoto::create();
-        PhotoLayer * layer = PhotoLayer::create();
-        this->addChild(layer, 0, 1);
+        PickPhoto * layer = PickPhoto::create();
+        this->addChild(layer,0,1);
     }
 }
+

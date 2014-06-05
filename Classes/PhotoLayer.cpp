@@ -8,7 +8,6 @@
 
 #include "PhotoLayer.h"
 #include "MainLayer.h"
-#include "PhotoMenu.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
 #include "ui/CocosGUI.h"
@@ -30,7 +29,7 @@ bool PhotoLayer::init()
 	}
     
     Button* btnBack = (Button*)node->getChildByName("btnBack");
-    btnBack->addTouchEventListener(this, toucheventselector(PhotoMenu::goBack));
+    btnBack->addTouchEventListener(this, toucheventselector(PhotoLayer::goBack));
     
     Button* okBtn = (Button*)node->getChildByName("okBtn");
     okBtn->addTouchEventListener(this, toucheventselector(PhotoLayer::changeOk));
@@ -40,10 +39,11 @@ bool PhotoLayer::init()
     this->userHead =  (ImageView*)head->getChildByName("userHead");
     userHead->setTouchEnabled(true);
     //userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
-    //userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
+    userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
     
-    mscale=1;     //初始化图片的缩放比例
-    // userHead->setScale(mscale);
+    mscale=0.5;     //初始化图片的缩放比例
+    userHead->setScale(mscale);
+    userHead->setOpacity(150);
     
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
     auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
@@ -52,7 +52,7 @@ bool PhotoLayer::init()
     listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
     
-    this->addChild(node,1,1);
+    this->addChild(node,0,1);
     
     return true;
 }
@@ -75,7 +75,6 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
         Sprite* textureSprite = (Sprite*)userHead->getVirtualRenderer();
         Sprite* sprite = this->mask(textureSprite);
         
-        //MainLayer* layer = (MainLayer*)this->getParent()->getParent()->getParent();
         MainLayer* layer = (MainLayer*)this->getParent()->getParent();
         layer->changeFace(sprite);
 
@@ -157,9 +156,17 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
     if(pTouches.size()==1)                          //如果触摸点为一个
     {
         auto iter =  pTouches.begin();
-        Point mPoint=((Touch*)(*iter))->getLocationInView();
-        mPoint=Director::getInstance()->convertToGL(mPoint);    //坐标转换
-        userHead->setPosition(mPoint);                    //直接移动精灵
+        auto beginPos = ((Touch*)(*iter))->getLocationInView();//获得触摸位置
+        beginPos = Director::getInstance()->convertToGL(beginPos);//坐标转换
+        auto headPos = userHead->getPosition();
+        //auto headSize = userHead->getContentSize();
+        auto endPos = ((Touch*)(*iter))->getPreviousLocationInView();//获取触摸的前一个位置
+        endPos = Director::getInstance()->convertToGL(endPos);//转换坐标
+        
+        auto offset = Point(beginPos-endPos);//获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
+        auto nextPos = Point(headPos + offset);
+        userHead->setPosition(nextPos);
+
     }
 }
 
