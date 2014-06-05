@@ -54,8 +54,8 @@ void PhotoMenu::takePhoto(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         selectOrPick = true;
-        //PickPhoto * layer = PickPhoto::create();
-        PhotoLayer * layer = PhotoLayer::create();
+        PickPhoto * layer = PickPhoto::create();
+        //PhotoLayer * layer = PhotoLayer::create();
         this->addChild(layer);
     }
 }
@@ -66,6 +66,6 @@ void PhotoMenu::selectPhoto(Ref* pSender,TouchEventType type)
         selectOrPick = false;
         //PickPhoto * layer = PickPhoto::create();
         PhotoLayer * layer = PhotoLayer::create();
-        this->addChild(layer);
+        this->addChild(layer, 0, 1);
     }
 }

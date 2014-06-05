@@ -49,10 +49,13 @@ bool PickPhoto::init()
     return true;
 }
 
-void PickPhoto::pickOk(const char *pf)
+void PickPhoto::pickOk(Image* image)
 {
-    photofile = pf;
-    PhotoLayer * layer = PhotoLayer::create();
-    this->addChild(layer);
+    Texture2D* texture = new Texture2D();
+    texture->initWithImage(image);
+
+    Sprite* textureSprite = Sprite::createWithTexture(texture);
+    // PhotoLayer * layer = PhotoLayer::create();
+    this->addChild(textureSprite, 2);
 }
 

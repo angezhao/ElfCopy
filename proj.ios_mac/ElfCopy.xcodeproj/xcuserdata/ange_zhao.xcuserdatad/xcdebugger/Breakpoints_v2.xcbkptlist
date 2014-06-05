@@ -923,7 +923,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
             endingLineNumber = "111"
-            landmarkName = "PhotoLayer::onTouchEnded(Touch* touch, Event *event)"
+            landmarkName = "PhotoLayer::onTouchMoved(Touch* touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1033,7 +1033,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::onTouchEnded(Touch* touch, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1251,7 +1251,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
-            landmarkName = "PhotoLayer::mask()"
+            landmarkName = "PhotoLayer::mask(Sprite* textureSprite)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1412,6 +1412,22 @@
             startingLineNumber = "60"
             endingLineNumber = "60"
             landmarkName = "MainLayer::goNext(Ref* pSender,TouchEventType type)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/PickPhoto.cpp"
+            timestampString = "423628241.696607"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "PickPhoto::pickOk(Image* image)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

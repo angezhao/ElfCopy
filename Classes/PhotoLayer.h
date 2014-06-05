@@ -34,7 +34,7 @@ public:
     void onTouchMoved(Touch* touch, Event  *event);
     void onTouchEnded(Touch* touch, Event  *event);
 
-    Sprite* mask();
+    Sprite* mask(Sprite* textureSprite);
 private:
     double distance;    //两个触摸点之间的距离
     double deltax;    //目标x轴的改变值

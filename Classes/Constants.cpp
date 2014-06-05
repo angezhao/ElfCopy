@@ -13,4 +13,4 @@
 //选择头像次号
 int m_intHead = 0;
 bool selectOrPick = false;//true拍照,false相册
-const char *photofile = nullptr;
+//onst char *photofile = nullptr;

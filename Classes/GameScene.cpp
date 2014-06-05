@@ -19,7 +19,7 @@ Scene* GameScene::createScene()
     GameScene *layer = GameScene::create();
     
     // add layer as a child to scene
-    scene->addChild(layer);
+    scene->addChild(layer, 0, 1);
     
     return scene;
 }
@@ -36,7 +36,7 @@ bool GameScene::init()
     
     /////////////////////////////////
     StartLayer * layer = StartLayer::create();
-    this->addChild(layer);
+    this->addChild(layer, 0, 1);
     
     return true;
 }

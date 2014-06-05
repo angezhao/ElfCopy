@@ -75,7 +75,12 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         // 进行遮罩处理
-        Sprite* sprite = this->mask();
+//        Widget* node = (Widget*)this->getChildByTag(1);
+//        ImageView* head = (ImageView*)node->getChildByName("head");
+//        ImageView* userHead = (ImageView*)head->getChildByName("userHead");
+        // Sprite* textureSprite = Sprite::create("scene/bg.png");
+        Sprite* textureSprite = (Sprite*)userHead->getVirtualRenderer();
+        Sprite* sprite = this->mask(textureSprite);
         
         //MainLayer* layer = (MainLayer*)this->getParent()->getParent()->getParent();
         MainLayer* layer = (MainLayer*)this->getParent()->getParent();
@@ -191,7 +196,7 @@ void PhotoLayer::TouchesCancellnd(const std::vector<Touch*>& pTouches, Event *pE
     
 }
 
-Sprite* PhotoLayer::mask()
+Sprite* PhotoLayer::mask(Sprite* textureSprite)
 {
     assert(userHead);
     assert(maskHead);
@@ -199,7 +204,7 @@ Sprite* PhotoLayer::mask()
     //Sprite* textureSprite = static_cast<Sprite*>(userHead->getVirtualRenderer());
     //Sprite* maskSprite = static_cast<Sprite*>(maskHead->getVirtualRenderer());
     
-    Sprite* textureSprite = Sprite::create("scene/bg.png");
+    // Sprite* textureSprite = Sprite::create("scene/bg.png");
     Sprite* maskSprite = Sprite::create("face/mask.png");
     Size textureContent = textureSprite->getContentSize();
     Size maskContent = maskSprite->getContentSize();

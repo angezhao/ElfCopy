@@ -38,7 +38,7 @@ bool VidioLayer::init()
 
 void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 {
-    if(type == TOUCH_EVENT_ENDED){
+    if (type == TOUCH_EVENT_ENDED){
         Layer* parent = (Layer*)this->getParent();
         this->removeFromParentAndCleanup(true);
         parent->removeFromParentAndCleanup(true);

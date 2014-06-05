@@ -29,6 +29,7 @@ bool StartLayer::init()
     Button* startButton = (Button*)node->getChildByName("startBtn");
     startButton->addTouchEventListener(this, toucheventselector(StartLayer::startGame));
     this->addChild(node);
+
     return true;
 }
 
@@ -36,6 +37,6 @@ void StartLayer::startGame(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         MainLayer * layer = MainLayer::create();
-        this->addChild(layer);
+        this->addChild(layer, 0, 1);
     }
 }

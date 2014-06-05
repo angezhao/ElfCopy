@@ -7,6 +7,10 @@
 //
 
 #import "ELFCamera.h"
+#include "GameScene.h"
+#include "StartLayer.h"
+#include "MainLayer.h"
+#include "PhotoMenu.h"
 #include "PickPhoto.h"
 
 @interface ELFCamera ()
@@ -106,11 +110,22 @@
         [window setRootViewController:[self rootViewController]];
     }
     //转到图片处理
+    // 获取沙盒目录
+    NSData *imageData = UIImageJPEGRepresentation(originImage, 0.5);
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
+    // 将图片写入文件
+    [imageData writeToFile:fullPath atomically:NO];
     const char *photofile = [fullPath UTF8String];
-    
-    //PickPhoto* layer = (PickPhoto*)this->getParent()->getParent();
-    //layer->pickOk(photofile);
+    Image* image = new Image();
+    image->initWithImageFile(photofile);
+
+    auto director = Director::getInstance();
+    GameScene* layer1 = (GameScene*)director->getRunningScene()->getChildByTag(1);
+    StartLayer* layer2 = (StartLayer*)layer1->getChildByTag(1);
+    MainLayer* layer3 = (MainLayer*)layer2->getChildByTag(1);
+    PhotoMenu* layer4 = (PhotoMenu*)layer3->getChildByTag(1);
+    PickPhoto* layer = (PickPhoto*)layer4->getChildByTag(1);
+    layer->pickOk(image);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker

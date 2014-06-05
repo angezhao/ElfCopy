@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "cocos2d.h"
+
+using namespace cocos2d;
 
 @interface ELFCamera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 

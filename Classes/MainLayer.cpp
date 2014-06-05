@@ -89,7 +89,7 @@ void MainLayer::changePhoto1(Ref* pSender,TouchEventType type)
     if (type == TOUCH_EVENT_ENDED){
         m_intHead = 1;
         PhotoMenu *layer = PhotoMenu::create();
-        this->addChild(layer);
+        this->addChild(layer, 0, 1);
     }
 }
 
@@ -98,6 +98,6 @@ void MainLayer::changePhoto2(Ref* pSender,TouchEventType type)
     if (type == TOUCH_EVENT_ENDED){
         m_intHead = 2;
         PhotoMenu *layer = PhotoMenu::create();
-        this->addChild(layer);
+        this->addChild(layer, 0, 1);
     }
 }

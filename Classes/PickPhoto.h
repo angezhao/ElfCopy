@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 
+using namespace cocos2d;
+
 class PickPhoto : public cocos2d::Layer
 {
 public:
@@ -19,7 +21,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(PickPhoto);
     
-    void pickOk(const char *photofile);
+    void pickOk(Image* image);
 };
 
 #endif /* defined(__ElfCopy__PickPhoto__) */
