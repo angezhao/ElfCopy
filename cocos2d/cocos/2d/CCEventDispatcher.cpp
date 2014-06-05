@@ -797,6 +797,68 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
     std::copy(originalTouches.begin(), originalTouches.end(), mutableTouches.begin());
 
     //
+    // process standard handlers 2nd
+    //
+    if (allAtOnceListeners && mutableTouches.size() > 0)
+    {
+        
+        auto onTouchesEvent = [&](EventListener* l) -> bool{
+            EventListenerTouchAllAtOnce* listener = static_cast<EventListenerTouchAllAtOnce*>(l);
+            // Skip if the listener was removed.
+            if (!listener->_isRegistered)
+                return false;
+            
+            event->setCurrentTarget(listener->_node);
+            
+            switch (event->getEventCode())
+            {
+                case EventTouch::EventCode::BEGAN:
+                    if (listener->onTouchesBegan)
+                    {
+                        listener->onTouchesBegan(mutableTouches, event);
+                    }
+                    break;
+                case EventTouch::EventCode::MOVED:
+                    if (listener->onTouchesMoved)
+                    {
+                        listener->onTouchesMoved(mutableTouches, event);
+                    }
+                    break;
+                case EventTouch::EventCode::ENDED:
+                    if (listener->onTouchesEnded)
+                    {
+                        listener->onTouchesEnded(mutableTouches, event);
+                    }
+                    break;
+                case EventTouch::EventCode::CANCELLED:
+                    if (listener->onTouchesCancelled)
+                    {
+                        listener->onTouchesCancelled(mutableTouches, event);
+                    }
+                    break;
+                default:
+                    CCASSERT(false, "The eventcode is invalid.");
+                    break;
+            }
+            
+            // If the event was stopped, return directly.
+            if (event->isStopped())
+            {
+                updateListeners(event);
+                return true;
+            }
+            
+            return false;
+        };
+        
+        dispatchEventToListeners(allAtOnceListeners, onTouchesEvent);
+        if (event->isStopped())
+        {
+            return;
+        }
+    }
+
+    //
     // process the target handlers 1st
     //
     if (oneByOneListeners)
@@ -903,68 +965,6 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
             
             if (!isSwallowed)
                 ++mutableTouchesIter;
-        }
-    }
-    
-    //
-    // process standard handlers 2nd
-    //
-    if (allAtOnceListeners && mutableTouches.size() > 0)
-    {
-        
-        auto onTouchesEvent = [&](EventListener* l) -> bool{
-            EventListenerTouchAllAtOnce* listener = static_cast<EventListenerTouchAllAtOnce*>(l);
-            // Skip if the listener was removed.
-            if (!listener->_isRegistered)
-                return false;
-            
-            event->setCurrentTarget(listener->_node);
-            
-            switch (event->getEventCode())
-            {
-                case EventTouch::EventCode::BEGAN:
-                    if (listener->onTouchesBegan)
-                    {
-                        listener->onTouchesBegan(mutableTouches, event);
-                    }
-                    break;
-                case EventTouch::EventCode::MOVED:
-                    if (listener->onTouchesMoved)
-                    {
-                        listener->onTouchesMoved(mutableTouches, event);
-                    }
-                    break;
-                case EventTouch::EventCode::ENDED:
-                    if (listener->onTouchesEnded)
-                    {
-                        listener->onTouchesEnded(mutableTouches, event);
-                    }
-                    break;
-                case EventTouch::EventCode::CANCELLED:
-                    if (listener->onTouchesCancelled)
-                    {
-                        listener->onTouchesCancelled(mutableTouches, event);
-                    }
-                    break;
-                default:
-                    CCASSERT(false, "The eventcode is invalid.");
-                    break;
-            }
-            
-            // If the event was stopped, return directly.
-            if (event->isStopped())
-            {
-                updateListeners(event);
-                return true;
-            }
-            
-            return false;
-        };
-        
-        dispatchEventToListeners(allAtOnceListeners, onTouchesEvent);
-        if (event->isStopped())
-        {
-            return;
         }
     }
     

@@ -27,19 +27,19 @@ bool MoreTouches::init()
     {
         return false;
     }
-    bg=Sprite::create("scene/bg.png");   //初始化目标图片
+    //初始化目标图片
+    bg = cocos2d::ui::ImageView::create();
+    bg->loadTexture("scene/bg.png",cocos2d::ui::UI_TEX_TYPE_LOCAL);
+    bg->setTouchEnabled(true);
     this->addChild(bg);
 //    auto myLayout = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_4.ExportJson");
 //    this->addChild(myLayout);
-//    
-//    auto head =  myLayout->getChildByName("head");
-//    //ImageView *mask =  (ImageView*)head->getChildByName("mask");
+//    cocos2d::ui::ImageView* head = (cocos2d::ui::ImageView*)myLayout->getChildByName("head");
 //    this->bg =  (ui::ImageView*)head->getChildByName("userHead");
 //    bg->setTouchEnabled(true);
     
     mscale=1.0;     //初始化图片的缩放比例
     
-    this->setTouchEnabled(true);
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
     auto listener = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
     listener->onTouchesBegan = CC_CALLBACK_2(MoreTouches::TouchesBegan, this);//指定触摸的回调函数

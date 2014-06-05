@@ -39,25 +39,18 @@ bool PhotoLayer::init()
     this->maskHead =  (ImageView*)head->getChildByName("mask");
     this->userHead =  (ImageView*)head->getChildByName("userHead");
     userHead->setTouchEnabled(true);
-    userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
+    //userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
     //userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
     
     mscale=1;     //初始化图片的缩放比例
     // userHead->setScale(mscale);
     
-    auto listener = EventListenerTouchOneByOne::create();//创建一个触摸监听(单点触摸）
-    listener->onTouchBegan = CC_CALLBACK_2(PhotoLayer::onTouchBegan, this);//指定触摸的回调函数
-    listener->onTouchEnded = CC_CALLBACK_2(PhotoLayer::onTouchEnded, this);
-    listener->onTouchMoved = CC_CALLBACK_2(PhotoLayer::onTouchMoved, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);//将listener放入事件委托中
-    
-    this->setTouchEnabled(true);
-    //    this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
-    //    auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
-    //    listener1->onTouchesBegan = CC_CALLBACK_2(PhotoLayer::TouchesBegan, this);//指定触摸的回调函数
-    //    listener1->onTouchesEnded = CC_CALLBACK_2(PhotoLayer::TouchesEnded, this);
-    //    listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
-    //    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
+    this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
+    auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
+    listener1->onTouchesBegan = CC_CALLBACK_2(PhotoLayer::TouchesBegan, this);//指定触摸的回调函数
+    listener1->onTouchesEnded = CC_CALLBACK_2(PhotoLayer::TouchesEnded, this);
+    listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
     
     this->addChild(node,1,1);
     
@@ -92,6 +85,7 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
     }
 }
 
+/*
 bool PhotoLayer::onTouchBegan(Touch* touch, Event  *event)
 {
     return true;//返回true表示接收触摸事件
@@ -116,10 +110,11 @@ void PhotoLayer::onTouchEnded(Touch* touch, Event  *event)
 {
     log("onTouchEnded  ...");
 }
-
+*/
 
 void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event)
 {
+    log("TouchesBegan  ...");
     if(pTouches.size()>=2)  //如果触摸点不少于两个
     {
         auto iter=pTouches.begin();
@@ -138,7 +133,7 @@ void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event
 
 void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("onTouchMoved  ...");
+    log("TouchesMoved  ...");
     
     if(pTouches.size()>=2)  //如果移动时触摸点的个数不少于两个
     {
@@ -170,7 +165,7 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
 
 void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("onTouchEnded  ...");
+    log("TouchesEnded  ...");
 //    auto lastPos = touch->getLocationInView();
 //    lastPos = Director::getInstance()->convertToGL(lastPos);
 //    
@@ -193,7 +188,7 @@ void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event
 
 void PhotoLayer::TouchesCancellnd(const std::vector<Touch*>& pTouches, Event *pEvent)
 {
-    
+    log("TouchesCancellnd  ...");
 }
 
 Sprite* PhotoLayer::mask(Sprite* textureSprite)

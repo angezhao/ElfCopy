@@ -27,13 +27,10 @@ public:
     virtual void TouchesBegan(const std::vector<Touch*>& pTouches,Event *pEvent);//注意这个方法和单点触控方法的返回类型不同
     virtual void TouchesEnded(const std::vector<Touch*>& pTouches,Event *pEvent);
     virtual void TouchesMoved(const std::vector<Touch*>& pTouches,Event *pEvent);
-
+    
     void goBack(Ref* pSender,TouchEventType type);
     void changeOk(Ref* pSender,TouchEventType type);
-    bool onTouchBegan(Touch* touch, Event  *event);
-    void onTouchMoved(Touch* touch, Event  *event);
-    void onTouchEnded(Touch* touch, Event  *event);
-
+    
     Sprite* mask(Sprite* textureSprite);
 private:
     double distance;    //两个触摸点之间的距离
