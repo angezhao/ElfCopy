@@ -26,13 +26,13 @@
 			<key>ui1/startBtn.png</key>
 			<dict>
 				<key>width</key>
-				<integer>450</integer>
+				<integer>446</integer>
 				<key>height</key>
-				<integer>158</integer>
+				<integer>149</integer>
 				<key>originalWidth</key>
-				<integer>450</integer>
+				<integer>446</integer>
 				<key>originalHeight</key>
-				<integer>158</integer>
+				<integer>149</integer>
 				<key>x</key>
 				<integer>1026</integer>
 				<key>y</key>
@@ -64,13 +64,13 @@
 			<key>ui2/backBtn.png</key>
 			<dict>
 				<key>width</key>
-				<integer>138</integer>
+				<integer>203</integer>
 				<key>height</key>
-				<integer>71</integer>
+				<integer>101</integer>
 				<key>originalWidth</key>
-				<integer>138</integer>
+				<integer>203</integer>
 				<key>originalHeight</key>
-				<integer>71</integer>
+				<integer>101</integer>
 				<key>x</key>
 				<integer>1026</integer>
 				<key>y</key>
@@ -83,15 +83,15 @@
 			<key>ui2/head.png</key>
 			<dict>
 				<key>width</key>
-				<integer>218</integer>
+				<integer>251</integer>
 				<key>height</key>
-				<integer>220</integer>
+				<integer>254</integer>
 				<key>originalWidth</key>
-				<integer>218</integer>
+				<integer>251</integer>
 				<key>originalHeight</key>
-				<integer>220</integer>
+				<integer>254</integer>
 				<key>x</key>
-				<integer>1166</integer>
+				<integer>1231</integer>
 				<key>y</key>
 				<integer>770</integer>
 				<key>offsetX</key>
@@ -102,15 +102,15 @@
 			<key>ui2/nest.png</key>
 			<dict>
 				<key>width</key>
-				<integer>300</integer>
+				<integer>344</integer>
 				<key>height</key>
-				<integer>72</integer>
+				<integer>126</integer>
 				<key>originalWidth</key>
-				<integer>300</integer>
+				<integer>344</integer>
 				<key>originalHeight</key>
-				<integer>72</integer>
+				<integer>126</integer>
 				<key>x</key>
-				<integer>1386</integer>
+				<integer>1484</integer>
 				<key>y</key>
 				<integer>770</integer>
 				<key>offsetX</key>
@@ -121,13 +121,13 @@
 			<key>ui3/pz.png</key>
 			<dict>
 				<key>width</key>
-				<integer>438</integer>
+				<integer>555</integer>
 				<key>height</key>
-				<integer>142</integer>
+				<integer>188</integer>
 				<key>originalWidth</key>
-				<integer>438</integer>
+				<integer>555</integer>
 				<key>originalHeight</key>
-				<integer>142</integer>
+				<integer>188</integer>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>
@@ -140,15 +140,15 @@
 			<key>ui3/xc.png</key>
 			<dict>
 				<key>width</key>
-				<integer>438</integer>
+				<integer>555</integer>
 				<key>height</key>
-				<integer>142</integer>
+				<integer>185</integer>
 				<key>originalWidth</key>
-				<integer>438</integer>
+				<integer>555</integer>
 				<key>originalHeight</key>
-				<integer>142</integer>
+				<integer>185</integer>
 				<key>x</key>
-				<integer>440</integer>
+				<integer>557</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>
@@ -159,15 +159,15 @@
 			<key>ui4/scale.png</key>
 			<dict>
 				<key>width</key>
-				<integer>212</integer>
+				<integer>209</integer>
 				<key>height</key>
-				<integer>156</integer>
+				<integer>152</integer>
 				<key>originalWidth</key>
-				<integer>212</integer>
+				<integer>209</integer>
 				<key>originalHeight</key>
-				<integer>156</integer>
+				<integer>152</integer>
 				<key>x</key>
-				<integer>880</integer>
+				<integer>1114</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>
@@ -178,15 +178,15 @@
 			<key>ui4/rotate.png</key>
 			<dict>
 				<key>width</key>
-				<integer>206</integer>
+				<integer>204</integer>
 				<key>height</key>
-				<integer>146</integer>
+				<integer>138</integer>
 				<key>originalWidth</key>
-				<integer>206</integer>
+				<integer>204</integer>
 				<key>originalHeight</key>
-				<integer>146</integer>
+				<integer>138</integer>
 				<key>x</key>
-				<integer>1094</integer>
+				<integer>1325</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>
@@ -197,55 +197,17 @@
 			<key>ui4/OK.png</key>
 			<dict>
 				<key>width</key>
-				<integer>290</integer>
+				<integer>345</integer>
 				<key>height</key>
-				<integer>98</integer>
+				<integer>120</integer>
 				<key>originalWidth</key>
-				<integer>290</integer>
+				<integer>345</integer>
 				<key>originalHeight</key>
-				<integer>98</integer>
+				<integer>120</integer>
 				<key>x</key>
-				<integer>1302</integer>
+				<integer>1531</integer>
 				<key>y</key>
 				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui4/head1.png</key>
-			<dict>
-				<key>width</key>
-				<integer>358</integer>
-				<key>height</key>
-				<integer>359</integer>
-				<key>originalWidth</key>
-				<integer>358</integer>
-				<key>originalHeight</key>
-				<integer>359</integer>
-				<key>x</key>
-				<integer>1594</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>C:/Program Files (x86)/CocoStudio/EditorDefaultRes/GUI/image.png</key>
-			<dict>
-				<key>width</key>
-				<integer>80</integer>
-				<key>height</key>
-				<integer>80</integer>
-				<key>originalWidth</key>
-				<integer>80</integer>
-				<key>originalHeight</key>
-				<integer>80</integer>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>1901</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -254,55 +216,17 @@
 			<key>ui5/btn_03.png</key>
 			<dict>
 				<key>width</key>
-				<integer>167</integer>
+				<integer>169</integer>
 				<key>height</key>
-				<integer>109</integer>
+				<integer>104</integer>
 				<key>originalWidth</key>
-				<integer>167</integer>
+				<integer>169</integer>
 				<key>originalHeight</key>
-				<integer>109</integer>
+				<integer>104</integer>
 				<key>x</key>
-				<integer>82</integer>
+				<integer>0</integer>
 				<key>y</key>
-				<integer>1901</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_04.png</key>
-			<dict>
-				<key>width</key>
-				<integer>157</integer>
-				<key>height</key>
-				<integer>109</integer>
-				<key>originalWidth</key>
-				<integer>157</integer>
-				<key>originalHeight</key>
-				<integer>109</integer>
-				<key>x</key>
-				<integer>251</integer>
-				<key>y</key>
-				<integer>1901</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn.png</key>
-			<dict>
-				<key>width</key>
-				<integer>157</integer>
-				<key>height</key>
-				<integer>109</integer>
-				<key>originalWidth</key>
-				<integer>157</integer>
-				<key>originalHeight</key>
-				<integer>109</integer>
-				<key>x</key>
-				<integer>410</integer>
-				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -311,150 +235,226 @@
 			<key>ui5/btn_06.png</key>
 			<dict>
 				<key>width</key>
-				<integer>165</integer>
+				<integer>175</integer>
 				<key>height</key>
-				<integer>109</integer>
+				<integer>76</integer>
 				<key>originalWidth</key>
-				<integer>165</integer>
+				<integer>175</integer>
 				<key>originalHeight</key>
-				<integer>109</integer>
+				<integer>76</integer>
 				<key>x</key>
-				<integer>569</integer>
+				<integer>171</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn2_08.png</key>
+			<key>ui5/btn_07.png</key>
 			<dict>
 				<key>width</key>
-				<integer>174</integer>
+				<integer>175</integer>
 				<key>height</key>
-				<integer>92</integer>
+				<integer>77</integer>
 				<key>originalWidth</key>
-				<integer>174</integer>
+				<integer>175</integer>
 				<key>originalHeight</key>
-				<integer>92</integer>
+				<integer>77</integer>
 				<key>x</key>
-				<integer>736</integer>
+				<integer>348</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn_08.png</key>
+			<key>ui5/btn2.png</key>
 			<dict>
 				<key>width</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>height</key>
-				<integer>92</integer>
+				<integer>44</integer>
 				<key>originalWidth</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>originalHeight</key>
-				<integer>92</integer>
+				<integer>44</integer>
 				<key>x</key>
-				<integer>912</integer>
+				<integer>525</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn2_10.png</key>
+			<key>ui5/btn2_02.png</key>
 			<dict>
 				<key>width</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>height</key>
-				<integer>94</integer>
+				<integer>42</integer>
 				<key>originalWidth</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>originalHeight</key>
-				<integer>94</integer>
+				<integer>42</integer>
 				<key>x</key>
-				<integer>1088</integer>
+				<integer>634</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn_10.png</key>
+			<key>ui5/btn2_03.png</key>
 			<dict>
 				<key>width</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>height</key>
-				<integer>94</integer>
+				<integer>43</integer>
 				<key>originalWidth</key>
-				<integer>174</integer>
+				<integer>107</integer>
 				<key>originalHeight</key>
-				<integer>94</integer>
+				<integer>43</integer>
 				<key>x</key>
-				<integer>1264</integer>
+				<integer>743</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn2_13.png</key>
+			<key>ui5/btn2_04.png</key>
 			<dict>
 				<key>width</key>
-				<integer>177</integer>
+				<integer>76</integer>
 				<key>height</key>
-				<integer>91</integer>
+				<integer>45</integer>
 				<key>originalWidth</key>
-				<integer>177</integer>
+				<integer>76</integer>
 				<key>originalHeight</key>
-				<integer>91</integer>
+				<integer>45</integer>
 				<key>x</key>
-				<integer>1440</integer>
+				<integer>852</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn_13.png</key>
+			<key>ui5/btn2_05.png</key>
 			<dict>
 				<key>width</key>
-				<integer>177</integer>
+				<integer>111</integer>
 				<key>height</key>
-				<integer>91</integer>
+				<integer>42</integer>
 				<key>originalWidth</key>
-				<integer>177</integer>
+				<integer>111</integer>
 				<key>originalHeight</key>
-				<integer>91</integer>
+				<integer>42</integer>
 				<key>x</key>
-				<integer>1619</integer>
+				<integer>930</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn2_16.png</key>
+			<key>ui5/btn2_06.png</key>
 			<dict>
 				<key>width</key>
-				<integer>174</integer>
+				<integer>140</integer>
 				<key>height</key>
-				<integer>91</integer>
+				<integer>40</integer>
 				<key>originalWidth</key>
-				<integer>174</integer>
+				<integer>140</integer>
 				<key>originalHeight</key>
-				<integer>91</integer>
+				<integer>40</integer>
 				<key>x</key>
-				<integer>1798</integer>
+				<integer>1043</integer>
 				<key>y</key>
-				<integer>1901</integer>
+				<integer>1730</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui5/btn_05.png</key>
+			<dict>
+				<key>width</key>
+				<integer>106</integer>
+				<key>height</key>
+				<integer>110</integer>
+				<key>originalWidth</key>
+				<integer>106</integer>
+				<key>originalHeight</key>
+				<integer>110</integer>
+				<key>x</key>
+				<integer>1185</integer>
+				<key>y</key>
+				<integer>1730</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui5/btn.png</key>
+			<dict>
+				<key>width</key>
+				<integer>175</integer>
+				<key>height</key>
+				<integer>104</integer>
+				<key>originalWidth</key>
+				<integer>175</integer>
+				<key>originalHeight</key>
+				<integer>104</integer>
+				<key>x</key>
+				<integer>1293</integer>
+				<key>y</key>
+				<integer>1730</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui5/btn_02.png</key>
+			<dict>
+				<key>width</key>
+				<integer>166</integer>
+				<key>height</key>
+				<integer>104</integer>
+				<key>originalWidth</key>
+				<integer>166</integer>
+				<key>originalHeight</key>
+				<integer>104</integer>
+				<key>x</key>
+				<integer>1470</integer>
+				<key>y</key>
+				<integer>1730</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui5/btn_04.png</key>
+			<dict>
+				<key>width</key>
+				<integer>175</integer>
+				<key>height</key>
+				<integer>104</integer>
+				<key>originalWidth</key>
+				<integer>175</integer>
+				<key>originalHeight</key>
+				<integer>104</integer>
+				<key>x</key>
+				<integer>1638</integer>
+				<key>y</key>
+				<integer>1730</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>

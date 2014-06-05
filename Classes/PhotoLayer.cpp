@@ -36,15 +36,19 @@ bool PhotoLayer::init()
     
     ImageView* head = (ImageView*)node->getChildByName("head");
     this->maskHead =  (ImageView*)head->getChildByName("mask");
-    this->userHead =  (ImageView*)head->getChildByName("userHead");
-    userHead->setTouchEnabled(true);
-    //userHead->loadTexture("face/tou1.png",UI_TEX_TYPE_LOCAL);
+    Size headSize = head->getContentSize();
+    userHead = ImageView::create();
     userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
-    
-    mscale=0.5;     //初始化图片的缩放比例
+    Size userHeadSize = userHead->getContentSize();
+    double mscalex = headSize.width/userHeadSize.width;
+    double mscaley = headSize.height/userHeadSize.height;
+    mscale = (mscalex + mscaley)/2;
+    log("mscale=%f",mscale);
     userHead->setScale(mscale);
     userHead->setOpacity(150);
+    head->addChild(userHead);
     
+    userHead->setTouchEnabled(true);
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
     auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
     listener1->onTouchesBegan = CC_CALLBACK_2(PhotoLayer::TouchesBegan, this);//指定触摸的回调函数
@@ -83,33 +87,6 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
         parent->removeFromParentAndCleanup(true);
     }
 }
-
-/*
-bool PhotoLayer::onTouchBegan(Touch* touch, Event  *event)
-{
-    return true;//返回true表示接收触摸事件
-}
-
-void PhotoLayer::onTouchMoved(Touch* touch, Event  *event)
-{
-    log("onTouchMoved  ...");
-    auto beginPos = touch->getLocationInView();//获得触摸位置
-    beginPos = Director::getInstance()->convertToGL(beginPos);//坐标转换
-    auto headPos = userHead->getPosition();//获取女主的位置
-    auto headSize = userHead->getContentSize();//获取女主的三围（大小）
-    auto endPos = touch->getPreviousLocationInView();//获取触摸的前一个位置
-    endPos = Director::getInstance()->convertToGL(endPos);//转换坐标
-    
-    auto offset = Point(beginPos-endPos);//获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
-    auto nextPos = Point(headPos + offset);//获取女主的下一步计划，2.14用的是ccpAdd，
-    userHead->setPosition(nextPos);
-}
-
-void PhotoLayer::onTouchEnded(Touch* touch, Event  *event)
-{
-    log("onTouchEnded  ...");
-}
-*/
 
 void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event)
 {
