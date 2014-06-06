@@ -1336,7 +1336,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/MainLayer.cpp"
@@ -1918,9 +1918,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
-            landmarkType = "5">
+            endingLineNumber = "228">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1935,7 +1933,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
             endingLineNumber = "118"
-            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1950,9 +1948,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
-            landmarkType = "5">
+            endingLineNumber = "109">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1967,7 +1963,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "113"
             endingLineNumber = "113"
-            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1982,9 +1978,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "230"
-            endingLineNumber = "230"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
-            landmarkType = "5">
+            endingLineNumber = "230">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1998,9 +1992,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
-            landmarkType = "5">
+            endingLineNumber = "178">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2015,7 +2007,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "175"
             endingLineNumber = "175"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::TouchesCancellnd(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *pEvent)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2047,7 +2039,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::TouchesEnded(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2063,7 +2055,103 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "176"
             endingLineNumber = "176"
-            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkName = "PhotoLayer::TouchesCancellnd(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *pEvent)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737341.145181"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "GUIReader::widgetFromJsonFile(const char *fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737451.496568"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "934"
+            endingLineNumber = "934"
+            landmarkName = "WidgetPropertiesReader0300::createWidget(const rapidjson::Value&amp; data, const char* fullPath, const char* fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737691.469317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "WidgetPropertiesReader0250::createWidget(const rapidjson::Value&amp; data, const char* fullPath, const char* fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737717.152252"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "GUIReader::widgetFromJsonFile(const char *fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737731.782724"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "956"
+            endingLineNumber = "956"
+            landmarkName = "WidgetPropertiesReader0300::createWidget(const rapidjson::Value&amp; data, const char* fullPath, const char* fileName)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../cocos2d/cocos/editor-support/cocostudio/CCSGUIReader.cpp"
+            timestampString = "423737743.932979"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "980"
+            endingLineNumber = "980"
+            landmarkName = "WidgetPropertiesReader0300::widgetFromJsonDictionary(const rapidjson::Value&amp; data)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

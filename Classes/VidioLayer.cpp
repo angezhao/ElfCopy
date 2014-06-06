@@ -25,7 +25,7 @@ bool VidioLayer::init()
 		return false;
 	}
     
-    auto btnBack =  node->getChildByName("shareBtn");
+    auto btnBack =  node->getChildByName("btnBack");
     btnBack->addTouchEventListener(this,toucheventselector(VidioLayer::goBack));
     
     auto playBack =  node->getChildByName("playBtn");
