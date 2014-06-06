@@ -146,49 +146,12 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         
         //旋转
         float angle = this->getRotateAngle(lPoint1, lPoint2, mPoint1, mPoint2);
-		log("delta angle=%f",angle);
+		//log("delta angle=%f",angle);
 		if (angle != 0.0f){
 			angle += userHead->getRotation();
 			userHead->setRotation(angle);
-            log("angle=%f",angle);
+            //log("angle=%f",angle);
 		}
-        
-        /*
-         Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
-         float angle = 0;
-         float lAngle1 = 0;
-         float mAngle1 = 0;
-         double len_y = lPoint1.y - middlePoint.y;
-         double len_x = lPoint1.x - middlePoint.x;
-         double tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
-         if(len_y > 0 && len_x < 0) {
-         lAngle1 = tan_yx - 90;
-         } else if (len_y > 0 && len_x > 0) {
-         lAngle1 = 90 - tan_yx;
-         } else if(len_y < 0 && len_x < 0) {
-         lAngle1 = -tan_yx - 90;
-         } else if(len_y < 0 && len_x > 0) {
-         lAngle1 = tan_yx + 90;
-         }
-         len_y = mPoint1.y - middlePoint.y;
-         len_x = mPoint1.x - middlePoint.x;
-         tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
-         if(len_y > 0 && len_x < 0) {
-         mAngle1 = tan_yx - 90;
-         } else if (len_y > 0 && len_x > 0) {
-         mAngle1 = 90 - tan_yx;
-         } else if(len_y < 0 && len_x < 0) {
-         mAngle1 = -tan_yx - 90;
-         } else if(len_y < 0 && len_x > 0) {
-         mAngle1 = tan_yx + 90;
-         }
-         angle = mAngle1 - lAngle1;
-         
-         float lastAngle = userHead->getRotation();
-         angle += lastAngle;
-         userHead->setRotation(angle);
-         log("lastAngle=%f,angle=%f",lastAngle,angle);
-         */
     }
     else if(pTouches.size()==1)                          //如果触摸点为一个
     {
@@ -218,21 +181,19 @@ float PhotoLayer::getRotateAngle(Point startPos1, Point startPos2, Point endPos1
 	// cos(A) = (x1 * x2 + y1 * y2) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
     double n = sp->x * ep->x + sp->y * ep->y;
 	double m = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
-
-	assert(m != 0.0, "m == 0");
-
-    angle = CC_RADIANS_TO_DEGREES(acos(n / m));
-
+    double cosmn = n / m;
+    if (m!=0 && (cosmn>=1.000001 || cosmn <= 0.999999)) {
+        angle = CC_RADIANS_TO_DEGREES(acos(cosmn));
+        //log("n=%f,m=%f,n/m=%f,cos=%f,angle=%f",n,m,n/m,acos(cosmn),angle);
+    }
+    
     //sin(A) = (x1 * y2 - y1 * x2 ) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
     //sin（A） 小于0 则顺时针， 大于0则逆时针
 	double n1 = sp->x * ep->y - sp->y * ep->x;
-	double m1 = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
-    double sin_xy = n1/m1;
-    //angle = CC_RADIANS_TO_DEGREES(asin(n / m));
-    if (sin_xy > 0) {
+	if (m !=0 && n1/m > 0) {
         angle = -1 * angle;
     }
-	
+	//log("return angle=%f",angle);
 	return angle;
 }
 
