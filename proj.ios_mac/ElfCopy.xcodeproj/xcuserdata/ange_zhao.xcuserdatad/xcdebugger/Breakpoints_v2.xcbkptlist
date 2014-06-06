@@ -888,9 +888,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "PhotoLayer::goBack(Ref* pSender,TouchEventType type)"
-            landmarkType = "5">
+            endingLineNumber = "68">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -916,11 +914,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1094,7 +1092,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "71"
-            endingLineNumber = "71">
+            endingLineNumber = "71"
+            landmarkName = "PhotoLayer::goBack(Ref* pSender,TouchEventType type)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1182,11 +1182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731002.480279"
+            timestampString = "423741149.587539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282">
+            startingLineNumber = "312"
+            endingLineNumber = "312">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1774,9 +1774,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "PhotoLayer::goBack(Ref* pSender,TouchEventType type)"
-            landmarkType = "5">
+            endingLineNumber = "68">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1898,11 +1896,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1914,11 +1912,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731002.480279"
+            timestampString = "423741149.587539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228">
+            startingLineNumber = "259"
+            endingLineNumber = "259"
+            landmarkName = "PhotoLayer::mask()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1928,11 +1928,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1944,11 +1944,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109">
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1958,11 +1960,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "PhotoLayer::TouchesBegan(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/PhotoLayer.cpp"
+            timestampString = "423741149.587539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1974,55 +1992,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731002.480279"
+            timestampString = "423741149.587539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731002.480279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731002.480279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "PhotoLayer::TouchesCancellnd(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *pEvent)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730241.281644"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
@@ -2034,12 +2008,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423730224.32178"
+            timestampString = "423740646.37268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "PhotoLayer::TouchesEnded(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2050,12 +2024,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../Classes/PhotoLayer.cpp"
-            timestampString = "423731018.399616"
+            timestampString = "423741149.587539"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
-            landmarkName = "PhotoLayer::TouchesCancellnd(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *pEvent)"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../Classes/PhotoLayer.cpp"
+            timestampString = "423741149.587539"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "PhotoLayer::TouchesMoved(const std::vector&lt;Touch*&gt;&amp; pTouches, Event *event)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

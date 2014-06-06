@@ -6,28 +6,12 @@
 //
 //
 
-#include "math.h"
 #include "PhotoLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
 #include "ui/CocosGUI.h"
-
-PhotoLayer::PhotoLayer(){
-	maskHead = NULL;
-	userHead = NULL;
-	startPoint = NULL;
-	endPoint = NULL;
-
-}
-
-PhotoLayer::~PhotoLayer(){
-	maskHead = NULL;
-	userHead = NULL;
-	startPoint = NULL;
-	endPoint = NULL;
-
-}
+#include "ccMacros.h"
 
 bool PhotoLayer::init()
 {
@@ -37,7 +21,7 @@ bool PhotoLayer::init()
     {
         return false;
     }
-   
+    
     /////////////////////////////////
     Widget *node = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_4.ExportJson");
 	if (node == nullptr)
@@ -73,6 +57,9 @@ bool PhotoLayer::init()
     listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
     
+    touchId1 = -1;
+    touchId2 = -1;
+    
     this->addChild(node,0,1);
     
     return true;
@@ -88,13 +75,8 @@ void PhotoLayer::goBack(Ref* pSender,TouchEventType type)
 void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        // 进行遮罩处理
-//        Widget* node = (Widget*)this->getChildByTag(1);
-//        ImageView* head = (ImageView*)node->getChildByName("head");
-//        ImageView* userHead = (ImageView*)head->getChildByName("userHead");
-        // Sprite* textureSprite = Sprite::create("scene/bg.png");
-        Sprite* textureSprite = (Sprite*)userHead->getVirtualRenderer();
-        Sprite* sprite = this->mask(textureSprite);
+        
+        Sprite* sprite = this->mask();
         
         MainLayer* layer = (MainLayer*)this->getParent()->getParent();
         layer->changeFace(sprite);
@@ -107,123 +89,156 @@ void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
 
 void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesBegan  ...");
+    log("TouchesBegan  ...size=%lu",pTouches.size());
     if(pTouches.size()>=2)  //如果触摸点不少于两个
     {
         auto iter=pTouches.begin();
-        Point mPoint1=((Touch *)(*iter))->getLocationInView();
-		startPoint = new Point(mPoint1.x, mPoint1.y);
-        mPoint1 = Director::getInstance()->convertToGL(mPoint1);
+        touchId1 =((Touch *)(*iter))->getID();
         iter++;
-        Point mPoint2=((Touch *)(*iter))->getLocationInView();
-		endPoint = new Point(mPoint2.x, mPoint2.y);
-        mPoint2 = Director::getInstance()->convertToGL(mPoint2);
-        
-        distance=sqrt((mPoint2.x-mPoint1.x)*(mPoint2.x-mPoint1.x)+(mPoint2.y-mPoint1.y)*(mPoint2.y-mPoint1.y));//计算两个触摸点距离
-        deltax = (mPoint1.x + mPoint2.x)/2 - userHead->getPositionX();     //得到两个触摸点中点和精灵锚点的差值
-        deltay = (mPoint1.y + mPoint2.y)/2 - userHead->getPositionY();
-        log("ccTouchesBegan  ...");
+        touchId2 =((Touch *)(*iter))->getID();
+    }else if(pTouches.size()==1)                          //如果触摸点为一个
+    {
+        auto iter =  pTouches.begin();
+        int touchId = ((Touch*)(*iter))->getID();
+        log("touchId=%d",touchId);
+        if (touchId1 < 0) {
+            touchId1 = touchId;
+            log("touchId1=%d",touchId);
+        }else if(touchId2 < 0){
+            touchId2 = touchId;
+            log("touchId2=%d",touchId);
+        }
     }
+    log("touchId1=%d,touchId2=%d",touchId1,touchId2);
 }
 
 void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesMoved  ...");
-    
+    log("TouchesMoved  ...size=%lu",pTouches.size());
     if(pTouches.size()>=2)  //如果移动时触摸点的个数不少于两个
     {
         auto iter = pTouches.begin();
-        Point mPoint1 = ((Touch*)(*iter))->getLocationInView();
-		Point *p1 = new Point(mPoint1.x, mPoint1.y);
-        mPoint1 = Director::getInstance()->convertToGL(mPoint1);
+        Point mPoint1 = ((Touch*)(*iter))->getLocation();
+        Point lPoint1 = ((Touch*)(*iter))->getPreviousLocation();
         iter++;
-        Point mPoint2 = ((Touch*)(*iter))->getLocationInView();
-		Point *p2 = new Point(mPoint2.x, mPoint2.y);;
-        mPoint2 = Director::getInstance()->convertToGL(mPoint2);        //获得新触摸点两点之间的距离
+        Point mPoint2 = ((Touch*)(*iter))->getLocation();
+        Point lPoint2 = ((Touch*)(*iter))->getPreviousLocation();
+        
+        //放大缩小
+        if (distance == 0) {
+            distance=sqrt((lPoint2.x-lPoint1.x)*(lPoint2.x-lPoint1.x)+(lPoint2.y-lPoint1.y)*(lPoint2.y-lPoint1.y));//计算两个触摸点距离
+            deltax = (lPoint1.x + lPoint2.x)/2 - userHead->getPositionX();     //得到两个触摸点中点和精灵锚点的差值
+            deltay = (lPoint1.y + lPoint2.y)/2 - userHead->getPositionY();
+        }
+        //获得新触摸点两点之间的距离
         double mdistance = sqrt((mPoint1.x-mPoint2.x)*(mPoint1.x-mPoint2.x)+(mPoint1.y-mPoint2.y)*(mPoint1.y-mPoint2.y));
         mscale = mdistance/distance * mscale;                      //   新的距离 / 老的距离  * 原来的缩放比例，即为新的缩放比例
         distance = mdistance;
         userHead->setScale(mscale);
+        //log("mscale=%f,distance=%f",mscale,distance);
         
+        //旋转
+        float angle = this->getRotateAngle(lPoint1, lPoint2, mPoint1, mPoint2);
+		if (angle != 0.0f){
+			angle += userHead->getRotation();
+			userHead->setRotation(angle);
+            log("angle=%f",angle);
+		}
+        
+        /*
+        Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
+        float angle = 0;
+        float lAngle1 = 0;
+        float mAngle1 = 0;
+        double len_y = lPoint1.y - middlePoint.y;
+        double len_x = lPoint1.x - middlePoint.x;
+        double tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
+        if(len_y > 0 && len_x < 0) {
+            lAngle1 = tan_yx - 90;
+        } else if (len_y > 0 && len_x > 0) {
+            lAngle1 = 90 - tan_yx;
+        } else if(len_y < 0 && len_x < 0) {
+            lAngle1 = -tan_yx - 90;
+        } else if(len_y < 0 && len_x > 0) {
+            lAngle1 = tan_yx + 90;
+        }
+        len_y = mPoint1.y - middlePoint.y;
+        len_x = mPoint1.x - middlePoint.x;
+        tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
+        if(len_y > 0 && len_x < 0) {
+            mAngle1 = tan_yx - 90;
+        } else if (len_y > 0 && len_x > 0) {
+            mAngle1 = 90 - tan_yx;
+        } else if(len_y < 0 && len_x < 0) {
+            mAngle1 = -tan_yx - 90;
+        } else if(len_y < 0 && len_x > 0) {
+            mAngle1 = tan_yx + 90;
+        }
+        angle = mAngle1 - lAngle1;
+        
+        float lastAngle = userHead->getRotation();
+        angle += lastAngle;
+        userHead->setRotation(angle);
+        log("lastAngle=%f,angle=%f",lastAngle,angle);
+        */
+        
+        //移动
         double x = (mPoint2.x+mPoint1.x)/2 - deltax;      //计算两触点中点与精灵锚点的差值
         double y = (mPoint2.y+mPoint1.y)/2 - deltay;
         userHead->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
         deltax = (mPoint1.x+ mPoint2.x)/2 - userHead->getPositionX();       //计算新的偏移量
         deltay = (mPoint2.y + mPoint1.y)/2 - userHead->getPositionY();
-
-		float angle = this->getRotateAngle(p1, p2);
-		if (angle != 0.0f){
-			angle += userHead->getRotation();
-			userHead->setRotation(angle);
-		}
-
-		startPoint = p1;
-		endPoint = p2;
     }
-    if(pTouches.size()==1)                          //如果触摸点为一个
+    else if(pTouches.size()==1)                          //如果触摸点为一个
     {
         auto iter =  pTouches.begin();
-        auto beginPos = ((Touch*)(*iter))->getLocationInView();//获得触摸位置
-        beginPos = Director::getInstance()->convertToGL(beginPos);//坐标转换
-        auto headPos = userHead->getPosition();
-        //auto headSize = userHead->getContentSize();
-        auto endPos = ((Touch*)(*iter))->getPreviousLocationInView();//获取触摸的前一个位置
-        endPos = Director::getInstance()->convertToGL(endPos);//转换坐标
+        auto mPoint1 = ((Touch*)(*iter))->getLocation();//获得触摸位置
+        auto lPoint1 = ((Touch*)(*iter))->getPreviousLocation();//获取触摸的前一个位置
         
-        auto offset = Point(beginPos-endPos);//获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
+        if (touchId1 >=0 && touchId2 >=0) {
+            //Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
+            
+        }
+        
+        auto headPos = userHead->getPosition();
+        auto offset = Point(mPoint1-lPoint1);//获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
         auto nextPos = Point(headPos + offset);
         userHead->setPosition(nextPos);
-
-		startPoint = NULL;
-		endPoint = NULL;
-
     }
 }
 
-float PhotoLayer::getRotateAngle(Point *p1, Point *p2){
-	if (startPoint == NULL|| endPoint == NULL || p1 == NULL || p2 == NULL)
-	{
-		return 0.0f;
-	}
-
+float PhotoLayer::getRotateAngle(Point startPos1, Point startPos2, Point endPos1, Point endPos2){
 	float angle = 0.0f;
-
+    
 	//两个向量
-	Point *sp = new Point(endPoint->x - startPoint->x, endPoint->y - startPoint->y);
-	Point *ep = new Point(p2->x - p1->x, p2->y - p1->y);
-
+	Point *sp = new Point(startPos2.x - startPos1.x, startPos2.y - startPos1.y);
+	Point *ep = new Point(endPos2.x - endPos1.x, endPos2.y - endPos1.y);
+    
 	// cos(A) = (x1 * x2 + y1 * y2) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
 	double n = sp->x * ep->x + sp->y * ep->y;
 	double m = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
-
-	angle = acos(n / m) * (180 / M_PI);
-
-
+    
+	angle = CC_RADIANS_TO_DEGREES(acos(n / m));
+    
 	return angle;
-
+    
 }
 
 void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesEnded  ...");
-//    auto lastPos = touch->getLocationInView();
-//    lastPos = Director::getInstance()->convertToGL(lastPos);
-//    
-//    auto rect = Rect(400,300,100,150);//建立一个选中区域，女主如果拖动到这个框内就可以瞬移进来，反之是小三进来
-//    MoveTo* moveTo_1;//女主的动作
-//    MoveTo* moveTo_3;//小三的动作
-//    if(rect.containsPoint(lastPos))
-//    {
-//        moveTo_1 = MoveTo::create(0.1f,Point(450,370));
-//        moveTo_3 = MoveTo::create(0.1f,Point(250,250));
-//    }
-//    else
-//    {
-//        moveTo_1 = MoveTo::create(0.1f,Point(250,250));
-//        moveTo_3 = MoveTo::create(0.1f,Point(450,370));
-//    }
-//    girl_1->runAction(moveTo_1);//男主争夺战~~
-//    girl_3->runAction(moveTo_3);
+    log("TouchesEnded  ...size=%lu",pTouches.size());
+    if (pTouches.size()>2) {
+        log("TouchesEnded  ...error.....");
+    }else if(pTouches.size()==1)                         //如果触摸点为一个
+    {
+        auto iter =  pTouches.begin();
+        int touchId = ((Touch*)(*iter))->getID();
+        if (touchId1 == touchId) {
+            touchId1 = -1;
+        }else if (touchId2 == touchId) {
+            touchId2 = -1;
+        }
+    }
 }
 
 void PhotoLayer::TouchesCancellnd(const std::vector<Touch*>& pTouches, Event *pEvent)
@@ -231,7 +246,7 @@ void PhotoLayer::TouchesCancellnd(const std::vector<Touch*>& pTouches, Event *pE
     log("TouchesCancellnd  ...");
 }
 
-Sprite* PhotoLayer::mask(Sprite* textureSprite)
+Sprite* PhotoLayer::mask()
 {
     assert(userHead);
     assert(maskHead);
@@ -239,15 +254,22 @@ Sprite* PhotoLayer::mask(Sprite* textureSprite)
     //Sprite* textureSprite = static_cast<Sprite*>(userHead->getVirtualRenderer());
     //Sprite* maskSprite = static_cast<Sprite*>(maskHead->getVirtualRenderer());
     
-    // Sprite* textureSprite = Sprite::create("scene/bg.png");
+    Sprite* textureSprite = Sprite::create(photofile);
+    textureSprite->setScale(mscale);
+    textureSprite->setPosition(userHead->getPosition());
+    
     Sprite* maskSprite = Sprite::create("face/mask.png");
+    maskSprite->setPosition(maskHead->getPosition());
+    
     Size textureContent = textureSprite->getContentSize();
     Size maskContent = maskSprite->getContentSize();
-    
-    RenderTexture* rt = RenderTexture::create(textureContent.width, textureContent.height, Texture2D::PixelFormat::RGBA8888);
+
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888);
     
     textureSprite->setPosition(Point(textureContent.width / 2, textureContent.height / 2));
     maskSprite->setPosition(Point(textureContent.width / 2, textureContent.height / 2));
+    // maskSprite->setPosition(Point(userHead->getPositionX(), userHead->getPositionY()));
     
     BlendFunc maskBlendFunc = { GL_ONE, GL_ZERO };
     maskSprite->setBlendFunc(maskBlendFunc);
