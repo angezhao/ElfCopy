@@ -6,11 +6,28 @@
 //
 //
 
+#include "math.h"
 #include "PhotoLayer.h"
 #include "MainLayer.h"
 #include "cocostudio/CocoStudio.h"
 #include "Constants.h"
 #include "ui/CocosGUI.h"
+
+PhotoLayer::PhotoLayer(){
+	maskHead = NULL;
+	userHead = NULL;
+	startPoint = NULL;
+	endPoint = NULL;
+
+}
+
+PhotoLayer::~PhotoLayer(){
+	maskHead = NULL;
+	userHead = NULL;
+	startPoint = NULL;
+	endPoint = NULL;
+
+}
 
 bool PhotoLayer::init()
 {
@@ -20,7 +37,7 @@ bool PhotoLayer::init()
     {
         return false;
     }
-    
+   
     /////////////////////////////////
     Widget *node = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_4.ExportJson");
 	if (node == nullptr)
@@ -95,9 +112,11 @@ void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event
     {
         auto iter=pTouches.begin();
         Point mPoint1=((Touch *)(*iter))->getLocationInView();
+		startPoint = new Point(mPoint1.x, mPoint1.y);
         mPoint1 = Director::getInstance()->convertToGL(mPoint1);
         iter++;
         Point mPoint2=((Touch *)(*iter))->getLocationInView();
+		endPoint = new Point(mPoint2.x, mPoint2.y);
         mPoint2 = Director::getInstance()->convertToGL(mPoint2);
         
         distance=sqrt((mPoint2.x-mPoint1.x)*(mPoint2.x-mPoint1.x)+(mPoint2.y-mPoint1.y)*(mPoint2.y-mPoint1.y));//计算两个触摸点距离
@@ -115,9 +134,11 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
     {
         auto iter = pTouches.begin();
         Point mPoint1 = ((Touch*)(*iter))->getLocationInView();
+		Point *p1 = new Point(mPoint1.x, mPoint1.y);
         mPoint1 = Director::getInstance()->convertToGL(mPoint1);
         iter++;
         Point mPoint2 = ((Touch*)(*iter))->getLocationInView();
+		Point *p2 = new Point(mPoint2.x, mPoint2.y);;
         mPoint2 = Director::getInstance()->convertToGL(mPoint2);        //获得新触摸点两点之间的距离
         double mdistance = sqrt((mPoint1.x-mPoint2.x)*(mPoint1.x-mPoint2.x)+(mPoint1.y-mPoint2.y)*(mPoint1.y-mPoint2.y));
         mscale = mdistance/distance * mscale;                      //   新的距离 / 老的距离  * 原来的缩放比例，即为新的缩放比例
@@ -129,6 +150,15 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         userHead->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
         deltax = (mPoint1.x+ mPoint2.x)/2 - userHead->getPositionX();       //计算新的偏移量
         deltay = (mPoint2.y + mPoint1.y)/2 - userHead->getPositionY();
+
+		float angle = this->getRotateAngle(p1, p2);
+		if (angle != 0.0f){
+			angle += userHead->getRotation();
+			userHead->setRotation(angle);
+		}
+
+		startPoint = p1;
+		endPoint = p2;
     }
     if(pTouches.size()==1)                          //如果触摸点为一个
     {
@@ -144,7 +174,33 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         auto nextPos = Point(headPos + offset);
         userHead->setPosition(nextPos);
 
+		startPoint = NULL;
+		endPoint = NULL;
+
     }
+}
+
+float PhotoLayer::getRotateAngle(Point *p1, Point *p2){
+	if (startPoint == NULL|| endPoint == NULL || p1 == NULL || p2 == NULL)
+	{
+		return 0.0f;
+	}
+
+	float angle = 0.0f;
+
+	//两个向量
+	Point *sp = new Point(endPoint->x - startPoint->x, endPoint->y - startPoint->y);
+	Point *ep = new Point(p2->x - p1->x, p2->y - p1->y);
+
+	// cos(A) = (x1 * x2 + y1 * y2) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
+	double n = sp->x * ep->x + sp->y * ep->y;
+	double m = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
+
+	angle = acos(n / m) * (180 / M_PI);
+
+
+	return angle;
+
 }
 
 void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event)

@@ -18,6 +18,8 @@ using namespace cocos2d::ui;
 class PhotoLayer : public Layer
 {
 public:
+	PhotoLayer();
+	~PhotoLayer();
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     // implement the "static create()" method manually
@@ -39,6 +41,12 @@ private:
     double mscale;   //初始地图缩放比例
     ImageView *maskHead;
     ImageView *userHead;
+
+	//向量
+	Point *startPoint;
+	Point *endPoint;
+
+	float getRotateAngle(Point *p1, Point *p2);  //获取旋转角度
 };
 
 
