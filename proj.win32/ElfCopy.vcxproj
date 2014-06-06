@@ -138,6 +138,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="..\Classes\MainLayer.cpp" />
+    <ClCompile Include="..\Classes\MoreTouches.cpp" />
     <ClCompile Include="..\Classes\PhotoLayer.cpp" />
     <ClCompile Include="..\Classes\PhotoMenu.cpp" />
     <ClCompile Include="..\Classes\PickPhoto.cpp" />
@@ -149,10 +150,12 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Camera.h" />
     <ClInclude Include="..\Classes\Constants.h" />
+    <ClInclude Include="..\Classes\ELFCamera.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="..\Classes\JavaCall.h" />
     <ClInclude Include="..\Classes\MainLayer.h" />
+    <ClInclude Include="..\Classes\MoreTouches.h" />
     <ClInclude Include="..\Classes\PhotoLayer.h" />
     <ClInclude Include="..\Classes\PhotoMenu.h" />
     <ClInclude Include="..\Classes\PickPhoto.h" />
@@ -180,6 +183,7 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Classes\Camera.mm" />
+    <None Include="..\Classes\ELFCamera.mm" />
     <None Include="..\Classes\PickPhoto.mm" />
     <None Include="..\Classes\PickPhoto4Ios.mm" />
     <None Include="..\Classes\TakePhoto.m" />
