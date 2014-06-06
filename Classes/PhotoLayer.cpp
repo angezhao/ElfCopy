@@ -146,6 +146,7 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         
         //旋转
         float angle = this->getRotateAngle(lPoint1, lPoint2, mPoint1, mPoint2);
+		log("delta angle=%f",angle);
 		if (angle != 0.0f){
 			angle += userHead->getRotation();
 			userHead->setRotation(angle);
@@ -217,6 +218,9 @@ float PhotoLayer::getRotateAngle(Point startPos1, Point startPos2, Point endPos1
 	// cos(A) = (x1 * x2 + y1 * y2) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
     double n = sp->x * ep->x + sp->y * ep->y;
 	double m = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
+
+	assert(m != 0.0, "m == 0");
+
     angle = CC_RADIANS_TO_DEGREES(acos(n / m));
 
     //sin(A) = (x1 * y2 - y1 * x2 ) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
