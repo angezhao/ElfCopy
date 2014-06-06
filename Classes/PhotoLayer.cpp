@@ -137,6 +137,13 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         userHead->setScale(mscale);
         //log("mscale=%f,distance=%f",mscale,distance);
         
+        //移动
+        double x = (mPoint2.x+mPoint1.x)/2 - deltax;      //计算两触点中点与精灵锚点的差值
+        double y = (mPoint2.y+mPoint1.y)/2 - deltay;
+        userHead->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
+        deltax = (mPoint1.x+ mPoint2.x)/2 - userHead->getPositionX();       //计算新的偏移量
+        deltay = (mPoint2.y + mPoint1.y)/2 - userHead->getPositionY();
+        
         //旋转
         float angle = this->getRotateAngle(lPoint1, lPoint2, mPoint1, mPoint2);
 		if (angle != 0.0f){
@@ -146,48 +153,41 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
 		}
         
         /*
-        Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
-        float angle = 0;
-        float lAngle1 = 0;
-        float mAngle1 = 0;
-        double len_y = lPoint1.y - middlePoint.y;
-        double len_x = lPoint1.x - middlePoint.x;
-        double tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
-        if(len_y > 0 && len_x < 0) {
-            lAngle1 = tan_yx - 90;
-        } else if (len_y > 0 && len_x > 0) {
-            lAngle1 = 90 - tan_yx;
-        } else if(len_y < 0 && len_x < 0) {
-            lAngle1 = -tan_yx - 90;
-        } else if(len_y < 0 && len_x > 0) {
-            lAngle1 = tan_yx + 90;
-        }
-        len_y = mPoint1.y - middlePoint.y;
-        len_x = mPoint1.x - middlePoint.x;
-        tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
-        if(len_y > 0 && len_x < 0) {
-            mAngle1 = tan_yx - 90;
-        } else if (len_y > 0 && len_x > 0) {
-            mAngle1 = 90 - tan_yx;
-        } else if(len_y < 0 && len_x < 0) {
-            mAngle1 = -tan_yx - 90;
-        } else if(len_y < 0 && len_x > 0) {
-            mAngle1 = tan_yx + 90;
-        }
-        angle = mAngle1 - lAngle1;
-        
-        float lastAngle = userHead->getRotation();
-        angle += lastAngle;
-        userHead->setRotation(angle);
-        log("lastAngle=%f,angle=%f",lastAngle,angle);
-        */
-        
-        //移动
-        double x = (mPoint2.x+mPoint1.x)/2 - deltax;      //计算两触点中点与精灵锚点的差值
-        double y = (mPoint2.y+mPoint1.y)/2 - deltay;
-        userHead->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
-        deltax = (mPoint1.x+ mPoint2.x)/2 - userHead->getPositionX();       //计算新的偏移量
-        deltay = (mPoint2.y + mPoint1.y)/2 - userHead->getPositionY();
+         Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
+         float angle = 0;
+         float lAngle1 = 0;
+         float mAngle1 = 0;
+         double len_y = lPoint1.y - middlePoint.y;
+         double len_x = lPoint1.x - middlePoint.x;
+         double tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
+         if(len_y > 0 && len_x < 0) {
+         lAngle1 = tan_yx - 90;
+         } else if (len_y > 0 && len_x > 0) {
+         lAngle1 = 90 - tan_yx;
+         } else if(len_y < 0 && len_x < 0) {
+         lAngle1 = -tan_yx - 90;
+         } else if(len_y < 0 && len_x > 0) {
+         lAngle1 = tan_yx + 90;
+         }
+         len_y = mPoint1.y - middlePoint.y;
+         len_x = mPoint1.x - middlePoint.x;
+         tan_yx = CC_RADIANS_TO_DEGREES(atan(abs(len_y)/abs(len_x)));
+         if(len_y > 0 && len_x < 0) {
+         mAngle1 = tan_yx - 90;
+         } else if (len_y > 0 && len_x > 0) {
+         mAngle1 = 90 - tan_yx;
+         } else if(len_y < 0 && len_x < 0) {
+         mAngle1 = -tan_yx - 90;
+         } else if(len_y < 0 && len_x > 0) {
+         mAngle1 = tan_yx + 90;
+         }
+         angle = mAngle1 - lAngle1;
+         
+         float lastAngle = userHead->getRotation();
+         angle += lastAngle;
+         userHead->setRotation(angle);
+         log("lastAngle=%f,angle=%f",lastAngle,angle);
+         */
     }
     else if(pTouches.size()==1)                          //如果触摸点为一个
     {
@@ -215,13 +215,21 @@ float PhotoLayer::getRotateAngle(Point startPos1, Point startPos2, Point endPos1
 	Point *ep = new Point(endPos2.x - endPos1.x, endPos2.y - endPos1.y);
     
 	// cos(A) = (x1 * x2 + y1 * y2) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
-	double n = sp->x * ep->x + sp->y * ep->y;
+    double n = sp->x * ep->x + sp->y * ep->y;
 	double m = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
-    
-	angle = CC_RADIANS_TO_DEGREES(acos(n / m));
-    
+    angle = CC_RADIANS_TO_DEGREES(acos(n / m));
+
+    //sin(A) = (x1 * y2 - y1 * x2 ) / (sqrt(x1 * x1 + y1 * y1) * sqrt(x2 * x2 + y2 * y2))
+    //sin（A） 小于0 则顺时针， 大于0则逆时针
+	double n1 = sp->x * ep->y - sp->y * ep->x;
+	double m1 = sqrt(sp->x * sp->x + sp->y * sp->y) * sqrt(ep->x * ep->x + ep->y * ep->y);
+    double sin_xy = n1/m1;
+    //angle = CC_RADIANS_TO_DEGREES(asin(n / m));
+    if (sin_xy > 0) {
+        angle = -1 * angle;
+    }
+	
 	return angle;
-    
 }
 
 void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event)
@@ -257,9 +265,11 @@ Sprite* PhotoLayer::mask()
     Sprite* textureSprite = Sprite::create(photofile);
     textureSprite->setScale(mscale);
     textureSprite->setPosition(userHead->getPosition());
+    textureSprite->setRotation(userHead->getRotation());
     
     Sprite* maskSprite = Sprite::create("face/mask.png");
     maskSprite->setPosition(maskHead->getPosition());
+    maskSprite->setRotation(maskHead->getRotation());
     
     Size textureContent = textureSprite->getContentSize();
     Size maskContent = maskSprite->getContentSize();
