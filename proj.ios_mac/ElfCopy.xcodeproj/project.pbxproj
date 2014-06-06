@@ -62,8 +62,8 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
-		B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B77C6FEA193498700048B648 /* ElfYourSelfUi */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
 		B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B79F0358193576FC00477F55 /* MoreTouches.cpp */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
@@ -281,9 +281,9 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
-		B77C6FEA193498700048B648 /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		B79F0358193576FC00477F55 /* MoreTouches.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoreTouches.cpp; path = ../Classes/MoreTouches.cpp; sourceTree = "<group>"; };
 		B79F0359193576FC00477F55 /* MoreTouches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTouches.h; path = ../Classes/MoreTouches.h; sourceTree = "<group>"; };
@@ -527,7 +527,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B77C6FEA193498700048B648 /* ElfYourSelfUi */,
+				B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */,
 				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
 				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
 				B7A430D81921B16200D3CDAB /* yuanshiren */,
@@ -718,7 +718,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
-				B77C6FEB193498700048B648 /* ElfYourSelfUi in Resources */,
+				B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				B79CDBFE191E492F00311E24 /* scene in Resources */,
 				B7A0EB54190A6BC20009C47B /* face in Resources */,
