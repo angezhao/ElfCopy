@@ -35,27 +35,8 @@ bool PhotoLayer::init()
     Button* okBtn = (Button*)node->getChildByName("okBtn");
     okBtn->addTouchEventListener(this, toucheventselector(PhotoLayer::changeOk));
     
-    ImageView* head = (ImageView*)node->getChildByName("head");
-    this->maskHead =  (ImageView*)head->getChildByName("mask");
-    Size headSize = head->getContentSize();
-    userHead = ImageView::create();
-    userHead->loadTexture(photofile,UI_TEX_TYPE_LOCAL);
-    Size userHeadSize = userHead->getContentSize();
-    double mscalex = headSize.width/userHeadSize.width;
-    double mscaley = headSize.height/userHeadSize.height;
-    mscale = (mscalex + mscaley)/2;
-    log("mscale=%f",mscale);
-    userHead->setScale(mscale);
-    userHead->setOpacity(150);
-    head->addChild(userHead);
-    
-    userHead->setTouchEnabled(true);
-    this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
-    auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
-    listener1->onTouchesBegan = CC_CALLBACK_2(PhotoLayer::TouchesBegan, this);//指定触摸的回调函数
-    listener1->onTouchesEnded = CC_CALLBACK_2(PhotoLayer::TouchesEnded, this);
-    listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
+    this->head = (ImageView*)node->getChildByName("head");
+    maskHead = (ImageView*)head->getChildByName("mask");
     
     touchId1 = -1;
     touchId2 = -1;
@@ -75,7 +56,6 @@ void PhotoLayer::goBack(Ref* pSender,TouchEventType type)
 void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        
         Sprite* sprite = this->mask();
         
         MainLayer* layer = (MainLayer*)this->getParent()->getParent();
@@ -219,15 +199,46 @@ void PhotoLayer::TouchesCancellnd(const std::vector<Touch*>& pTouches, Event *pE
     log("TouchesCancellnd  ...");
 }
 
+void PhotoLayer::loadImage(Image* image)
+{
+    Texture2D* texture = new Texture2D();
+    texture->initWithImage(image);
+    Sprite *imageSprite = Sprite::createWithTexture(texture);
+
+    userHead = ImageView::create();
+    Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
+    userHeadSprite->setSpriteFrame(imageSprite->getSpriteFrame());
+
+    Size headSize = this->head->getContentSize();
+    Size imageSize = imageSprite->getContentSize();
+    CCLOG("kering -> hw:%f,hh:%f", headSize.width, headSize.height);
+    double mscalex = headSize.width / imageSize.width;
+    double mscaley = headSize.height / imageSize.height;
+    mscale = (mscalex + mscaley)/2;
+
+    log("mscale=%f", mscale);
+
+    userHead->setScale(mscale);
+    userHead->setOpacity(150);
+    userHead->setTouchEnabled(true);
+
+    this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
+    auto listener1 = EventListenerTouchAllAtOnce::create();//创建一个触摸监听(多点触摸）
+    listener1->onTouchesBegan = CC_CALLBACK_2(PhotoLayer::TouchesBegan, this);//指定触摸的回调函数
+    listener1->onTouchesEnded = CC_CALLBACK_2(PhotoLayer::TouchesEnded, this);
+    listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
+    
+    this->head->addChild(userHead);
+}
+
 Sprite* PhotoLayer::mask()
 {
     assert(userHead);
     assert(maskHead);
-    
-    //Sprite* textureSprite = static_cast<Sprite*>(userHead->getVirtualRenderer());
-    //Sprite* maskSprite = static_cast<Sprite*>(maskHead->getVirtualRenderer());
-    
-    Sprite* textureSprite = Sprite::create(photofile);
+
+    Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
+    Sprite* textureSprite = Sprite::createWithSpriteFrame(userHeadSprite->getSpriteFrame());
     textureSprite->setScale(mscale);
     textureSprite->setPosition(userHead->getPosition());
     textureSprite->setRotation(userHead->getRotation());
@@ -258,11 +269,6 @@ Sprite* PhotoLayer::mask()
     
     Sprite* retval = Sprite::createWithTexture(rt->getSprite()->getTexture());
     return retval;
-    
-    /*
-    Texture2D* texture = rt->getSprite()->getTexture();
-    SpriteFrame* spriteFrame = SpriteFrame::createWithTexture(texture, Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
-    src_sprite->setSpriteFrame(spriteFrame);*/
 }
 
 

@@ -30,13 +30,15 @@ public:
     
     void goBack(Ref* pSender,TouchEventType type);
     void changeOk(Ref* pSender,TouchEventType type);
-    
+
+    void loadImage(Image* image);
     Sprite* mask();
 private:
     double distance;    //两个触摸点之间的距离
     double deltax;    //目标x轴的改变值
     double deltay;    //目标y轴的改变值
     double mscale;   //初始地图缩放比例
+    ImageView* head;
     ImageView *maskHead;
     ImageView *userHead;
     int touchId1;

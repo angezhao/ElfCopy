@@ -21,7 +21,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(PickPhoto);
     
-    void pickOk(const char *photofile);
+    void pickOk(Image* image);
 };
 
 #endif /* defined(__ElfCopy__PickPhoto__) */

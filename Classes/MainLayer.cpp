@@ -57,10 +57,10 @@ void MainLayer::goBack(Ref* pSender,TouchEventType type)
 void MainLayer::goNext(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        //if(hasFace1 && hasFace2){
+        if(hasFace1 && hasFace2){
             Layer *layer = VidioLayer::create();
             this->addChild(layer);
-        //}
+        }
     }
 }
 
@@ -74,10 +74,21 @@ void MainLayer::changeFace(Sprite* sprite)
 
     if(m_intHead == 1){
         hasFace1 = true;
-        headBtn1->addChild(face);
+        headBtn1->removeChildByTag(1);
+        Size btnSize = headBtn1->getContentSize();
+        Size faceSize = face->getContentSize();
+        //double mscalex = btnSize.width/faceSize.width;
+        //double mscaley = btnSize.height/faceSize.height;
+        //face->setScale((mscalex + mscaley)/2);
+        face->setPosition(headBtn1->getPosition());
+        headBtn1->addChild(face,0,1);
+        Point a = headBtn1->getPosition();
+        Point b = face->getPosition();
     }else if(m_intHead == 2){
         hasFace2 = true;
-        headBtn2->addChild(face);
+        headBtn2->removeChildByTag(1);
+        face->setPosition(headBtn2->getPosition());
+        headBtn2->addChild(face,0,1);
     }
 }
 

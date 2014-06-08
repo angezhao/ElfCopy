@@ -109,13 +109,11 @@
         // use this method on ios6
         [window setRootViewController:[self rootViewController]];
     }
-    //转到图片处理
-    // 获取沙盒目录
-    NSData *imageData = UIImageJPEGRepresentation(originImage, 0.5);
-    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    // 将图片写入文件
-    [imageData writeToFile:fullPath atomically:NO];
-    const char *photofile = [fullPath UTF8String];
+
+    NSData *imageData = UIImageJPEGRepresentation(originImage, 0.8);
+    Image* image = new Image();
+    image->initWithImageData((unsigned char *)[imageData bytes], [imageData length]);
+    NSLog(@"kering -> len:%d", [imageData length]);
 
     auto director = Director::getInstance();
     GameScene* layer1 = (GameScene*)director->getRunningScene()->getChildByTag(1);
@@ -123,7 +121,7 @@
     MainLayer* layer3 = (MainLayer*)layer2->getChildByTag(1);
     PhotoMenu* layer4 = (PhotoMenu*)layer3->getChildByTag(1);
     PickPhoto* layer = (PickPhoto*)layer4->getChildByTag(1);
-    layer->pickOk(photofile);
+    layer->pickOk(image);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
