@@ -23,7 +23,7 @@ public:
     // implement the "static create()" method manually
     CREATE_FUNC(MainLayer);
 
-    void changeFace(Sprite* sprite);
+    void changeFace(ImageView* face);
     void goBack(Ref* pSender,TouchEventType type);
     void goNext(Ref* pSender,TouchEventType type);
     void changePhoto1(Ref* pSender,TouchEventType type);
@@ -31,8 +31,9 @@ public:
     
     Button* headBtn1;
     Button* headBtn2;
-    bool hasFace1;
-    bool hasFace2;
+
+    // ImageView* face1;
+    // ImageView* face2;
 };
 
 #endif /* defined(__ElfCopy__MainLayer__) */

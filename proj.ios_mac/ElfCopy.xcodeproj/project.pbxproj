@@ -65,9 +65,13 @@
 		B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
-		B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B79F0358193576FC00477F55 /* MoreTouches.cpp */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
+		B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2591945C9F600368A5F /* CGContextCreator.m */; };
+		B7A2E2641945C9F600368A5F /* CGImageContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25B1945C9F600368A5F /* CGImageContainer.m */; };
+		B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */; };
+		B7A2E2661945C9F600368A5F /* THCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2601945C9F600368A5F /* THCapture.m */; };
+		B7A2E2671945C9F600368A5F /* THCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */; };
 		B7A3D920193EAAC4002EF35B /* ELFCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
 		B7A49FD3192CAFDC005C23E3 /* PhotoMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */; };
@@ -285,11 +289,19 @@
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
-		B79F0358193576FC00477F55 /* MoreTouches.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MoreTouches.cpp; path = ../Classes/MoreTouches.cpp; sourceTree = "<group>"; };
-		B79F0359193576FC00477F55 /* MoreTouches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MoreTouches.h; path = ../Classes/MoreTouches.h; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
+		B7A2E2581945C9F600368A5F /* CGContextCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGContextCreator.h; sourceTree = "<group>"; };
+		B7A2E2591945C9F600368A5F /* CGContextCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGContextCreator.m; sourceTree = "<group>"; };
+		B7A2E25A1945C9F600368A5F /* CGImageContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageContainer.h; sourceTree = "<group>"; };
+		B7A2E25B1945C9F600368A5F /* CGImageContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGImageContainer.m; sourceTree = "<group>"; };
+		B7A2E25C1945C9F600368A5F /* LZXAudioRecordAndTransCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZXAudioRecordAndTransCoding.h; sourceTree = "<group>"; };
+		B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZXAudioRecordAndTransCoding.m; sourceTree = "<group>"; };
+		B7A2E25F1945C9F600368A5F /* THCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCapture.h; sourceTree = "<group>"; };
+		B7A2E2601945C9F600368A5F /* THCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCapture.m; sourceTree = "<group>"; };
+		B7A2E2611945C9F600368A5F /* THCaptureUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCaptureUtilities.h; sourceTree = "<group>"; };
+		B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCaptureUtilities.m; sourceTree = "<group>"; };
 		B7A3D91E193EAAC4002EF35B /* ELFCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELFCamera.h; path = ../Classes/ELFCamera.h; sourceTree = "<group>"; };
 		B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ELFCamera.mm; path = ../Classes/ELFCamera.mm; sourceTree = "<group>"; };
 		B7A430D81921B16200D3CDAB /* yuanshiren */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren; sourceTree = "<group>"; };
@@ -386,6 +398,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B7A2E2561945C9F600368A5F /* Recorder */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
 				B7A515E7192B9D1D00D44C31 /* Constants.cpp */,
@@ -398,8 +411,6 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
 				B7A515E3192B882200D44C31 /* MainLayer.h */,
-				B79F0358193576FC00477F55 /* MoreTouches.cpp */,
-				B79F0359193576FC00477F55 /* MoreTouches.h */,
 				B7A515EA192BA70500D44C31 /* PhotoLayer.cpp */,
 				B7A515EB192BA70500D44C31 /* PhotoLayer.h */,
 				B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */,
@@ -540,6 +551,40 @@
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		B7A2E2561945C9F600368A5F /* Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				B7A2E2571945C9F600368A5F /* CoreGraphics */,
+				B7A2E25C1945C9F600368A5F /* LZXAudioRecordAndTransCoding.h */,
+				B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */,
+				B7A2E25E1945C9F600368A5F /* THC */,
+			);
+			name = Recorder;
+			path = ../Classes/Recorder;
+			sourceTree = "<group>";
+		};
+		B7A2E2571945C9F600368A5F /* CoreGraphics */ = {
+			isa = PBXGroup;
+			children = (
+				B7A2E2581945C9F600368A5F /* CGContextCreator.h */,
+				B7A2E2591945C9F600368A5F /* CGContextCreator.m */,
+				B7A2E25A1945C9F600368A5F /* CGImageContainer.h */,
+				B7A2E25B1945C9F600368A5F /* CGImageContainer.m */,
+			);
+			path = CoreGraphics;
+			sourceTree = "<group>";
+		};
+		B7A2E25E1945C9F600368A5F /* THC */ = {
+			isa = PBXGroup;
+			children = (
+				B7A2E25F1945C9F600368A5F /* THCapture.h */,
+				B7A2E2601945C9F600368A5F /* THCapture.m */,
+				B7A2E2611945C9F600368A5F /* THCaptureUtilities.h */,
+				B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */,
+			);
+			path = THC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -774,6 +819,7 @@
 			files = (
 				B7A515E4192B882200D44C31 /* MainLayer.cpp in Sources */,
 				B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */,
+				B7A2E2661945C9F600368A5F /* THCapture.m in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */,
@@ -783,11 +829,14 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
+				B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */,
+				B7A2E2671945C9F600368A5F /* THCaptureUtilities.m in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
-				B79F035A193576FC00477F55 /* MoreTouches.cpp in Sources */,
 				B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */,
+				B7A2E2641945C9F600368A5F /* CGImageContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

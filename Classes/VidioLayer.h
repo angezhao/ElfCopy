@@ -14,6 +14,7 @@
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
+using namespace cocostudio;
 
 class VidioLayer : public Layer
 {
@@ -22,7 +23,7 @@ public:
     virtual bool init();
     // implement the "static create()" method manually
     CREATE_FUNC(VidioLayer);
-    
+
     void goBack(Ref* pSender,TouchEventType type);
     void playVidio(Ref* pSender,TouchEventType type);
 };

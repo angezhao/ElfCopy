@@ -6,6 +6,7 @@
 //
 //
 
+#include "MainLayer.h"
 #include "VidioLayer.h"
 #include "cocostudio/CocoStudio.h"
 
@@ -19,7 +20,7 @@ bool VidioLayer::init()
     }
     
     /////////////////////////////////
-    Widget *node = cocostudio::GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_5.ExportJson");
+    Widget *node = GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_5.ExportJson");
 	if (node == nullptr)
 	{
 		return false;
@@ -49,29 +50,29 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     Size winSize = Director::getInstance()->getWinSize();
     
-    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
-    cocostudio::Armature *armature = cocostudio::Armature::create("yuanshiren2");
-    armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
-    armature->getAnimation()->playWithIndex(0);
-    //m_pLayer->addChild(armature);
-    
-    cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
-    cocostudio::Armature *armature2 = cocostudio::Armature::create("yuanshiren1");
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
+    Armature *armature2 = Armature::create("yuanshiren2");
     armature2->setPosition(Point(winSize.width / 2, winSize.height / 2));
     armature2->getAnimation()->playWithIndex(0);
-    //m_pLayer->addChild(armature2);
+    this->addChild(armature2);
     
-    cocostudio::Bone *tou1 = armature2->getBone("tou1");
-    cocostudio::Skin* face1 = cocostudio::Skin::create("face/tou1.png");
-    //cocostudio::Skin* face01 = static_cast<cocostudio::Skin*>(face1);
-    face1->setAnchorPoint(Point(-0.1, 1.2));
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
+    Armature *armature1 = Armature::create("yuanshiren1");
+    armature1->setPosition(Point(winSize.width / 2, winSize.height / 2));
+    armature1->getAnimation()->playWithIndex(0);
+    this->addChild(armature1);
+
+    Skin* face1 = Skin::createWithSpriteFrameName("player_face1");
+    face1->setFlippedY(true);
+    face1->setAnchorPoint(Point(0.442, 0.63));
+    Bone *tou1 = armature1->getBone("tou1");
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
-    
-    cocostudio::Bone *tou2 = armature->getBone("tou2");
-    cocostudio::Skin* face2 = cocostudio::Skin::create("face/tou2.png");
-    //cocostudio::Skin* face02 = static_cast<cocostudio::Skin*>(face2);
-    face2->setAnchorPoint(Point(-0.2, 1.5));
+
+    Skin* face2 = Skin::createWithSpriteFrameName("player_face2");
+    face2->setFlippedY(true);
+    face2->setAnchorPoint(Point(0.419, 0.66));
+    Bone *tou2 = armature2->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
 }

@@ -47,49 +47,36 @@ bool MainLayer::init()
 }
 
 
-void MainLayer::goBack(Ref* pSender,TouchEventType type)
+void MainLayer::goBack(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         this->removeFromParentAndCleanup(true);
     }
 }
 
-void MainLayer::goNext(Ref* pSender,TouchEventType type)
+void MainLayer::goNext(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        if(hasFace1 && hasFace2){
-            Layer *layer = VidioLayer::create();
+        if (headBtn1->getChildrenCount() > 0 && headBtn2->getChildrenCount() > 0) {
+            VidioLayer *layer = VidioLayer::create();
             this->addChild(layer);
         }
     }
 }
 
-void MainLayer::changeFace(Sprite* sprite)
+void MainLayer::changeFace(ImageView* face)
 {
-    ImageView* face = ImageView::create();
-    Texture2D* texture = sprite->getTexture();
-    SpriteFrame* spriteFrame = SpriteFrame::createWithTexture(texture, Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
-    ((Sprite*)face->getVirtualRenderer())->setSpriteFrame(spriteFrame);
-    ((Sprite*)face->getVirtualRenderer())->setFlippedY(true);
-
-    if(m_intHead == 1){
-        hasFace1 = true;
-        headBtn1->removeChildByTag(1);
-        Size btnSize = headBtn1->getContentSize();
-        Size faceSize = face->getContentSize();
-        //double mscalex = btnSize.width/faceSize.width;
-        //double mscaley = btnSize.height/faceSize.height;
-        //face->setScale((mscalex + mscaley)/2);
-        face->setPosition(headBtn1->getPosition());
-        headBtn1->addChild(face,0,1);
-        Point a = headBtn1->getPosition();
-        Point b = face->getPosition();
-    }else if(m_intHead == 2){
-        hasFace2 = true;
-        headBtn2->removeChildByTag(1);
-        face->setPosition(headBtn2->getPosition());
-        headBtn2->addChild(face,0,1);
+    if (m_intHead == 1) {
+        headBtn1->addChild(face);
+    } else if (m_intHead == 2) {
+        headBtn2->addChild(face);
     }
+
+    std::string frameIndex = m_intHead == 1 ? "1" : "2";
+    std::string spriteFrameName = "player_face" + frameIndex;
+    SpriteFrameCache::getInstance()->removeSpriteFrameByName(spriteFrameName);
+    SpriteFrame* spriteFrame = ((Sprite*)face->getVirtualRenderer())->getSpriteFrame();
+    SpriteFrameCache::getInstance()->addSpriteFrame(spriteFrame, spriteFrameName);
 }
 
 void MainLayer::changePhoto1(Ref* pSender,TouchEventType type)

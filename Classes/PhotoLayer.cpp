@@ -36,7 +36,7 @@ bool PhotoLayer::init()
     okBtn->addTouchEventListener(this, toucheventselector(PhotoLayer::changeOk));
     
     this->head = (ImageView*)node->getChildByName("head");
-    maskHead = (ImageView*)head->getChildByName("mask");
+    this->maskHead = (ImageView*)head->getChildByName("mask");
     
     touchId1 = -1;
     touchId2 = -1;
@@ -46,20 +46,26 @@ bool PhotoLayer::init()
     return true;
 }
 
-void PhotoLayer::goBack(Ref* pSender,TouchEventType type)
+void PhotoLayer::goBack(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         this->removeFromParentAndCleanup(true);
     }
 }
 
-void PhotoLayer::changeOk(Ref* pSender,TouchEventType type)
+void PhotoLayer::changeOk(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         Sprite* sprite = this->mask();
         
+        ImageView* face = ImageView::create();
+        Texture2D* texture = sprite->getTexture();
+        SpriteFrame* spriteFrame = SpriteFrame::createWithTexture(texture, Rect(0, 0, texture->getContentSize().width, texture->getContentSize().height));
+        ((Sprite*)face->getVirtualRenderer())->setSpriteFrame(spriteFrame);
+        ((Sprite*)face->getVirtualRenderer())->setFlippedY(true);
+        
         MainLayer* layer = (MainLayer*)this->getParent()->getParent();
-        layer->changeFace(sprite);
+        layer->changeFace(face);
 
         Layer* parent = (Layer*)this->getParent();
         this->removeFromParentAndCleanup(true);
@@ -211,7 +217,6 @@ void PhotoLayer::loadImage(Image* image)
 
     Size headSize = this->head->getContentSize();
     Size imageSize = imageSprite->getContentSize();
-    CCLOG("kering -> hw:%f,hh:%f", headSize.width, headSize.height);
     double mscalex = headSize.width / imageSize.width;
     double mscaley = headSize.height / imageSize.height;
     mscale = (mscalex + mscaley)/2;
@@ -234,28 +239,23 @@ void PhotoLayer::loadImage(Image* image)
 
 Sprite* PhotoLayer::mask()
 {
-    assert(userHead);
-    assert(maskHead);
+    assert(this->userHead);
+    assert(this->maskHead);
 
     Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
     Sprite* textureSprite = Sprite::createWithSpriteFrame(userHeadSprite->getSpriteFrame());
+    Point userHeadPos = Node::convertToWorldSpaceAR(this->userHead->getPosition());
+    textureSprite->setPosition(userHeadPos);
     textureSprite->setScale(mscale);
-    textureSprite->setPosition(userHead->getPosition());
-    textureSprite->setRotation(userHead->getRotation());
+    textureSprite->setRotation(this->userHead->getRotation());
     
     Sprite* maskSprite = Sprite::create("face/mask.png");
-    maskSprite->setPosition(maskHead->getPosition());
-    maskSprite->setRotation(maskHead->getRotation());
-    
-    Size textureContent = textureSprite->getContentSize();
-    Size maskContent = maskSprite->getContentSize();
+    Point maskHeadPos = Node::convertToWorldSpaceAR(this->maskHead->getPosition());
+    maskSprite->setPosition(maskHeadPos);
+    maskSprite->setRotation(this->maskHead->getRotation());
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888);
-    
-    textureSprite->setPosition(Point(textureContent.width / 2, textureContent.height / 2));
-    maskSprite->setPosition(Point(textureContent.width / 2, textureContent.height / 2));
-    // maskSprite->setPosition(Point(userHead->getPositionX(), userHead->getPositionY()));
     
     BlendFunc maskBlendFunc = { GL_ONE, GL_ZERO };
     maskSprite->setBlendFunc(maskBlendFunc);

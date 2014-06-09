@@ -81,7 +81,14 @@
         //NSLog(@"模拟器无法打开相机");
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     }
-    [self presentModalViewController:imagePickerController animated:YES];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self presentModalViewController:imagePickerController animated:YES];
+    }
+    else {
+        popoverController = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
+        [popoverController presentPopoverFromRect:CGRectMake(0, 0, 800, 800) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 #pragma mark - image picker delegte
@@ -89,13 +96,20 @@
 {
     NSLog(@"拍照");
     UIImage *originImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    //判断是否原图到相册
+    // 判断是否原图到相册
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
     {
-        UIImageWriteToSavedPhotosAlbum(originImage, nil, nil, nil);
+        // 不需要保存到相册里去
+        // UIImageWriteToSavedPhotosAlbum(originImage, nil, nil, nil);
     }
-    
-    [self dismissViewControllerAnimated:false completion:nil];
+
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self dismissViewControllerAnimated:false completion:nil];
+    }
+    else {
+        [popoverController dismissPopoverAnimated:YES];
+    }
+
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     // Set ViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
@@ -113,7 +127,6 @@
     NSData *imageData = UIImageJPEGRepresentation(originImage, 0.8);
     Image* image = new Image();
     image->initWithImageData((unsigned char *)[imageData bytes], [imageData length]);
-    NSLog(@"kering -> len:%d", [imageData length]);
 
     auto director = Director::getInstance();
     GameScene* layer1 = (GameScene*)director->getRunningScene()->getChildByTag(1);
