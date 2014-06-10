@@ -11,9 +11,9 @@
 
 class PickPhoto4Ios
 {
-public:
-    PickPhoto4Ios(bool takePhoto);//takePhoto:true拍照
-    ~PickPhoto4Ios();
+public:    
+    static void takePickPhoto(bool takePhoto);
+    
 };
 
 #endif /* defined(__ElfCopy__PickPhoto4Ios__) */

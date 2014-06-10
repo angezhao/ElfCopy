@@ -27,7 +27,7 @@ bool PickPhoto::init()
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     //iOS代码
-    PickPhoto4Ios * photo4Ios = new PickPhoto4Ios(selectOrPick);
+    PickPhoto4Ios::takePickPhoto(selectOrPick);
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     //Android代码
     cocos2d::JniMethodInfo methodInfo;

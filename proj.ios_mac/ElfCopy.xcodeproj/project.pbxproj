@@ -64,7 +64,10 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
+		B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AA19473DB70048F40F /* CoreMedia.framework */; };
+		B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AE19473DC50048F40F /* CoreVideo.framework */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
+		B7A0E43819472F3A005851F5 /* CaptureUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A0E43619472F3A005851F5 /* CaptureUtils.mm */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
 		B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2591945C9F600368A5F /* CGContextCreator.m */; };
@@ -288,7 +291,11 @@
 		B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
+		B794A5AA19473DB70048F40F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		B794A5AE19473DC50048F40F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
+		B7A0E43619472F3A005851F5 /* CaptureUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureUtils.mm; path = ../Classes/CaptureUtils.mm; sourceTree = "<group>"; };
+		B7A0E43719472F3A005851F5 /* CaptureUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureUtils.h; path = ../Classes/CaptureUtils.h; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
@@ -336,6 +343,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */,
+				B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */,
 				1AC6FB2E180E99EB004C840B /* libbox2d iOS.a in Frameworks */,
 				1AC6FB2F180E99EB004C840B /* libchipmunk iOS.a in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2dx iOS.a in Frameworks */,
@@ -407,6 +416,8 @@
 				B7A515E0192B880B00D44C31 /* GameScene.h */,
 				B7A3D91E193EAAC4002EF35B /* ELFCamera.h */,
 				B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */,
+				B7A0E43619472F3A005851F5 /* CaptureUtils.mm */,
+				B7A0E43719472F3A005851F5 /* CaptureUtils.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
@@ -471,6 +482,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B794A5AE19473DC50048F40F /* CoreVideo.framework */,
+				B794A5AA19473DB70048F40F /* CoreMedia.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
@@ -829,6 +842,7 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				B7A0E43819472F3A005851F5 /* CaptureUtils.mm in Sources */,
 				B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */,

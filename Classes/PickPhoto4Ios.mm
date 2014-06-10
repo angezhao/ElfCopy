@@ -10,7 +10,7 @@
 #include "ELFCamera.h"
 #include "cocos2d.h"
 
-PickPhoto4Ios::PickPhoto4Ios(bool takePhoto)
+void PickPhoto4Ios::takePickPhoto(bool takePhoto)
 {
     //iOS代码
     ELFCamera * camera = [[ELFCamera alloc] init];
@@ -28,8 +28,4 @@ PickPhoto4Ios::PickPhoto4Ios(bool takePhoto)
         [window setRootViewController:camera];
     }
     [camera OpenPicker:takePhoto];
-}
-
-PickPhoto4Ios::~PickPhoto4Ios()
-{
 }

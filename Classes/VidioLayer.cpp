@@ -9,6 +9,9 @@
 #include "MainLayer.h"
 #include "VidioLayer.h"
 #include "cocostudio/CocoStudio.h"
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "CaptureUtils.h"
+#endif
 
 bool VidioLayer::init()
 {
@@ -48,6 +51,7 @@ void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
+    
     Size winSize = Director::getInstance()->getWinSize();
     
     ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
@@ -75,4 +79,9 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
     Bone *tou2 = armature2->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
+     
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    //CaptureUtils::startRecord();
+#endif
 }

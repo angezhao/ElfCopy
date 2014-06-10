@@ -106,5 +106,37 @@
     [super dealloc];
 }
 
+//开始录制
+- (bool)startCapture
+{
+    if(capture == nil)
+    {
+        capture=[[THCapture alloc] init];
+    }
+    capture.frameRate = 35;
+    capture.delegate = self;
+    capture.captureLayer = self.view.layer;
+    
+    [capture performSelector:@selector(startRecording)];
+}
+
+//结束录制
+- (void)stopCapture
+{
+    
+}
+
+#pragma mark -
+#pragma mark THCaptureDelegate
+- (void)recordingFinished:(NSString*)outputPath
+{
+    opPath=outputPath;
+    
+    //[self mergedidFinish:outputPath WithError:nil];
+}
+
+- (void)recordingFaild:(NSError *)error
+{
+}
 
 @end
