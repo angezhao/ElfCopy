@@ -52,35 +52,35 @@ void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-    /*
-    Size winSize = Director::getInstance()->getWinSize();
     
-    ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
-    Armature *armature2 = Armature::create("yuanshiren2");
-    armature2->setPosition(Point(winSize.width / 2, winSize.height / 2));
-    armature2->getAnimation()->playWithIndex(0);
-    this->addChild(armature2);
+        Size winSize = Director::getInstance()->getWinSize();
     
-    ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
-    Armature *armature1 = Armature::create("yuanshiren1");
-    armature1->setPosition(Point(winSize.width / 2, winSize.height / 2));
-    armature1->getAnimation()->playWithIndex(0);
-    this->addChild(armature1);
+        ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
+        Armature *armature2 = Armature::create("yuanshiren2");
+        armature2->setPosition(Point(winSize.width / 2, winSize.height / 2));
+        armature2->getAnimation()->playWithIndex(0);
+        this->addChild(armature2);
+    
+        ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
+        Armature *armature1 = Armature::create("yuanshiren1");
+        armature1->setPosition(Point(winSize.width / 2, winSize.height / 2));
+        armature1->getAnimation()->playWithIndex(0);
+        this->addChild(armature1);
 
-    Skin* face1 = Skin::createWithSpriteFrameName("player_face1");
-    face1->setFlippedY(true);
-    face1->setAnchorPoint(Point(0.442, 0.63));
-    Bone *tou1 = armature1->getBone("tou1");
-    tou1->addDisplay(face1, 1);
-    tou1->changeDisplayWithIndex(1, true);
+        Skin* face1 = Skin::createWithSpriteFrameName("player_face1");
+        face1->setFlippedY(true);
+        face1->setAnchorPoint(Point(0.442, 0.63));
+        Bone *tou1 = armature1->getBone("tou1");
+        tou1->addDisplay(face1, 1);
+        tou1->changeDisplayWithIndex(1, true);
 
-    Skin* face2 = Skin::createWithSpriteFrameName("player_face2");
-    face2->setFlippedY(true);
-    face2->setAnchorPoint(Point(0.419, 0.66));
-    Bone *tou2 = armature2->getBone("tou2");
-    tou2->addDisplay(face2, 1);
-    tou2->changeDisplayWithIndex(1, true);
-    */ 
+        Skin* face2 = Skin::createWithSpriteFrameName("player_face2");
+        face2->setFlippedY(true);
+        face2->setAnchorPoint(Point(0.419, 0.66));
+        Bone *tou2 = armature2->getBone("tou2");
+        tou2->addDisplay(face2, 1);
+        tou2->changeDisplayWithIndex(1, true);
+    
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();

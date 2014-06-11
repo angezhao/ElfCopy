@@ -9,10 +9,10 @@ Scene* HelloWorld::createScene()
 {
     // 'scene' is an autorelease object
     auto scene = Scene::create();
-    HelloWorld *layer = HelloWorld::create();
-    scene->addChild(layer);
+    //HelloWorld *layer = HelloWorld::create();
+    //scene->addChild(layer);
     
-    /*
+    
     Size winSize = Director::getInstance()->getWinSize();
     
     cocostudio::ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
@@ -38,7 +38,7 @@ Scene* HelloWorld::createScene()
     face2->setAnchorPoint(Point(-0.2, 1.5));
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
-    */
+    
     
     //Node *node = cocostudio::SceneReader::getInstance()->createNodeWithSceneFile("publish/test.json");
     //scene->addChild(node);
