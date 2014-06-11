@@ -84,8 +84,8 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();
-        this->schedule(schedule_selector(VidioLayer::drawFrame), 1.0f, 1, 1.0f);
-        this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),5.0f);
+        //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0/60), 1, 0.01);
+        this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),1);
 #endif
     }
 }

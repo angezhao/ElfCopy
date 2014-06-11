@@ -58,9 +58,9 @@ static NSString* const kFileName=@"output.mov";
             _recording = true;
             _writing = false;
             //绘屏的定时器
-            //NSDate *nowDate = [NSDate date];
-            //timer = [[NSTimer alloc] initWithFireDate:nowDate interval:1.0/_frameRate target:self selector:@selector(drawFrame) userInfo:nil repeats:YES];
-            //[[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+            NSDate *nowDate = [NSDate date];
+            timer = [[NSTimer alloc] initWithFireDate:nowDate interval:1.0/_frameRate target:self selector:@selector(drawFrame) userInfo:nil repeats:YES];
+            [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         }
     }
 	return result;
@@ -83,7 +83,11 @@ static NSString* const kFileName=@"output.mov";
 - (void)drawFrame
 {
     if (!_writing) {
-        [self performSelectorInBackground:@selector(getFrame) withObject:nil];
+        NSLog(@"start drawFrame.......");
+        //[self performSelectorInBackground:@selector(getFrame) withObject:nil];
+        [self performSelector:@selector(getFrame) withObject:nil];
+        NSLog(@"end drawFrame.......");
+
     }
 }
 -(void) writeVideoFrameAtTime:(CMTime)time addImage:(CGImageRef )newImage
