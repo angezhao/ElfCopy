@@ -8,38 +8,36 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-#import "THCaptureUtilities.h"
 @protocol THCaptureDelegate;
 @interface THCapture : NSObject{
     
     AVAssetWriter *videoWriter;
 	AVAssetWriterInput *videoWriterInput;
-	AVAssetWriterInputPixelBufferAdaptor *avAdaptor;
+	AVAssetWriterInputPixelBufferAdaptor *_avAdaptor;
     //recording state
 	BOOL           _recording;     //正在录制中
     BOOL           _writing;       //正在将帧写入文件
-	NSDate         *startedAt;     //录制的开始时间
-    long long       startedTime;
+	NSDate         *_startedAt;     //录制的开始时间
     CGContextRef   context;        //绘制layer的context
     NSTimer        *timer;         //按帧率写屏的定时器
     
     //Capture Layer
     CALayer *_captureLayer;              //要绘制的目标layer
     NSUInteger  _frameRate;              //帧速
-    id<THCaptureDelegate> _delegate;     //代理
+    NSString *_outputPath;//输出结果
 }
 @property(assign) NSUInteger frameRate;
-@property(assign) float spaceDate;//秒
 @property(nonatomic, strong) CALayer *captureLayer;
-@property(nonatomic, strong) id<THCaptureDelegate> delegate;
+@property(nonatomic, strong) NSDate *startedAt;
+@property(nonatomic, strong) AVAssetWriterInputPixelBufferAdaptor *avAdaptor;
+@property(nonatomic, strong) NSString *outputPath;
 
 //开始录制
 - (bool)startRecording;
 //结束录制
-- (void)stopRecording;
+- (bool)stopRecording;
 
 @end
-
 
 @protocol THCaptureDelegate <NSObject>
 

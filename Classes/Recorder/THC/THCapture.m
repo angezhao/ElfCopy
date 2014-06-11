@@ -18,7 +18,7 @@ static NSString* const kFileName=@"output.mov";
 //清理录制环境
 - (void)cleanupWriter;
 //完成录制工作
-- (void)completeRecordingSession;
+- (BOOL)completeRecordingSession;
 //录制每一帧
 - (void)drawFrame;
 @end
@@ -26,7 +26,9 @@ static NSString* const kFileName=@"output.mov";
 @implementation THCapture
 @synthesize frameRate=_frameRate;
 @synthesize captureLayer=_captureLayer;
-@synthesize delegate=_delegate;
+@synthesize startedAt=_startedAt;
+@synthesize avAdaptor=_avAdaptor;
+@synthesize outputPath=_outputPath;
 
 - (id)init
 {
@@ -40,6 +42,7 @@ static NSString* const kFileName=@"output.mov";
 
 - (void)dealloc {
 	[self cleanupWriter];
+    [super dealloc];
 }
 
 #pragma mark -
@@ -53,9 +56,7 @@ static NSString* const kFileName=@"output.mov";
         result = [self setUpWriter];
         if (result)
         {
-            startedAt = [NSDate date];
-            startedTime = [[NSDate date] timeIntervalSince1970];
-            _spaceDate=0;
+            self.startedAt = [NSDate date];
             _recording = true;
             _writing = false;
             //绘屏的定时器
@@ -67,22 +68,22 @@ static NSString* const kFileName=@"output.mov";
 	return result;
 }
 
-- (void)stopRecording
+- (bool)stopRecording
 {
+    bool result = NO;
+
     if (_recording) {
-//         _recording = false;
-//        [timer invalidate];
-//        timer = nil;
-//        [self completeRecordingSession];
-//        [self cleanupWriter];
+         _recording = false;
+        [timer invalidate];
+        timer = nil;
+        result = [self completeRecordingSession];
+        [self cleanupWriter];
     }
+    return result;
 }
+
 - (void)drawFrame
 {
-    /*if ([LZXAppDelegate sharedAppDelegate].isPausing) {
-         _spaceDate=_spaceDate+1.0/35;
-        return;
-    }*/
     if (!_writing) {
         [self performSelectorInBackground:@selector(getFrame) withObject:nil];
     }
@@ -98,7 +99,7 @@ static NSString* const kFileName=@"output.mov";
 			CGImageRef cgImage = CGImageCreateCopy(newImage);
 			CFDataRef image = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
 			
-			int status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, avAdaptor.pixelBufferPool, &pixelBuffer);
+			int status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, self.avAdaptor.pixelBufferPool, &pixelBuffer);
 			if(status != 0){
 				//could not get a buffer from the pool
 				NSLog(@"Error creating pixel buffer:  status=%d", status);
@@ -109,7 +110,7 @@ static NSString* const kFileName=@"output.mov";
 			CFDataGetBytes(image, CFRangeMake(0, CFDataGetLength(image)), destPixels);  //XXX:  will work if the pixel buffer is contiguous and has the same bytesPerRow as the input data
 			
 			if(status == 0){
-				BOOL success = [avAdaptor appendPixelBuffer:pixelBuffer withPresentationTime:time];
+				BOOL success = [self.avAdaptor appendPixelBuffer:pixelBuffer withPresentationTime:time];
 				if (!success)
 					NSLog(@"Warning:  Unable to write buffer to video");
 			}
@@ -134,8 +135,8 @@ static NSString* const kFileName=@"output.mov";
             self.captureLayer.contents=nil;
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
             if (_recording) {
-                float millisElapsed =  ([[NSDate date] timeIntervalSince1970]-startedTime) * 1000.0-_spaceDate*1000.0;
-                NSLog(@"millisElapsed = %f",millisElapsed);
+                float millisElapsed = [[NSDate date] timeIntervalSinceDate:self.startedAt] * 1000.0;
+                //NSLog(@"millisElapsed = %f",millisElapsed);
                 [self writeVideoFrameAtTime:CMTimeMake((int)millisElapsed, 1000) addImage:cgImage];
             }
             CGImageRelease(cgImage);
@@ -193,7 +194,7 @@ static NSString* const kFileName=@"output.mov";
 	NSDictionary* bufferAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
 									  [NSNumber numberWithInt:kCVPixelFormatType_32ARGB], kCVPixelBufferPixelFormatTypeKey, nil];
 	
-	avAdaptor = [AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput:videoWriterInput sourcePixelBufferAttributes:bufferAttributes];
+	self.avAdaptor = [AVAssetWriterInputPixelBufferAdaptor assetWriterInputPixelBufferAdaptorWithAssetWriterInput:videoWriterInput sourcePixelBufferAttributes:bufferAttributes];
 	
 	//add input
 	[videoWriter addInput:videoWriterInput];
@@ -228,20 +229,19 @@ static NSString* const kFileName=@"output.mov";
 
 - (void) cleanupWriter {
    
-	avAdaptor = nil;
+	self.avAdaptor = nil;
 	
 	videoWriterInput = nil;
 	
 	videoWriter = nil;
 	
-	startedAt = nil;
-    startedTime = 0;
+	self.startedAt = nil;
 
     //CGContextRelease(context);
     //context=NULL;
 }
 
-- (void) completeRecordingSession {
+- (BOOL) completeRecordingSession {
      
 	
 	[videoWriterInput markAsFinished];
@@ -256,20 +256,12 @@ static NSString* const kFileName=@"output.mov";
 	}
 	
     BOOL success = [videoWriter finishWriting];
-    if (!success)
+    if (success)
     {
-        NSLog(@"finishWriting returned NO");
-        if ([_delegate respondsToSelector:@selector(recordingFaild:)]) {
-            [_delegate recordingFaild:nil];
-        }
-        return ;
+        NSLog(@"Completed recording, file is stored at:  %@", [self tempFilePath]);
+        self.outputPath = [self tempFilePath];
     }
-    
-    NSLog(@"Completed recording, file is stored at:  %@", [self tempFilePath]);
-    if ([_delegate respondsToSelector:@selector(recordingFinished:)]) {
-        [_delegate recordingFinished:[self tempFilePath]];
-    }
+    return success;
 }
-
 
 @end
