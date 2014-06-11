@@ -8,6 +8,7 @@
 
 #include "CaptureScreen.h"
 #include "THCapture.h"
+#include "THCaptureUtilities.h"
 #include "CCEAGLView.h"
 #include "cocos2d.h"
 using namespace cocos2d;
@@ -32,11 +33,13 @@ void CaptureScreen::stopRecord()
         //处理保存的视频
         const char *outputPath = [capture.outputPath UTF8String];
         log("outputPath=%s",outputPath);
+        //混合保存
+        //[THCaptureUtilities mergeVideo:capture.outputPath andAudio:path];
     }
 }
 
 void CaptureScreen::drawFrame()
 {
-    log("aaaa");
     [capture drawFrame];
 }
+

@@ -11,7 +11,7 @@
 
 @implementation THCaptureUtilities
 
-+ (void)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath andTarget:(id)target andAction:(SEL)action
++ (void)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath
 {
     NSURL *audioUrl=[NSURL fileURLWithPath:audioPath];
 	NSURL *videoUrl=[NSURL fileURLWithPath:videoPath];
@@ -59,14 +59,50 @@
 	 ^(void ) 
     {    
         NSLog(@"完成了");
-		 // your completion code here
-		 if ([target respondsToSelector:action]) 
-         {
-             [target performSelector:action withObject:exportPath withObject:nil];
-		 }
+        [THCaptureUtilities mergedidFinish:exportPath];
      }];
     
 	//[_assetExport release];
 }
 
++(void)mergedidFinish:(NSString *)videoPath
+ {
+     NSDateFormatter* dateFormatter=[[NSDateFormatter alloc] init];
+     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:SS"];
+     NSString* currentDateStr=[dateFormatter stringFromDate:[NSDate date]];
+     
+     NSString* fileName=[NSString stringWithFormat:@"白板录制,%@.mov",currentDateStr];
+     
+     NSString* path=[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"/%@",fileName]];
+     
+     if ([[NSFileManager defaultManager] fileExistsAtPath:videoPath])
+     {
+         NSError *err=nil;
+         [[NSFileManager defaultManager] moveItemAtPath:videoPath toPath:path error:&err];
+     }
+     
+     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"allVideoInfo"]) {
+         NSMutableArray* allFileArr=[[NSMutableArray alloc] init];
+         [allFileArr addObjectsFromArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"allVideoInfo"]];
+         [allFileArr insertObject:fileName atIndex:0];
+         [[NSUserDefaults standardUserDefaults] setObject:allFileArr forKey:@"allVideoInfo"];
+     }
+     else{
+         NSMutableArray* allFileArr=[[NSMutableArray alloc] init];
+         [allFileArr addObject:fileName];
+         [[NSUserDefaults standardUserDefaults] setObject:allFileArr forKey:@"allVideoInfo"];
+     }
+     
+     //音频与视频合并结束，存入相册中
+     if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path)) {
+         UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+     }
+}
+
++ (void)video: (NSString *)videoPath didFinishSavingWithError:(NSError *) error contextInfo: (void *)contextInfo
+{
+    if (error) {
+        NSLog(@"---%@",[error localizedDescription]);
+    }
+}
 @end

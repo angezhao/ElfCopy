@@ -8,7 +8,6 @@
 
 #import "THCapture.h"
 #import "CGContextCreator.h"
-//#import "LZXAppDelegate.h"
 
 static NSString* const kFileName=@"output.mov";
 

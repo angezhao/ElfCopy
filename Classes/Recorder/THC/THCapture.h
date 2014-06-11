@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
-@protocol THCaptureDelegate;
+
 @interface THCapture : NSObject{
     
     AVAssetWriter *videoWriter;
@@ -38,12 +38,5 @@
 - (bool)stopRecording;
 //录制每一帧
 - (void)drawFrame;
-
-@end
-
-@protocol THCaptureDelegate <NSObject>
-
-- (void)recordingFinished:(NSString*)outputPath;
-- (void)recordingFaild:(NSError *)error;
 
 @end
