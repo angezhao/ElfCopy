@@ -24,18 +24,10 @@
  ****************************************************************************/
 
 #import <UIKit/UIKit.h>
-#import "THCapture.h"
 
-@interface RootViewController : UIViewController <THCaptureDelegate>
+@interface RootViewController : UIViewController
 {
-    THCapture *capture;
-    NSString* opPath;
 }
 - (BOOL) prefersStatusBarHidden;
-
-//开始录制
-- (void)startCapture;
-//结束录制
-- (void)stopCapture;
 
 @end

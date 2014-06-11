@@ -13,7 +13,7 @@
 void PickPhoto4Ios::takePickPhoto(bool takePhoto)
 {
     //iOS代码
-    ELFCamera * camera = [[ELFCamera alloc] init];
+    ELFCamera * camera = [[[ELFCamera alloc] init]autorelease];
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     // Set RootViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)

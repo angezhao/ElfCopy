@@ -36,6 +36,8 @@
 - (bool)startRecording;
 //结束录制
 - (bool)stopRecording;
+//录制每一帧
+- (void)drawFrame;
 
 @end
 

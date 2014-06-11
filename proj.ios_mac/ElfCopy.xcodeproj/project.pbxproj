@@ -71,7 +71,7 @@
 		B79FDE531947F24000DAE7D5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */; };
 		B79FDE551947F25F00DAE7D5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE541947F25F00DAE7D5 /* Security.framework */; };
 		B79FDE571947F27100DAE7D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE561947F27100DAE7D5 /* UIKit.framework */; };
-		B7A0E43819472F3A005851F5 /* CaptureUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A0E43619472F3A005851F5 /* CaptureUtils.mm */; };
+		B7A0E43819472F3A005851F5 /* CaptureScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A0E43619472F3A005851F5 /* CaptureScreen.mm */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
 		B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2591945C9F600368A5F /* CGContextCreator.m */; };
@@ -302,8 +302,8 @@
 		B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		B79FDE541947F25F00DAE7D5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		B79FDE561947F27100DAE7D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		B7A0E43619472F3A005851F5 /* CaptureUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureUtils.mm; path = ../Classes/CaptureUtils.mm; sourceTree = "<group>"; };
-		B7A0E43719472F3A005851F5 /* CaptureUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureUtils.h; path = ../Classes/CaptureUtils.h; sourceTree = "<group>"; };
+		B7A0E43619472F3A005851F5 /* CaptureScreen.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureScreen.mm; path = ../Classes/CaptureScreen.mm; sourceTree = "<group>"; };
+		B7A0E43719472F3A005851F5 /* CaptureScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureScreen.h; path = ../Classes/CaptureScreen.h; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
@@ -428,8 +428,8 @@
 				B7A515E0192B880B00D44C31 /* GameScene.h */,
 				B7A3D91E193EAAC4002EF35B /* ELFCamera.h */,
 				B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */,
-				B7A0E43619472F3A005851F5 /* CaptureUtils.mm */,
-				B7A0E43719472F3A005851F5 /* CaptureUtils.h */,
+				B7A0E43619472F3A005851F5 /* CaptureScreen.mm */,
+				B7A0E43719472F3A005851F5 /* CaptureScreen.h */,
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				B7A515E2192B882200D44C31 /* MainLayer.cpp */,
@@ -858,7 +858,7 @@
 				B7A515E9192B9D1D00D44C31 /* Constants.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
-				B7A0E43819472F3A005851F5 /* CaptureUtils.mm in Sources */,
+				B7A0E43819472F3A005851F5 /* CaptureScreen.mm in Sources */,
 				B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
 				B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */,

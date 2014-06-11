@@ -9,9 +9,9 @@
 #include "MainLayer.h"
 #include "VidioLayer.h"
 #include "cocostudio/CocoStudio.h"
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-#include "CaptureUtils.h"
-//#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+#include "CaptureScreen.h"
+#endif
 
 bool VidioLayer::init()
 {
@@ -82,8 +82,26 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
     tou2->changeDisplayWithIndex(1, true);
     */ 
     
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CaptureUtils::startRecord();
-//#endif
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CaptureScreen::startRecord();
+        this->schedule(schedule_selector(VidioLayer::drawFrame), 1.0f, 1, 1.0f);
+        this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),5.0f);
+#endif
     }
+}
+
+void VidioLayer::drawFrame(float dt)
+{
+    log("drawFrame");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CaptureScreen::drawFrame();
+#endif
+}
+
+void VidioLayer::stopRecord(float dt)
+{
+    log("stopRecord");
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    CaptureScreen::stopRecord();
+#endif
 }

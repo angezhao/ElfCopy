@@ -138,43 +138,5 @@ static AppDelegate s_sharedApplication;
     [window release];
     [super dealloc];
 }
-
-/*
-static AppDelegate s_sharedApplication;
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    // Add the view controller's view to the window and display.
-    window = [[UIWindow alloc] initWithFrame: [[UIScreen mainScreen] bounds]];
-    CCEAGLView *__glView = [CCEAGLView viewWithFrame: [window bounds]
-                                     pixelFormat: kEAGLColorFormatRGBA8
-                                     depthFormat: GL_DEPTH_COMPONENT16
-                              preserveBackbuffer: NO
-                                      sharegroup: nil
-                                   multiSampling: NO
-                                 numberOfSamples:0 ];
-    
-    // Use RootViewController manage EAGLView
-    _viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
-    _viewController.wantsFullScreenLayout = YES;
-    _viewController.view = __glView;
-    
-    // Set RootViewController to window
-    if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
-    {
-        // warning: addSubView doesn't work on iOS6
-        [window addSubview: _viewController.view];
-    }
-    else
-    {
-        // use this method on ios6
-        [window setRootViewController:_viewController];
-    }
-    [window makeKeyAndVisible];
-    [[UIApplication sharedApplication] setStatusBarHidden: YES];
-    cocos2d::Application::getInstance()->run();
-    [__glView setMultipleTouchEnabled:YES];    //主要就是这句了
-    return YES;
-}
-*/
  
 @end

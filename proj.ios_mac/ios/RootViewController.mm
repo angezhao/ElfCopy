@@ -106,34 +106,4 @@
     [super dealloc];
 }
 
-//开始录制
-- (void)startCapture
-{
-    if(capture == nil){
-        capture=[[THCapture alloc] init];
-    }
-    capture.frameRate = 35;
-    capture.delegate = self;
-    capture.captureLayer = self.view.layer;
-    //[capture performSelector:@selector(startRecording)];
-    [capture startRecording];
-    [capture stopRecording];
-}
-
-
-
-#pragma mark -
-#pragma mark THCaptureDelegate
-- (void)recordingFinished:(NSString*)outputPath
-{
-    opPath=outputPath;
-    
-    //[self mergedidFinish:outputPath WithError:nil];
-}
-
-- (void)recordingFaild:(NSError *)error
-{
-    CCLOG("aaa");
-}
-
 @end
