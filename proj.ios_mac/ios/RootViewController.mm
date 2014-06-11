@@ -107,24 +107,20 @@
 }
 
 //开始录制
-- (bool)startCapture
+- (void)startCapture
 {
-    if(capture == nil)
-    {
+    if(capture == nil){
         capture=[[THCapture alloc] init];
     }
     capture.frameRate = 35;
     capture.delegate = self;
     capture.captureLayer = self.view.layer;
-    
-    [capture performSelector:@selector(startRecording)];
+    //[capture performSelector:@selector(startRecording)];
+    [capture startRecording];
+    [capture stopRecording];
 }
 
-//结束录制
-- (void)stopCapture
-{
-    
-}
+
 
 #pragma mark -
 #pragma mark THCaptureDelegate
@@ -137,6 +133,7 @@
 
 - (void)recordingFaild:(NSError *)error
 {
+    CCLOG("aaa");
 }
 
 @end

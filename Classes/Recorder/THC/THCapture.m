@@ -54,6 +54,7 @@ static NSString* const kFileName=@"output.mov";
         if (result)
         {
             startedAt = [NSDate date];
+            startedTime = [[NSDate date] timeIntervalSince1970];
             _spaceDate=0;
             _recording = true;
             _writing = false;
@@ -69,11 +70,11 @@ static NSString* const kFileName=@"output.mov";
 - (void)stopRecording
 {
     if (_recording) {
-         _recording = false;
-        [timer invalidate];
-        timer = nil;
-        [self completeRecordingSession];
-        [self cleanupWriter];
+//         _recording = false;
+//        [timer invalidate];
+//        timer = nil;
+//        [self completeRecordingSession];
+//        [self cleanupWriter];
     }
 }
 - (void)drawFrame
@@ -133,8 +134,8 @@ static NSString* const kFileName=@"output.mov";
             self.captureLayer.contents=nil;
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
             if (_recording) {
-                float millisElapsed = [[NSDate date] timeIntervalSinceDate:startedAt] * 1000.0-_spaceDate*1000.0;
-                //NSLog(@"millisElapsed = %f",millisElapsed);
+                float millisElapsed =  ([[NSDate date] timeIntervalSince1970]-startedTime) * 1000.0-_spaceDate*1000.0;
+                NSLog(@"millisElapsed = %f",millisElapsed);
                 [self writeVideoFrameAtTime:CMTimeMake((int)millisElapsed, 1000) addImage:cgImage];
             }
             CGImageRelease(cgImage);
@@ -234,7 +235,7 @@ static NSString* const kFileName=@"output.mov";
 	videoWriter = nil;
 	
 	startedAt = nil;
-    
+    startedTime = 0;
 
     //CGContextRelease(context);
     //context=NULL;

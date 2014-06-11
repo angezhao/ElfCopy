@@ -19,6 +19,7 @@
 	BOOL           _recording;     //正在录制中
     BOOL           _writing;       //正在将帧写入文件
 	NSDate         *startedAt;     //录制的开始时间
+    long long       startedTime;
     CGContextRef   context;        //绘制layer的context
     NSTimer        *timer;         //按帧率写屏的定时器
     

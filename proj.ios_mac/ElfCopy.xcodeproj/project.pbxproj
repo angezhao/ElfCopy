@@ -67,6 +67,10 @@
 		B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AA19473DB70048F40F /* CoreMedia.framework */; };
 		B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AE19473DC50048F40F /* CoreVideo.framework */; };
 		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
+		B79FDE4F1947F1E800DAE7D5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE4E1947F1E800DAE7D5 /* CoreAudio.framework */; };
+		B79FDE531947F24000DAE7D5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */; };
+		B79FDE551947F25F00DAE7D5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE541947F25F00DAE7D5 /* Security.framework */; };
+		B79FDE571947F27100DAE7D5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE561947F27100DAE7D5 /* UIKit.framework */; };
 		B7A0E43819472F3A005851F5 /* CaptureUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A0E43619472F3A005851F5 /* CaptureUtils.mm */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
@@ -294,6 +298,10 @@
 		B794A5AA19473DB70048F40F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B794A5AE19473DC50048F40F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
+		B79FDE4E1947F1E800DAE7D5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		B79FDE541947F25F00DAE7D5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		B79FDE561947F27100DAE7D5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B7A0E43619472F3A005851F5 /* CaptureUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = CaptureUtils.mm; path = ../Classes/CaptureUtils.mm; sourceTree = "<group>"; };
 		B7A0E43719472F3A005851F5 /* CaptureUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CaptureUtils.h; path = ../Classes/CaptureUtils.h; sourceTree = "<group>"; };
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
@@ -343,6 +351,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B79FDE571947F27100DAE7D5 /* UIKit.framework in Frameworks */,
+				B79FDE551947F25F00DAE7D5 /* Security.framework in Frameworks */,
+				B79FDE531947F24000DAE7D5 /* MediaPlayer.framework in Frameworks */,
+				B79FDE4F1947F1E800DAE7D5 /* CoreAudio.framework in Frameworks */,
 				B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */,
 				B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */,
 				1AC6FB2E180E99EB004C840B /* libbox2d iOS.a in Frameworks */,
@@ -482,6 +494,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B79FDE561947F27100DAE7D5 /* UIKit.framework */,
+				B79FDE541947F25F00DAE7D5 /* Security.framework */,
+				B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */,
+				B79FDE4E1947F1E800DAE7D5 /* CoreAudio.framework */,
 				B794A5AE19473DC50048F40F /* CoreVideo.framework */,
 				B794A5AA19473DB70048F40F /* CoreMedia.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,

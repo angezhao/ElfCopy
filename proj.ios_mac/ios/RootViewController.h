@@ -34,7 +34,7 @@
 - (BOOL) prefersStatusBarHidden;
 
 //开始录制
-- (bool)startCapture;
+- (void)startCapture;
 //结束录制
 - (void)stopCapture;
 
