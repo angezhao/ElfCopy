@@ -58,14 +58,15 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
         Armature *armature2 = Armature::create("yuanshiren2");
         armature2->setPosition(Point(winSize.width / 2, winSize.height / 2));
         armature2->getAnimation()->playWithIndex(0);
-        this->addChild(armature2);
+        this->addChild(armature2,0,1);
     
         ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren1/yuanshiren1.ExportJson");
         Armature *armature1 = Armature::create("yuanshiren1");
         armature1->setPosition(Point(winSize.width / 2, winSize.height / 2));
         armature1->getAnimation()->playWithIndex(0);
-        this->addChild(armature1);
+        this->addChild(armature1,0,2);
 
+        /*
         Skin* face1 = Skin::createWithSpriteFrameName("player_face1");
         face1->setFlippedY(true);
         face1->setScale(0.38);
@@ -81,12 +82,12 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
         Bone *tou2 = armature2->getBone("tou2");
         tou2->addDisplay(face2, 1);
         tou2->changeDisplayWithIndex(1, true);
-        
+        */
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();
         //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0/60), 1, 0.01);
-        this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),1);
+        this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),20);
 #endif
     }
 }
@@ -105,4 +106,6 @@ void VidioLayer::stopRecord(float dt)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CaptureScreen::stopRecord();
 #endif
+    this->removeChildByTag(1);
+    this->removeChildByTag(2);
 }

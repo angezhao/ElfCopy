@@ -57,10 +57,10 @@ void MainLayer::goBack(Ref* pSender, TouchEventType type)
 void MainLayer::goNext(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        if (headBtn1->getChildrenCount() > 0 && headBtn2->getChildrenCount() > 0) {
+        //if (headBtn1->getChildrenCount() > 0 && headBtn2->getChildrenCount() > 0) {
             VidioLayer *layer = VidioLayer::create();
             this->addChild(layer);
-        }
+        //}
     }
 }
 

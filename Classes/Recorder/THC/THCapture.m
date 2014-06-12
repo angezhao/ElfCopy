@@ -133,7 +133,7 @@ static NSString* const kFileName=@"output.mov";
         @try {
             CGContextClearRect(context, CGRectMake(0, 0,width , height));
             [self.captureLayer renderInContext:context];
-            self.captureLayer.contents=nil;
+            //self.captureLayer.contents=nil;
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
             if (_recording) {
                 float millisElapsed = [[NSDate date] timeIntervalSinceDate:self.startedAt] * 1000.0;
