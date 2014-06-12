@@ -39,7 +39,6 @@ private:
     double deltay;    //目标y轴的改变值
     double mscale;   //初始地图缩放比例
     ImageView* head;
-    ImageView *maskHead;
     ImageView *userHead;
     int touchId1;
     int touchId2;

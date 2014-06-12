@@ -52,7 +52,6 @@ void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-    
         Size winSize = Director::getInstance()->getWinSize();
     
         ArmatureDataManager::getInstance()->addArmatureFileInfo("yuanshiren2/yuanshiren2.ExportJson");
@@ -69,19 +68,21 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 
         Skin* face1 = Skin::createWithSpriteFrameName("player_face1");
         face1->setFlippedY(true);
-        face1->setAnchorPoint(Point(0.442, 0.63));
+        face1->setScale(0.38);
+        face1->setAnchorPoint(Point(0.453, 0.65));
         Bone *tou1 = armature1->getBone("tou1");
         tou1->addDisplay(face1, 1);
         tou1->changeDisplayWithIndex(1, true);
 
         Skin* face2 = Skin::createWithSpriteFrameName("player_face2");
         face2->setFlippedY(true);
-        face2->setAnchorPoint(Point(0.419, 0.66));
+        face2->setScale(0.38);
+        face2->setAnchorPoint(Point(0.43, 0.68));
         Bone *tou2 = armature2->getBone("tou2");
         tou2->addDisplay(face2, 1);
         tou2->changeDisplayWithIndex(1, true);
-    
-    
+        
+        
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();
         //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0/60), 1, 0.01);

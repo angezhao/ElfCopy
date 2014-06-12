@@ -28,6 +28,5 @@ public:
     void playVidio(Ref* pSender,TouchEventType type);
     void stopRecord(float dt);
     void drawFrame(float dt);
-    
 };
 #endif /* defined(__ElfCopy__VidioLayer__) */

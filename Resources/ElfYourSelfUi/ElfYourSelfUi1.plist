@@ -4,18 +4,37 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>ui4/headIcon.png</key>
+			<key>ui4/bg.png</key>
 			<dict>
 				<key>width</key>
-				<integer>456</integer>
+				<integer>1024</integer>
 				<key>height</key>
-				<integer>454</integer>
+				<integer>768</integer>
 				<key>originalWidth</key>
-				<integer>456</integer>
+				<integer>1024</integer>
 				<key>originalHeight</key>
-				<integer>454</integer>
+				<integer>768</integer>
 				<key>x</key>
 				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui4/bg_03.png</key>
+			<dict>
+				<key>width</key>
+				<integer>445</integer>
+				<key>height</key>
+				<integer>450</integer>
+				<key>originalWidth</key>
+				<integer>445</integer>
+				<key>originalHeight</key>
+				<integer>450</integer>
+				<key>x</key>
+				<integer>1026</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>offsetX</key>
@@ -34,7 +53,7 @@
 				<key>originalHeight</key>
 				<integer>377</integer>
 				<key>x</key>
-				<integer>458</integer>
+				<integer>1473</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>offsetX</key>
@@ -53,9 +72,9 @@
 				<key>originalHeight</key>
 				<integer>450</integer>
 				<key>x</key>
-				<integer>816</integer>
-				<key>y</key>
 				<integer>0</integer>
+				<key>y</key>
+				<integer>770</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>

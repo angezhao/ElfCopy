@@ -31,17 +31,16 @@ bool PhotoLayer::init()
     
     Button* btnBack = (Button*)node->getChildByName("btnBack");
     btnBack->addTouchEventListener(this, toucheventselector(PhotoLayer::goBack));
-    
+
     Button* okBtn = (Button*)node->getChildByName("okBtn");
     okBtn->addTouchEventListener(this, toucheventselector(PhotoLayer::changeOk));
     
     this->head = (ImageView*)node->getChildByName("head");
-    this->maskHead = (ImageView*)head->getChildByName("mask");
     
     touchId1 = -1;
     touchId2 = -1;
     
-    this->addChild(node,0,1);
+    this->addChild(node, 0, 1);
     
     return true;
 }
@@ -75,33 +74,33 @@ void PhotoLayer::changeOk(Ref* pSender, TouchEventType type)
 
 void PhotoLayer::TouchesBegan(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesBegan  ...size=%lu",pTouches.size());
-    if(pTouches.size()>=2)  //如果触摸点不少于两个
+    // log("TouchesBegan  ...size=%lu",pTouches.size());
+    if (pTouches.size() >= 2)  //如果触摸点不少于两个
     {
         auto iter=pTouches.begin();
         touchId1 =((Touch *)(*iter))->getID();
         iter++;
         touchId2 =((Touch *)(*iter))->getID();
-    }else if(pTouches.size()==1)                          //如果触摸点为一个
+    } else if (pTouches.size() ==1 )                          //如果触摸点为一个
     {
         auto iter =  pTouches.begin();
         int touchId = ((Touch*)(*iter))->getID();
-        log("touchId=%d",touchId);
+        // log("touchId=%d",touchId);
         if (touchId1 < 0) {
             touchId1 = touchId;
-            log("touchId1=%d",touchId);
-        }else if(touchId2 < 0){
+            // log("touchId1=%d",touchId);
+        } else if (touchId2 < 0) {
             touchId2 = touchId;
-            log("touchId2=%d",touchId);
+            // log("touchId2=%d",touchId);
         }
     }
-    log("touchId1=%d,touchId2=%d",touchId1,touchId2);
+    // log("touchId1=%d,touchId2=%d",touchId1,touchId2);
 }
 
 void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesMoved  ...size=%lu",pTouches.size());
-    if(pTouches.size()>=2)  //如果移动时触摸点的个数不少于两个
+    // log("TouchesMoved  ...size=%lu",pTouches.size());
+    if (pTouches.size() >= 2)  //如果移动时触摸点的个数不少于两个
     {
         auto iter = pTouches.begin();
         Point mPoint1 = ((Touch*)(*iter))->getLocation();
@@ -126,7 +125,7 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
         //移动
         double x = (mPoint2.x+mPoint1.x)/2 - deltax;      //计算两触点中点与精灵锚点的差值
         double y = (mPoint2.y+mPoint1.y)/2 - deltay;
-        userHead->setPosition(Point(x,y));                        //保持两触点中点与精灵锚点的差值不变
+        userHead->setPosition(Point(x, y));                        //保持两触点中点与精灵锚点的差值不变
         deltax = (mPoint1.x+ mPoint2.x)/2 - userHead->getPositionX();       //计算新的偏移量
         deltay = (mPoint2.y + mPoint1.y)/2 - userHead->getPositionY();
         
@@ -139,21 +138,33 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
             //log("angle=%f",angle);
 		}
     }
-    else if(pTouches.size()==1)                          //如果触摸点为一个
+    else if (pTouches.size() == 1)                          //如果触摸点为一个
     {
         auto iter =  pTouches.begin();
-        auto mPoint1 = ((Touch*)(*iter))->getLocation();//获得触摸位置
-        auto lPoint1 = ((Touch*)(*iter))->getPreviousLocation();//获取触摸的前一个位置
+        Point mPoint1 = ((Touch*)(*iter))->getLocation();//获得触摸位置
+        Point lPoint1 = ((Touch*)(*iter))->getPreviousLocation();//获取触摸的前一个位置
         
-        if (touchId1 >=0 && touchId2 >=0) {
+        if (touchId1 >= 0 && touchId2 >= 0) {
             //Point middlePoint = Point((lPoint1.x+lPoint2.x)/2, (lPoint1.y+lPoint2.y)/2);
-            
         }
         
-        auto headPos = userHead->getPosition();
-        auto offset = Point(mPoint1-lPoint1);//获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
-        auto nextPos = Point(headPos + offset);
+        Point headPos = userHead->getPosition();
+        Point offset = Point(mPoint1-lPoint1); // 获取offset，2.14是用ccpSub，3.0后直接用 - 号就可以
+        Point nextPos = Point(headPos + offset);
+        if (nextPos.x <= -388) {
+            nextPos.x = -388;
+        }
+        if (nextPos.x >= 375) {
+            nextPos.x = 375;
+        }
+        if (nextPos.y <= -318) {
+            nextPos.y = -318;
+        }
+        if (nextPos.y >= 300) {
+            nextPos.y = 300;
+        }
         userHead->setPosition(nextPos);
+        CCLOG("kering -> x:%f,y:%f", nextPos.x, nextPos.y);
     }
 }
 
@@ -185,16 +196,16 @@ float PhotoLayer::getRotateAngle(Point startPos1, Point startPos2, Point endPos1
 
 void PhotoLayer::TouchesEnded(const std::vector<Touch*>& pTouches, Event  *event)
 {
-    log("TouchesEnded  ...size=%lu",pTouches.size());
+    // log("TouchesEnded  ...size=%lu",pTouches.size());
     if (pTouches.size()>2) {
-        log("TouchesEnded  ...error.....");
-    }else if(pTouches.size()==1)                         //如果触摸点为一个
+        // log("TouchesEnded  ...error.....");
+    } else if (pTouches.size() == 1)                         //如果触摸点为一个
     {
         auto iter =  pTouches.begin();
         int touchId = ((Touch*)(*iter))->getID();
         if (touchId1 == touchId) {
             touchId1 = -1;
-        }else if (touchId2 == touchId) {
+        } else if (touchId2 == touchId) {
             touchId2 = -1;
         }
     }
@@ -219,12 +230,11 @@ void PhotoLayer::loadImage(Image* image)
     Size imageSize = imageSprite->getContentSize();
     double mscalex = headSize.width / imageSize.width;
     double mscaley = headSize.height / imageSize.height;
-    mscale = (mscalex + mscaley)/2;
+    mscale = (mscalex + mscaley) / 2;
 
     log("mscale=%f", mscale);
 
     userHead->setScale(mscale);
-    userHead->setOpacity(150);
     userHead->setTouchEnabled(true);
 
     this->setTouchMode(Touch::DispatchMode::ALL_AT_ONCE);
@@ -234,25 +244,27 @@ void PhotoLayer::loadImage(Image* image)
     listener1->onTouchesMoved = CC_CALLBACK_2(PhotoLayer::TouchesMoved, this);
     _eventDispatcher->addEventListenerWithSceneGraphPriority(listener1, this);//将listener放入事件委托中
     
-    this->head->addChild(userHead);
+    this->head->addChild(userHead, 2);
 }
 
 Sprite* PhotoLayer::mask()
 {
     assert(this->userHead);
-    assert(this->maskHead);
 
+    float uiSacle = 0.38f;
     Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
     Sprite* textureSprite = Sprite::createWithSpriteFrame(userHeadSprite->getSpriteFrame());
     Point userHeadPos = Node::convertToWorldSpaceAR(this->userHead->getPosition());
     textureSprite->setPosition(userHeadPos);
-    textureSprite->setScale(mscale);
+    textureSprite->setScale(mscale * uiSacle);
     textureSprite->setRotation(this->userHead->getRotation());
     
     Sprite* maskSprite = Sprite::create("face/mask.png");
-    Point maskHeadPos = Node::convertToWorldSpaceAR(this->maskHead->getPosition());
+    // Point maskHeadPos = Node::convertToWorldSpaceAR(this->head->getPosition());
+    Point maskHeadPos = this->head->getPosition();
     maskSprite->setPosition(maskHeadPos);
-    maskSprite->setRotation(this->maskHead->getRotation());
+    // 这里是为了适配动画里的骨骼大小，大概是114*121，UI层就做放大处理了。
+    maskSprite->setScale(uiSacle);
 
     Size visibleSize = Director::getInstance()->getVisibleSize();
     RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888);

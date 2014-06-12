@@ -156,44 +156,6 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui4/scale.png</key>
-			<dict>
-				<key>width</key>
-				<integer>209</integer>
-				<key>height</key>
-				<integer>152</integer>
-				<key>originalWidth</key>
-				<integer>209</integer>
-				<key>originalHeight</key>
-				<integer>152</integer>
-				<key>x</key>
-				<integer>1114</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui4/rotate.png</key>
-			<dict>
-				<key>width</key>
-				<integer>204</integer>
-				<key>height</key>
-				<integer>138</integer>
-				<key>originalWidth</key>
-				<integer>204</integer>
-				<key>originalHeight</key>
-				<integer>138</integer>
-				<key>x</key>
-				<integer>1325</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
 			<key>ui4/OK.png</key>
 			<dict>
 				<key>width</key>
@@ -205,7 +167,7 @@
 				<key>originalHeight</key>
 				<integer>120</integer>
 				<key>x</key>
-				<integer>1531</integer>
+				<integer>1114</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>

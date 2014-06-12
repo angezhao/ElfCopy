@@ -66,6 +66,8 @@ void MainLayer::goNext(Ref* pSender, TouchEventType type)
 
 void MainLayer::changeFace(ImageView* face)
 {
+    face->setScale(2.6);
+    face->setPosition(Point(-40, -40));
     if (m_intHead == 1) {
         headBtn1->addChild(face);
     } else if (m_intHead == 2) {

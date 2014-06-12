@@ -124,6 +124,7 @@
         [window setRootViewController:[self rootViewController]];
     }
 
+    // NSData *imageData = UIImagePNGRepresentation(originImage);
     NSData *imageData = UIImageJPEGRepresentation(originImage, 0.8);
     Image* image = new Image();
     image->initWithImageData((unsigned char *)[imageData bytes], [imageData length]);
