@@ -8,6 +8,7 @@
 
 #import "THCapture.h"
 #import "CGContextCreator.h"
+#import "AWScreenshot.h"
 
 static NSString* const kFileName=@"output.mov";
 
@@ -22,7 +23,6 @@ static NSString* const kFileName=@"output.mov";
 
 @implementation THCapture
 @synthesize frameRate=_frameRate;
-@synthesize captureLayer=_captureLayer;
 @synthesize startedAt=_startedAt;
 @synthesize avAdaptor=_avAdaptor;
 @synthesize outputPath=_outputPath;
@@ -32,6 +32,10 @@ static NSString* const kFileName=@"output.mov";
     self = [super init];
     if (self) {
         _frameRate=10;//默认帧率为10
+        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+        CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
+        width = size.height;//倒置
+        height = size.width;
     }
     
     return self;
@@ -48,7 +52,7 @@ static NSString* const kFileName=@"output.mov";
 - (bool)startRecording
 {
     bool result = NO;
-    if (! _recording && _captureLayer)
+    if (! _recording)
     {
         result = [self setUpWriter];
         if (result)
@@ -57,6 +61,7 @@ static NSString* const kFileName=@"output.mov";
             _recording = true;
             _writing = false;
             //绘屏的定时器
+            NSLog(@"_frameRate=%lu",(unsigned long)_frameRate);
             NSDate *nowDate = [NSDate date];
             timer = [[NSTimer alloc] initWithFireDate:nowDate interval:1.0/_frameRate target:self selector:@selector(drawFrame) userInfo:nil repeats:YES];
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
@@ -83,12 +88,11 @@ static NSString* const kFileName=@"output.mov";
 {
     if (!_writing) {
         NSLog(@"start drawFrame.......");
-        //[self performSelectorInBackground:@selector(getFrame) withObject:nil];
-        [self performSelector:@selector(getFrame) withObject:nil];
+        [self getFrame];
         NSLog(@"end drawFrame.......");
-
     }
 }
+
 -(void) writeVideoFrameAtTime:(CMTime)time addImage:(CGImageRef )newImage
 {
     if (![videoWriterInput isReadyForMoreMediaData]) {
@@ -107,7 +111,7 @@ static NSString* const kFileName=@"output.mov";
 			}
 			// set image data into pixel buffer
 			CVPixelBufferLockBaseAddress( pixelBuffer, 0 );
-			uint8_t* destPixels = CVPixelBufferGetBaseAddress(pixelBuffer);
+			UInt8 * destPixels = (UInt8 *)CVPixelBufferGetBaseAddress(pixelBuffer);
 			CFDataGetBytes(image, CFRangeMake(0, CFDataGetLength(image)), destPixels);  //XXX:  will work if the pixel buffer is contiguous and has the same bytesPerRow as the input data
 			
 			if(status == 0){
@@ -121,26 +125,57 @@ static NSString* const kFileName=@"output.mov";
 			CVPixelBufferRelease( pixelBuffer );
 			CFRelease(image);
 			CGImageRelease(cgImage);
+            free(destPixels);
 		}
 	}
 }
+
 - (void)getFrame
 {
     if (!_writing) {
         _writing = true;
-        size_t width  = CGBitmapContextGetWidth(context);
-        size_t height = CGBitmapContextGetHeight(context);
         @try {
-            CGContextClearRect(context, CGRectMake(0, 0,width , height));
-            [self.captureLayer renderInContext:context];
-            //self.captureLayer.contents=nil;
+            
+            GLuint bufferLength = width * height *4;
+            GLubyte* buffer =(GLubyte*)malloc(bufferLength);
+            
+            // Read Pixels from OpenGL
+            glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+            
+            // Make data provider with data.
+            CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
+            CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, bufferLength, NULL);
+            
+            // Configure image
+            CGImageRef iref = CGImageCreate(width, height, 8, 32, width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
+            // Create buffer for output image
+            uint32_t* pixels =(uint32_t*)malloc(width * height *4);
+            CGContextRef context = CGBitmapContextCreate(pixels, width, height, 8, width *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
+            CGContextTranslateCTM(context, 0, height);
+            CGContextScaleCTM(context, 1, -1);
+            //CGContextSetAllowsAntialiasing(context,NO);
+            //CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0,-1, 0, height);
+            //CGContextConcatCTM(context, flipVertical);
+            
+            // Render
+            CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width , height), iref);
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
+            
             if (_recording) {
                 float millisElapsed = [[NSDate date] timeIntervalSinceDate:self.startedAt] * 1000.0;
                 //NSLog(@"millisElapsed = %f",millisElapsed);
                 [self writeVideoFrameAtTime:CMTimeMake((int)millisElapsed, 1000) addImage:cgImage];
             }
+            // Dealloc
             CGImageRelease(cgImage);
+            
+            CGDataProviderRelease(provider);
+            CGImageRelease(iref);
+            CGColorSpaceRelease(colorSpaceRef);
+            CGContextRelease(context);
+            free(buffer);
+            free(pixels);
+            
         }
         @catch (NSException *exception) {
             
@@ -156,8 +191,6 @@ static NSString* const kFileName=@"output.mov";
 	return filePath;
 }
 -(BOOL) setUpWriter {
-    
-    CGSize size = self.captureLayer.frame.size;
     //Clear Old TempFile
 	NSError  *error = nil;
     NSString *filePath=[self tempFilePath];
@@ -178,13 +211,13 @@ static NSString* const kFileName=@"output.mov";
 	
 	//Configure videoWriterInput
 	NSDictionary* videoCompressionProps = [NSDictionary dictionaryWithObjectsAndKeys:
-										   [NSNumber numberWithDouble:size.width*size.height], AVVideoAverageBitRateKey,
+										   [NSNumber numberWithDouble:width*height], AVVideoAverageBitRateKey,
 										   nil ];
 	
 	NSDictionary* videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 								   AVVideoCodecH264, AVVideoCodecKey,
-								   [NSNumber numberWithInt:size.width], AVVideoWidthKey,
-								   [NSNumber numberWithInt:size.height], AVVideoHeightKey,
+								   [NSNumber numberWithInt:width], AVVideoWidthKey,
+								   [NSNumber numberWithInt:height], AVVideoHeightKey,
 								   videoCompressionProps, AVVideoCompressionPropertiesKey,
 								   nil];
 
@@ -201,30 +234,7 @@ static NSString* const kFileName=@"output.mov";
 	[videoWriter addInput:videoWriterInput];
 	[videoWriter startWriting];
 	[videoWriter startSessionAtSourceTime:CMTimeMake(0, 1000)];
-    
-    
-    //create context
-    if (context== NULL)
-    {
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        context = CGBitmapContextCreate (NULL,
-                                         size.width,
-                                         size.height,
-                                         8,//bits per component
-                                         size.width * 4,
-                                         colorSpace,
-                                         kCGImageAlphaNoneSkipFirst);
-        CGColorSpaceRelease(colorSpace);
-        CGContextSetAllowsAntialiasing(context,NO);
-        CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0,-1, 0, size.height);
-        CGContextConcatCTM(context, flipVertical);
-    }
-    if (context== NULL)
-    {
-		fprintf (stderr, "Context not created!");
-        return NO;
-	}
-	
+
 	return YES;
 }
 
@@ -237,9 +247,6 @@ static NSString* const kFileName=@"output.mov";
 	videoWriter = nil;
 	
 	self.startedAt = nil;
-
-    //CGContextRelease(context);
-    //context=NULL;
 }
 
 - (BOOL) completeRecordingSession {

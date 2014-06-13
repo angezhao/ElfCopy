@@ -63,6 +63,7 @@
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */ = {isa = PBXBuildFile; fileRef = B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */; };
+		B72B697C194A1EA4004DEAFB /* AWScreenshot.mm in Sources */ = {isa = PBXBuildFile; fileRef = B72B697B194A1EA4004DEAFB /* AWScreenshot.mm */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AA19473DB70048F40F /* CoreMedia.framework */; };
 		B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AE19473DC50048F40F /* CoreVideo.framework */; };
@@ -77,7 +78,7 @@
 		B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2591945C9F600368A5F /* CGContextCreator.m */; };
 		B7A2E2641945C9F600368A5F /* CGImageContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25B1945C9F600368A5F /* CGImageContainer.m */; };
 		B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */; };
-		B7A2E2661945C9F600368A5F /* THCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2601945C9F600368A5F /* THCapture.m */; };
+		B7A2E2661945C9F600368A5F /* THCapture.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2601945C9F600368A5F /* THCapture.mm */; };
 		B7A2E2671945C9F600368A5F /* THCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */; };
 		B7A3D920193EAAC4002EF35B /* ELFCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */; };
 		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
@@ -293,6 +294,8 @@
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ElfYourSelfUi; sourceTree = "<group>"; };
+		B72B697A194A1EA4004DEAFB /* AWScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWScreenshot.h; sourceTree = "<group>"; };
+		B72B697B194A1EA4004DEAFB /* AWScreenshot.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWScreenshot.mm; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
 		B794A5AA19473DB70048F40F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
@@ -314,7 +317,7 @@
 		B7A2E25C1945C9F600368A5F /* LZXAudioRecordAndTransCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZXAudioRecordAndTransCoding.h; sourceTree = "<group>"; };
 		B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZXAudioRecordAndTransCoding.m; sourceTree = "<group>"; };
 		B7A2E25F1945C9F600368A5F /* THCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCapture.h; sourceTree = "<group>"; };
-		B7A2E2601945C9F600368A5F /* THCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCapture.m; sourceTree = "<group>"; };
+		B7A2E2601945C9F600368A5F /* THCapture.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = THCapture.mm; sourceTree = "<group>"; };
 		B7A2E2611945C9F600368A5F /* THCaptureUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCaptureUtilities.h; sourceTree = "<group>"; };
 		B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCaptureUtilities.m; sourceTree = "<group>"; };
 		B7A3D91E193EAAC4002EF35B /* ELFCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELFCamera.h; path = ../Classes/ELFCamera.h; sourceTree = "<group>"; };
@@ -609,7 +612,9 @@
 			isa = PBXGroup;
 			children = (
 				B7A2E25F1945C9F600368A5F /* THCapture.h */,
-				B7A2E2601945C9F600368A5F /* THCapture.m */,
+				B72B697A194A1EA4004DEAFB /* AWScreenshot.h */,
+				B72B697B194A1EA4004DEAFB /* AWScreenshot.mm */,
+				B7A2E2601945C9F600368A5F /* THCapture.mm */,
 				B7A2E2611945C9F600368A5F /* THCaptureUtilities.h */,
 				B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */,
 			);
@@ -848,7 +853,7 @@
 			files = (
 				B7A515E4192B882200D44C31 /* MainLayer.cpp in Sources */,
 				B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */,
-				B7A2E2661945C9F600368A5F /* THCapture.m in Sources */,
+				B7A2E2661945C9F600368A5F /* THCapture.mm in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				B7A515EF192BA73A00D44C31 /* VidioLayer.cpp in Sources */,
@@ -861,6 +866,7 @@
 				B7A0E43819472F3A005851F5 /* CaptureScreen.mm in Sources */,
 				B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */,
 				B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */,
+				B72B697C194A1EA4004DEAFB /* AWScreenshot.mm in Sources */,
 				B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */,
 				B7A2E2671945C9F600368A5F /* THCaptureUtilities.m in Sources */,
 				B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */,

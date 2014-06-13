@@ -43,9 +43,11 @@ bool VidioLayer::init()
 void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        Layer* parent = (Layer*)this->getParent();
-        this->removeFromParentAndCleanup(true);
-        parent->removeFromParentAndCleanup(true);
+//        Layer* parent = (Layer*)this->getParent();
+//        this->removeFromParentAndCleanup(true);
+//        parent->removeFromParentAndCleanup(true);
+        CaptureScreen::drawFrame();
+
     }
 }
 
@@ -86,7 +88,7 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();
-        //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0/60), 1, 0.01);
+        //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0/6), kRepeatForever, 0.01);
         this->scheduleOnce(schedule_selector(VidioLayer::stopRecord),20);
 #endif
     }

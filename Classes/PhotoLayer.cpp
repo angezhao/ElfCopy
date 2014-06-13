@@ -230,7 +230,7 @@ void PhotoLayer::loadImage(Image* image)
     Size imageSize = imageSprite->getContentSize();
     double mscalex = headSize.width / imageSize.width;
     double mscaley = headSize.height / imageSize.height;
-    mscale = (mscalex + mscaley) / 2;
+    mscale =  mscalex > mscaley ? mscalex : mscaley;
 
     log("mscale=%f", mscale);
 
