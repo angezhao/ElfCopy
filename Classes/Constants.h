@@ -18,5 +18,6 @@
 extern int m_intHead;
 //拍照还是相册
 extern bool selectOrPick;
+//
 
 #endif /* defined(__ElfCopy__Constants__) */
