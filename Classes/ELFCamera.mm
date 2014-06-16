@@ -47,15 +47,15 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 -(void)OpenPicker:(BOOL) takePhoto
@@ -87,7 +87,7 @@
     }
     else {
         popoverController = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
-        [popoverController presentPopoverFromRect:CGRectMake(0, 0, 800, 800) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        [popoverController presentPopoverFromRect:CGRectMake(0, 0, 600, 600) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
 
@@ -102,14 +102,14 @@
         // 不需要保存到相册里去
         // UIImageWriteToSavedPhotosAlbum(originImage, nil, nil, nil);
     }
-
+    
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [self dismissViewControllerAnimated:false completion:nil];
     }
     else {
         [popoverController dismissPopoverAnimated:YES];
     }
-
+    
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     // Set ViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
@@ -123,12 +123,11 @@
         // use this method on ios6
         [window setRootViewController:[self rootViewController]];
     }
-
-    // NSData *imageData = UIImagePNGRepresentation(originImage);
+    
     NSData *imageData = UIImageJPEGRepresentation(originImage, 0.8);
     Image* image = new Image();
     image->initWithImageData((unsigned char *)[imageData bytes], [imageData length]);
-
+    
     auto director = Director::getInstance();
     GameScene* layer1 = (GameScene*)director->getRunningScene()->getChildByTag(1);
     StartLayer* layer2 = (StartLayer*)layer1->getChildByTag(1);

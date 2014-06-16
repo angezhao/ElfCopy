@@ -66,8 +66,23 @@ void MainLayer::goNext(Ref* pSender, TouchEventType type)
 
 void MainLayer::changeFace(ImageView* face)
 {
-    face->setScale(2.6);
-    face->setPosition(Point(-40, -40));
+    // face->setScale(2.6);
+
+    /*
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+    if (visibleSize.height >= 768) {
+        // face->setPosition(Point(-40, -40));
+        // face->setPosition(position);
+    } else {
+        CCLOG("kering -> vw:%f,vh:%f", visibleSize.width, visibleSize.height);
+        // face->setPosition(Point(200, -200));
+        face->setPosition(Point(300, 200));
+    }
+    if (1 + 1 == 2) {
+        this->addChild(face, 100);
+        return;
+    }*/
+
     if (m_intHead == 1) {
         headBtn1->addChild(face);
     } else if (m_intHead == 2) {

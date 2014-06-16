@@ -228,6 +228,8 @@ void PhotoLayer::loadImage(Image* image)
 
     Size headSize = this->head->getContentSize();
     Size imageSize = imageSprite->getContentSize();
+    CCLOG("kering -> hw:%f,hh:%f", headSize.width, headSize.height);
+    CCLOG("kering -> iw:%f,ih:%f", imageSize.width, imageSize.height);
     double mscalex = headSize.width / imageSize.width;
     double mscaley = headSize.height / imageSize.height;
     mscale =  mscalex > mscaley ? mscalex : mscaley;
@@ -252,22 +254,24 @@ Sprite* PhotoLayer::mask()
     assert(this->userHead);
 
     float uiSacle = 0.38f;
+    uiSacle = 1;
     Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
     Sprite* textureSprite = Sprite::createWithSpriteFrame(userHeadSprite->getSpriteFrame());
     Point userHeadPos = Node::convertToWorldSpaceAR(this->userHead->getPosition());
-    textureSprite->setPosition(userHeadPos);
+    Point texturePosition = this->convertToNodeSpace(userHeadPos);
+    CCLOG("kering -> px:%f,py:%f", texturePosition.x, texturePosition.y);
+    textureSprite->setPosition(texturePosition);
     textureSprite->setScale(mscale * uiSacle);
     textureSprite->setRotation(this->userHead->getRotation());
     
     Sprite* maskSprite = Sprite::create("face/mask.png");
-    // Point maskHeadPos = Node::convertToWorldSpaceAR(this->head->getPosition());
-    Point maskHeadPos = this->head->getPosition();
-    maskSprite->setPosition(maskHeadPos);
+    maskSprite->setPosition(Point(512, 384));
     // 这里是为了适配动画里的骨骼大小，大概是114*121，UI层就做放大处理了。
     maskSprite->setScale(uiSacle);
 
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    RenderTexture* rt = RenderTexture::create(visibleSize.width, visibleSize.height, Texture2D::PixelFormat::RGBA8888);
+    // Size size = Director::getInstance()->getVisibleSize();
+    Size size = Director::getInstance()->getWinSize();
+    RenderTexture* rt = RenderTexture::create(size.width, size.height, Texture2D::PixelFormat::RGBA8888);
     
     BlendFunc maskBlendFunc = { GL_ONE, GL_ZERO };
     maskSprite->setBlendFunc(maskBlendFunc);

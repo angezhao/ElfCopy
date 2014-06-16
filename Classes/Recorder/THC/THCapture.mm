@@ -87,9 +87,9 @@ static NSString* const kFileName=@"output.mov";
 - (void)drawFrame
 {
     if (!_writing) {
-        NSLog(@"start drawFrame.......");
+        // NSLog(@"start drawFrame.......");
         [self getFrame];
-        NSLog(@"end drawFrame.......");
+        // NSLog(@"end drawFrame.......");
     }
 }
 
