@@ -33,7 +33,7 @@ void CaptureScreen::stopRecord()
         const char *outputPath = [capture.outputPath UTF8String];
         log("outputPath=%s",outputPath);
         //混合保存
-        //[THCaptureUtilities mergeVideo:capture.outputPath andAudio:path];
+        [THCaptureUtilities mergeVideo:capture.outputPath andAudio:nil];
     }
 }
 

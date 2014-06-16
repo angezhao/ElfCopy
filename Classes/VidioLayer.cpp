@@ -43,11 +43,10 @@ bool VidioLayer::init()
 void VidioLayer::goBack(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-//        Layer* parent = (Layer*)this->getParent();
-//        this->removeFromParentAndCleanup(true);
-//        parent->removeFromParentAndCleanup(true);
-        CaptureScreen::drawFrame();
-
+        Layer* parent = (Layer*)this->getParent();
+        this->removeFromParentAndCleanup(true);
+        parent->removeFromParentAndCleanup(true);
+        //CaptureScreen::drawFrame();
     }
 }
 
@@ -76,16 +75,27 @@ void VidioLayer::animationEvent(Armature *armature, MovementEventType movementTy
 {
     std::string id = movementID;
 
-    CCLOG("kering -> animationEvent, %d", movementType);
+    log("kering -> animationEvent, %d", movementType);
 	if (movementType == LOOP_COMPLETE)
 	{
         // this->scheduleOnce(schedule_selector(VidioLayer::stopRecord), 0);
-        schedule_selector(VidioLayer::stopRecord);
-        CCLOG("kering -> animationEvent, LOOP_COMPLETE");
+        //schedule_selector(VidioLayer::stopRecord);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CaptureScreen::stopRecord();
+#endif
+        this->removeChildByTag(1);
+        this->removeChildByTag(2);
+        log("kering -> animationEvent, LOOP_COMPLETE");
 	} else if (movementType == COMPLETE) {
-        CCLOG("kering -> animationEvent, COMPLETE");
+        //schedule_selector(VidioLayer::stopRecord);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+        CaptureScreen::stopRecord();
+#endif
+        this->removeChildByTag(1);
+        this->removeChildByTag(2);
+        log("kering -> animationEvent, COMPLETE");
     } else if (movementType == START) {
-        CCLOG("kering -> animationEvent, START");
+        log("kering -> animationEvent, START");
     }
 }
 
@@ -124,7 +134,6 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
         Bone *tou2 = armature2->getBone("tou2");
         tou2->addDisplay(face2, 1);
         tou2->changeDisplayWithIndex(1, true);
-        
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
         CaptureScreen::startRecord();
         //this->schedule(schedule_selector(VidioLayer::drawFrame), (1.0 / 6), kRepeatForever, 0.01);

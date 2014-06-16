@@ -125,7 +125,6 @@ static NSString* const kFileName=@"output.mov";
 			CVPixelBufferRelease( pixelBuffer );
 			CFRelease(image);
 			CGImageRelease(cgImage);
-            free(destPixels);
 		}
 	}
 }
