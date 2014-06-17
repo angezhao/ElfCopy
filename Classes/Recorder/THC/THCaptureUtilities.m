@@ -16,7 +16,6 @@
     if (audioPath == nil) {
         //直接存入相册中
         if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoPath)) {
-            //UISaveVideoAtPathToSavedPhotosAlbum(path, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
             UISaveVideoAtPathToSavedPhotosAlbum(videoPath, nil, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         }
         return;
@@ -24,15 +23,13 @@
     
     AVMutableComposition* mixComposition = [AVMutableComposition composition];
 	//混合音乐
-	if (audioPath != nil) {
-        NSURL *audioUrl=[NSURL fileURLWithPath:audioPath];
-        AVURLAsset* audioAsset = [[AVURLAsset alloc]initWithURL:audioUrl options:nil];
-        AVMutableCompositionTrack *compositionCommentaryTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio
+    NSURL *audioUrl=[NSURL fileURLWithPath:audioPath];
+    AVURLAsset* audioAsset = [[AVURLAsset alloc]initWithURL:audioUrl options:nil];
+    AVMutableCompositionTrack *compositionCommentaryTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio
                                                                                             preferredTrackID:kCMPersistentTrackID_Invalid];
-        [compositionCommentaryTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
+    [compositionCommentaryTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
                                             ofTrack:[[audioAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0]
                                              atTime:kCMTimeZero error:nil];
-    }
 	
 	//混合视频
     NSURL *videoUrl=[NSURL fileURLWithPath:videoPath];

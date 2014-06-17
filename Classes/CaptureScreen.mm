@@ -41,6 +41,7 @@ void CaptureScreen::stopRecord()
 void CaptureScreen::drawFrame()
 {
      NSLog(@"start CaptureScreen:drawFrame.......");
+    /*
     cocos2d::Size size = Director::getInstance()->getWinSize();
     RenderTexture *screen = CCRenderTexture::create(size.width, size.height);
     Scene *scene = Director::getInstance()->getRunningScene();
@@ -48,14 +49,18 @@ void CaptureScreen::drawFrame()
     scene->visit();//将当前的整个scene绘出来
     screen->end();
     screen->saveToFile("MyCurScene.png", Image::Format::PNG);
+    */
     
     UIImage *currentImg = [AWScreenshot takeAsImage];
+    UIImageWriteToSavedPhotosAlbum(currentImg, nil, nil, nil);
+    
     NSData *imageData = UIImageJPEGRepresentation(currentImg, 0.5);
     // 获取沙盒目录
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
     NSLog(@"path=%@",fullPath);
     // 将图片写入文件
     [imageData writeToFile:fullPath atomically:NO];
+    
     
     /*
     Image* ccImg = screen->newImage(true);

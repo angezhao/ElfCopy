@@ -25,33 +25,34 @@ using namespace cocos2d;
 
 +(CGImageRef) takeAsCGImage
 {
-    Director *director = Director::getInstance();
-    cocos2d::Size winSize = director->getWinSize();
-    cocos2d::Size displaySize = director->getVisibleSize();
+    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+    CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
+    int width = size.height;//倒置
+    int height = size.width;
     
     // Create buffer for pixels
-    GLuint bufferLength = displaySize.width * displaySize.height *4;
+    GLuint bufferLength = width * height *4;
     GLubyte* buffer =(GLubyte*)malloc(bufferLength);
     
     // Read Pixels from OpenGL
-    glReadPixels(0, 0, displaySize.width, displaySize.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
     
     // Make data provider with data.
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, bufferLength, NULL);
     
     // Configure image
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGImageRef iref = CGImageCreate(displaySize.width, displaySize.height, 8, 32, displaySize.width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
+    CGImageRef iref = CGImageCreate(width, height, 8, 32, width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
     
     // Create buffer for output image
-    uint32_t* pixels =(uint32_t*)malloc(winSize.width * winSize.height *4);
-    CGContextRef context = CGBitmapContextCreate(pixels, winSize.width, winSize.height, 8, winSize.width *4, colorSpaceRef, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    uint32_t* pixels =(uint32_t*)malloc(width * height *4);
+    CGContextRef context = CGBitmapContextCreate(pixels, width, height, 8, width *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
     
     // Transform
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    CGContextTranslateCTM(context, 0, displaySize.height);
+    CGContextTranslateCTM(context, 0, height);
     CGContextScaleCTM(context, 1, -1);
-    
+
     /*
     switch([[UIApplication sharedApplication] statusBarOrientation])
     {
@@ -73,14 +74,14 @@ using namespace cocos2d;
     */
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, displaySize.width, displaySize.height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
     
 #else
     CGContextTranslateCTM(context, 0, winSize.height);
     CGContextScaleCTM(context, 1, -1);
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, winSize.width, winSize.height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
 #endif
     
     // Create image
