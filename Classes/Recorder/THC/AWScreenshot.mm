@@ -25,63 +25,89 @@ using namespace cocos2d;
 
 +(CGImageRef) takeAsCGImage
 {
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
-    int width = size.height;//倒置
-    int height = size.width;
+    Director *director = Director::getInstance();
+    cocos2d::Size displaySize   = director->getVisibleSize();
+    cocos2d::Size winSize  = director->getWinSizeInPixels();
+    
+    CGSize size = [UIScreen mainScreen].currentMode.size;//keyWindow.frame.size;
+    winSize.width = size.height;//倒置
+    winSize.height = size.width;
+    displaySize = winSize;
     
     // Create buffer for pixels
-    GLuint bufferLength = width * height *4;
+    GLuint bufferLength = displaySize.width * displaySize.height *4;
     GLubyte* buffer =(GLubyte*)malloc(bufferLength);
     
     // Read Pixels from OpenGL
-    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    //glPixelStorei(GL_PACK_ALIGNMENT, 4);
+    glReadPixels(0, 0, displaySize.width, displaySize.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
     
     // Make data provider with data.
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, bufferLength, NULL);
     
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+    CGBitmapInfo bitmapInfo = kCGBitmapByteOrderDefault | kCGImageAlphaPremultipliedLast;
+//#else
+    //CGBitmapInfo bitmapInfo = kCGImageAlphaPremultipliedLast;
+//#endif
+    
     // Configure image
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGImageRef iref = CGImageCreate(width, height, 8, 32, width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
+    CGImageRef iref = CGImageCreate(displaySize.width, displaySize.height, 8, 32, displaySize.width*4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
     
     // Create buffer for output image
-    uint32_t* pixels =(uint32_t*)malloc(width * height *4);
-    CGContextRef context = CGBitmapContextCreate(pixels, width, height, 8, width *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    uint32_t* pixels =(uint32_t*)malloc(winSize.width * winSize.height *4);
+
+    CGContextRef context = CGBitmapContextCreate(pixels, winSize.width, winSize.height, 8, winSize.width *4, colorSpaceRef, bitmapInfo);
+    //kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
     
     // Transform
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    CGContextTranslateCTM(context, 0, height);
+    CGContextTranslateCTM(context, 0, displaySize.height);
     CGContextScaleCTM(context, 1, -1);
-
+    
     /*
-    switch([[UIApplication sharedApplication] statusBarOrientation])
+    switch([[UIDevice currentDevice] orientation])
     {
-        case UIInterfaceOrientationPortrait:
-            break;
-        case UIInterfaceOrientationPortraitUpsideDown:
+//            UIDeviceOrientationUnknown,
+//            UIDeviceOrientationPortrait,            // Device oriented vertically, home button on the bottom
+//            UIDeviceOrientationPortraitUpsideDown,  // Device oriented vertically, home button on the top
+//            UIDeviceOrientationLandscapeLeft,       // Device oriented horizontally, home button on the right
+//            UIDeviceOrientationLandscapeRight,      // Device oriented horizontally, home button on the left
+//            UIDeviceOrientationFaceUp,              // Device oriented flat, face up
+//            UIDeviceOrientationFaceDown             // Device oriented flat, face down
+            
+        case UIDeviceOrientationPortrait:break;
+        case UIDeviceOrientationPortraitUpsideDown:
             CGContextRotateCTM(context, CC_DEGREES_TO_RADIANS(180));
             CGContextTranslateCTM(context, -displaySize.width, -displaySize.height);
             break;
-        case UIInterfaceOrientationLandscapeLeft:
+        case UIDeviceOrientationLandscapeLeft:
             CGContextRotateCTM(context, CC_DEGREES_TO_RADIANS(-90));
             CGContextTranslateCTM(context, -displaySize.height, 0);
             break;
-        case UIInterfaceOrientationLandscapeRight:
+        case UIDeviceOrientationLandscapeRight:
             CGContextRotateCTM(context, CC_DEGREES_TO_RADIANS(90));
             CGContextTranslateCTM(context, displaySize.height-displaySize.width, -displaySize.height);
+            break;
+        case UIDeviceOrientationFaceUp:
+            break;
+        case UIDeviceOrientationFaceDown:
+            break;
+        default:
             break;
     }
     */
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, displaySize.width, displaySize.height), iref);
     
 #else
     CGContextTranslateCTM(context, 0, winSize.height);
     CGContextScaleCTM(context, 1, -1);
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width, height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, winSize.width, winSize.height), iref);
 #endif
     
     // Create image

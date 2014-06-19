@@ -32,10 +32,13 @@ static NSString* const kFileName=@"output.mov";
     self = [super init];
     if (self) {
         _frameRate=10;//默认帧率为10
-        UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-        CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
-        width = size.height;//倒置
-        height = size.width;
+        //UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
+//        CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
+//        width = size.height;//倒置
+//        height = size.width;
+        width = [UIScreen mainScreen].currentMode.size.height;
+        height = [UIScreen mainScreen].currentMode.size.width;
+        NSLog(@"width=%zu,height=%zu",width,height);
     }
     
     return self;
@@ -87,9 +90,9 @@ static NSString* const kFileName=@"output.mov";
 - (void)drawFrame
 {
     if (!_writing) {
-        // NSLog(@"start drawFrame.......");
+        //NSLog(@"start drawFrame.......");
         [self getFrame];
-        // NSLog(@"end drawFrame.......");
+        //NSLog(@"end drawFrame.......");
     }
 }
 

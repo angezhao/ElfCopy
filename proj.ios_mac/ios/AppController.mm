@@ -51,6 +51,11 @@ static AppDelegate s_sharedApplication;
                                       sharegroup: nil
                                    multiSampling: NO
                                  numberOfSamples: 0];
+    CAEAGLLayer *eaglLayer = (CAEAGLLayer *) eaglView.layer;
+    eaglLayer.drawableProperties = @{
+                                     kEAGLDrawablePropertyRetainedBacking: [NSNumber numberWithBool:YES],
+                                     //kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8
+                                     };
 
     // Use RootViewController manage CCEAGLView 
     _viewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
