@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1610FEDA19533FF4008E6C6C /* gongfu in Resources */ = {isa = PBXBuildFile; fileRef = 1610FED919533FF4008E6C6C /* gongfu */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -248,6 +249,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1610FED919533FF4008E6C6C /* gongfu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gongfu; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -570,16 +572,17 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */,
-				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
-				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
-				B7A430D81921B16200D3CDAB /* yuanshiren */,
-				B7B174FC1920F5570010B350 /* publish */,
-				B7A0EB51190A6BC20009C47B /* face */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
+				B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */,
+				B7A0EB51190A6BC20009C47B /* face */,
+				1610FED919533FF4008E6C6C /* gongfu */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
+				B7B174FC1920F5570010B350 /* publish */,
 				B79CDBFC191E492F00311E24 /* scene */,
+				B7A430D81921B16200D3CDAB /* yuanshiren */,
+				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
+				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -800,6 +803,7 @@
 				B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				B79CDBFE191E492F00311E24 /* scene in Resources */,
+				1610FEDA19533FF4008E6C6C /* gongfu in Resources */,
 				B7A0EB54190A6BC20009C47B /* face in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
