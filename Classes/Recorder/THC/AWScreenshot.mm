@@ -25,22 +25,21 @@ using namespace cocos2d;
 
 +(CGImageRef) takeAsCGImage
 {
-    Director *director = Director::getInstance();
-    cocos2d::Size displaySize   = director->getVisibleSize();
-    cocos2d::Size winSize  = director->getWinSizeInPixels();
-    
-    CGSize size = [UIScreen mainScreen].currentMode.size;//keyWindow.frame.size;
-    winSize.width = size.height;//倒置
-    winSize.height = size.width;
-    displaySize = winSize;
-    
+    CGSize outSize = CGSizeMake(1024, 768);
+    CGSize screenSize = [UIScreen mainScreen].currentMode.size;
+    int height = screenSize.height;
+    int width = screenSize.width;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {//iphone反转
+        height = screenSize.width;
+        width = screenSize.height;
+    }
     // Create buffer for pixels
-    GLuint bufferLength = displaySize.width * displaySize.height *4;
+    GLuint bufferLength = width * height *4;
     GLubyte* buffer =(GLubyte*)malloc(bufferLength);
     
     // Read Pixels from OpenGL
     //glPixelStorei(GL_PACK_ALIGNMENT, 4);
-    glReadPixels(0, 0, displaySize.width, displaySize.height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+    glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
     
     // Make data provider with data.
     CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, bufferLength, NULL);
@@ -53,17 +52,17 @@ using namespace cocos2d;
     
     // Configure image
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
-    CGImageRef iref = CGImageCreate(displaySize.width, displaySize.height, 8, 32, displaySize.width*4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
+    CGImageRef iref = CGImageCreate(width, height, 8, 32, width*4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
     
     // Create buffer for output image
-    uint32_t* pixels =(uint32_t*)malloc(winSize.width * winSize.height *4);
+    uint32_t* pixels =(uint32_t*)malloc(outSize.width * outSize.height *4);
 
-    CGContextRef context = CGBitmapContextCreate(pixels, winSize.width, winSize.height, 8, winSize.width *4, colorSpaceRef, bitmapInfo);
+    CGContextRef context = CGBitmapContextCreate(pixels, outSize.width, outSize.height, 8, outSize.width *4, colorSpaceRef, bitmapInfo);
     //kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
     
     // Transform
 #ifdef __IPHONE_OS_VERSION_MAX_ALLOWED
-    CGContextTranslateCTM(context, 0, displaySize.height);
+    CGContextTranslateCTM(context, 0, outSize.height);
     CGContextScaleCTM(context, 1, -1);
     
     /*
@@ -100,14 +99,14 @@ using namespace cocos2d;
     */
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, displaySize.width, displaySize.height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, outSize.width, outSize.height), iref);
     
 #else
-    CGContextTranslateCTM(context, 0, winSize.height);
+    CGContextTranslateCTM(context, 0, outSize.height);
     CGContextScaleCTM(context, 1, -1);
     
     // Render
-    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, winSize.width, winSize.height), iref);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, outSize.width, outSize.height), iref);
 #endif
     
     // Create image

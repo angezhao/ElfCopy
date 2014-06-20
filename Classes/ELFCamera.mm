@@ -140,7 +140,12 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
 	NSLog(@"取消");
-    [self dismissViewControllerAnimated:false completion:nil];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        [self dismissViewControllerAnimated:false completion:nil];
+    }
+    else {
+        [popoverController dismissPopoverAnimated:YES];
+    }
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     // Set ViewController to window

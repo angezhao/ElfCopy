@@ -20,12 +20,13 @@
 	NSDate         *_startedAt;     //录制的开始时间
     size_t width;
     size_t height;
+    size_t outWidth;
+    size_t outHeight;
     NSTimer        *timer;         //按帧率写屏的定时器
     
     NSUInteger  _frameRate;              //帧速
     NSString *_outputPath;//输出结果
 }
-@property(assign) NSUInteger frameRate;
 @property(nonatomic, strong) NSDate *startedAt;
 @property(nonatomic, strong) AVAssetWriterInputPixelBufferAdaptor *avAdaptor;
 @property(nonatomic, strong) NSString *outputPath;

@@ -20,7 +20,6 @@ void CaptureScreen::startRecord()
 {
     if (capture == NULL) {
         capture=[[THCapture alloc] init];
-        capture.frameRate = 30;
     }
     [capture startRecording];
 }
@@ -62,6 +61,7 @@ void CaptureScreen::drawFrame()
     //NSData *imageData = UIImagePNGRepresentation([UIImage imageWithCGImage:cgImage]);
     UIImageWriteToSavedPhotosAlbum(currentImg, nil, nil, nil);
     
+    /*
     NSData *imageData = UIImageJPEGRepresentation(currentImg,1);
     // 获取沙盒目录
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
@@ -70,7 +70,7 @@ void CaptureScreen::drawFrame()
     [imageData writeToFile:fullPath atomically:NO];
     Image* image = new Image();
     image->initWithImageData((unsigned char *)[imageData bytes], [imageData length]);
-    
+    */
     
     NSLog(@"end CaptureScreen:drawFrame.......");
 }

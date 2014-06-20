@@ -22,7 +22,6 @@ static NSString* const kFileName=@"output.mov";
 @end
 
 @implementation THCapture
-@synthesize frameRate=_frameRate;
 @synthesize startedAt=_startedAt;
 @synthesize avAdaptor=_avAdaptor;
 @synthesize outputPath=_outputPath;
@@ -31,13 +30,20 @@ static NSString* const kFileName=@"output.mov";
 {
     self = [super init];
     if (self) {
-        _frameRate=10;//默认帧率为10
-        //UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-//        CGSize size = keyWindow.layer.frame.size;//self.captureLayer.frame.size;
-//        width = size.height;//倒置
-//        height = size.width;
-        width = [UIScreen mainScreen].currentMode.size.height;
-        height = [UIScreen mainScreen].currentMode.size.width;
+        CGSize screenSize = [UIScreen mainScreen].currentMode.size;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {//iphone反转
+            _frameRate=30;//默认帧率为30
+            width = screenSize.height;
+            height = screenSize.width;
+            outWidth = 480;//输出尺寸
+            outHeight = 320;
+        }else{
+            _frameRate=10;//默认帧率为10
+            width = screenSize.width;
+            height = screenSize.height;
+            outWidth = 512;//输出尺寸
+            outHeight = 384;
+        }
         NSLog(@"width=%zu,height=%zu",width,height);
     }
     
@@ -104,8 +110,9 @@ static NSString* const kFileName=@"output.mov";
 	else {
 		@synchronized (self) {
 			CVPixelBufferRef pixelBuffer = NULL;
-			CGImageRef cgImage = CGImageCreateCopy(newImage);
-			CFDataRef image = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
+			//CGImageRef cgImage = CGImageCreateCopy(newImage);
+            
+			CFDataRef image = CGDataProviderCopyData(CGImageGetDataProvider(newImage));
 			
 			int status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, self.avAdaptor.pixelBufferPool, &pixelBuffer);
 			if(status != 0){
@@ -127,7 +134,7 @@ static NSString* const kFileName=@"output.mov";
 			CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
 			CVPixelBufferRelease( pixelBuffer );
 			CFRelease(image);
-			CGImageRelease(cgImage);
+			//CGImageRelease(cgImage);
 		}
 	}
 }
@@ -151,16 +158,16 @@ static NSString* const kFileName=@"output.mov";
             // Configure image
             CGImageRef iref = CGImageCreate(width, height, 8, 32, width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
             // Create buffer for output image
-            uint32_t* pixels =(uint32_t*)malloc(width * height *4);
-            CGContextRef context = CGBitmapContextCreate(pixels, width, height, 8, width *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
-            CGContextTranslateCTM(context, 0, height);
+            uint32_t* pixels =(uint32_t*)malloc(outWidth * outHeight *4);
+            CGContextRef context = CGBitmapContextCreate(pixels, outWidth, outHeight, 8, outWidth *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
+            CGContextTranslateCTM(context, 0, outHeight);
             CGContextScaleCTM(context, 1, -1);
             //CGContextSetAllowsAntialiasing(context,NO);
             //CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0,-1, 0, height);
             //CGContextConcatCTM(context, flipVertical);
             
             // Render
-            CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, width , height), iref);
+            CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, outWidth , outHeight), iref);
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
             
             if (_recording) {
@@ -213,13 +220,14 @@ static NSString* const kFileName=@"output.mov";
 	
 	//Configure videoWriterInput
 	NSDictionary* videoCompressionProps = [NSDictionary dictionaryWithObjectsAndKeys:
-										   [NSNumber numberWithDouble:width*height], AVVideoAverageBitRateKey,
+										   [NSNumber numberWithDouble:outWidth*outHeight],
+                                           AVVideoAverageBitRateKey,
 										   nil ];
 	
 	NSDictionary* videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
 								   AVVideoCodecH264, AVVideoCodecKey,
-								   [NSNumber numberWithInt:width], AVVideoWidthKey,
-								   [NSNumber numberWithInt:height], AVVideoHeightKey,
+								   [NSNumber numberWithInt:outWidth], AVVideoWidthKey,
+								   [NSNumber numberWithInt:outHeight], AVVideoHeightKey,
 								   videoCompressionProps, AVVideoCompressionPropertiesKey,
 								   nil];
 
@@ -252,12 +260,11 @@ static NSString* const kFileName=@"output.mov";
 }
 
 - (BOOL) completeRecordingSession {
-     
-	
+    
 	[videoWriterInput markAsFinished];
 	
 	// Wait for the video
-	int status = videoWriter.status;
+	long status = videoWriter.status;
 	while (status == AVAssetWriterStatusUnknown)
     {
 		NSLog(@"Waiting...");
