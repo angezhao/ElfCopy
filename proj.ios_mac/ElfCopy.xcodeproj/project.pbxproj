@@ -68,7 +68,6 @@
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AA19473DB70048F40F /* CoreMedia.framework */; };
 		B794A5AF19473DC50048F40F /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AE19473DC50048F40F /* CoreVideo.framework */; };
-		B79CDBFE191E492F00311E24 /* scene in Resources */ = {isa = PBXBuildFile; fileRef = B79CDBFC191E492F00311E24 /* scene */; };
 		B79FDE4F1947F1E800DAE7D5 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE4E1947F1E800DAE7D5 /* CoreAudio.framework */; };
 		B79FDE531947F24000DAE7D5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */; };
 		B79FDE551947F25F00DAE7D5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B79FDE541947F25F00DAE7D5 /* Security.framework */; };
@@ -76,6 +75,8 @@
 		B7A0E43819472F3A005851F5 /* CaptureScreen.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A0E43619472F3A005851F5 /* CaptureScreen.mm */; };
 		B7A0EB54190A6BC20009C47B /* face in Resources */ = {isa = PBXBuildFile; fileRef = B7A0EB51190A6BC20009C47B /* face */; };
 		B7A1B2711931F8B300523FBF /* PickPhoto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */; };
+		B7A1D07F1962ECAA0050F647 /* maxituan in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D07D1962ECAA0050F647 /* maxituan */; };
+		B7A1D0801962ECAA0050F647 /* tongxuehui in Resources */ = {isa = PBXBuildFile; fileRef = B7A1D07E1962ECAA0050F647 /* tongxuehui */; };
 		B7A2E2631945C9F600368A5F /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2591945C9F600368A5F /* CGContextCreator.m */; };
 		B7A2E2641945C9F600368A5F /* CGImageContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25B1945C9F600368A5F /* CGImageContainer.m */; };
 		B7A2E2651945C9F600368A5F /* LZXAudioRecordAndTransCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E25D1945C9F600368A5F /* LZXAudioRecordAndTransCoding.m */; };
@@ -94,7 +95,6 @@
 		B7AB581C192DF07E00FEEC21 /* yuanshiren1 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB5819192DF07E00FEEC21 /* yuanshiren1 */; };
 		B7AB581D192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
 		B7AB581E192DF07E00FEEC21 /* yuanshiren2 in Resources */ = {isa = PBXBuildFile; fileRef = B7AB581A192DF07E00FEEC21 /* yuanshiren2 */; };
-		B7B174FD1920F5570010B350 /* publish in Resources */ = {isa = PBXBuildFile; fileRef = B7B174FC1920F5570010B350 /* publish */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -301,7 +301,6 @@
 		B77C6FE3193470890048B648 /* PickPhoto4Ios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto4Ios.h; path = ../Classes/PickPhoto4Ios.h; sourceTree = "<group>"; };
 		B794A5AA19473DB70048F40F /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		B794A5AE19473DC50048F40F /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
-		B79CDBFC191E492F00311E24 /* scene */ = {isa = PBXFileReference; lastKnownFileType = folder; path = scene; sourceTree = "<group>"; };
 		B79FDE4E1947F1E800DAE7D5 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
 		B79FDE521947F24000DAE7D5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		B79FDE541947F25F00DAE7D5 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -311,6 +310,8 @@
 		B7A0EB51190A6BC20009C47B /* face */ = {isa = PBXFileReference; lastKnownFileType = folder; path = face; sourceTree = "<group>"; };
 		B7A1B26F1931F8B300523FBF /* PickPhoto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PickPhoto.cpp; path = ../Classes/PickPhoto.cpp; sourceTree = "<group>"; };
 		B7A1B2701931F8B300523FBF /* PickPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PickPhoto.h; path = ../Classes/PickPhoto.h; sourceTree = "<group>"; };
+		B7A1D07D1962ECAA0050F647 /* maxituan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = maxituan; sourceTree = "<group>"; };
+		B7A1D07E1962ECAA0050F647 /* tongxuehui */ = {isa = PBXFileReference; lastKnownFileType = folder; path = tongxuehui; sourceTree = "<group>"; };
 		B7A2E2581945C9F600368A5F /* CGContextCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGContextCreator.h; sourceTree = "<group>"; };
 		B7A2E2591945C9F600368A5F /* CGContextCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGContextCreator.m; sourceTree = "<group>"; };
 		B7A2E25A1945C9F600368A5F /* CGImageContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGImageContainer.h; sourceTree = "<group>"; };
@@ -339,7 +340,6 @@
 		B7A515EE192BA73A00D44C31 /* VidioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VidioLayer.h; path = ../Classes/VidioLayer.h; sourceTree = "<group>"; };
 		B7AB5819192DF07E00FEEC21 /* yuanshiren1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren1; sourceTree = "<group>"; };
 		B7AB581A192DF07E00FEEC21 /* yuanshiren2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren2; sourceTree = "<group>"; };
-		B7B174FC1920F5570010B350 /* publish */ = {isa = PBXFileReference; lastKnownFileType = folder; path = publish; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -570,14 +570,14 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B7A1D07D1962ECAA0050F647 /* maxituan */,
+				B7A1D07E1962ECAA0050F647 /* tongxuehui */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				B70EEA821940A5F100C0B5AB /* ElfYourSelfUi */,
 				B7A0EB51190A6BC20009C47B /* face */,
 				1610FED919533FF4008E6C6C /* gongfu */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
-				B7B174FC1920F5570010B350 /* publish */,
-				B79CDBFC191E492F00311E24 /* scene */,
 				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
 				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
 			);
@@ -799,7 +799,7 @@
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				B70EEA831940A5F100C0B5AB /* ElfYourSelfUi in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
-				B79CDBFE191E492F00311E24 /* scene in Resources */,
+				B7A1D07F1962ECAA0050F647 /* maxituan in Resources */,
 				1610FEDA19533FF4008E6C6C /* gongfu in Resources */,
 				B7A0EB54190A6BC20009C47B /* face in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
@@ -808,9 +808,9 @@
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				B7A1D0801962ECAA0050F647 /* tongxuehui in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
-				B7B174FD1920F5570010B350 /* publish in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
