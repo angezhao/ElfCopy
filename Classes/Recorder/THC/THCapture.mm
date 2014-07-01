@@ -38,13 +38,13 @@ static NSString* const kFileName=@"output.mov";
             outWidth = 480;//输出尺寸
             outHeight = 320;
         }else{
-            _frameRate=10;//默认帧率为10
+            _frameRate=5;//默认帧率为10
             width = screenSize.width;
             height = screenSize.height;
-            outWidth = 512;//输出尺寸
-            outHeight = 384;
+            outWidth = 1024;//512;//输出尺寸
+            outHeight = 768;//384;
         }
-        NSLog(@"width=%zu,height=%zu",width,height);
+        NSLog(@"width=%zu,height=%zu,outWidth=%zu,outHeight=%zu",width,height,outWidth,outHeight);
     }
     
     return self;
@@ -96,9 +96,9 @@ static NSString* const kFileName=@"output.mov";
 - (void)drawFrame
 {
     if (!_writing) {
-        //NSLog(@"start drawFrame.......");
+        NSLog(@"start drawFrame.......");
         [self getFrame];
-        //NSLog(@"end drawFrame.......");
+        NSLog(@"end drawFrame.......");
     }
 }
 
@@ -109,12 +109,14 @@ static NSString* const kFileName=@"output.mov";
 	}
 	else {
 		@synchronized (self) {
+            NSLog(@"start writeVideoFrameAtTime.......");
+
 			CVPixelBufferRef pixelBuffer = NULL;
-			//CGImageRef cgImage = CGImageCreateCopy(newImage);
+			CGImageRef cgImage = CGImageCreateCopy(newImage);
             
-			CFDataRef image = CGDataProviderCopyData(CGImageGetDataProvider(newImage));
+			CFDataRef image = CGDataProviderCopyData(CGImageGetDataProvider(cgImage));
 			
-			int status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, self.avAdaptor.pixelBufferPool, &pixelBuffer);
+            int status = CVPixelBufferPoolCreatePixelBuffer(kCFAllocatorDefault, self.avAdaptor.pixelBufferPool, &pixelBuffer);
 			if(status != 0){
 				//could not get a buffer from the pool
 				NSLog(@"Error creating pixel buffer:  status=%d", status);
@@ -124,17 +126,19 @@ static NSString* const kFileName=@"output.mov";
 			UInt8 * destPixels = (UInt8 *)CVPixelBufferGetBaseAddress(pixelBuffer);
 			CFDataGetBytes(image, CFRangeMake(0, CFDataGetLength(image)), destPixels);  //XXX:  will work if the pixel buffer is contiguous and has the same bytesPerRow as the input data
 			
-			if(status == 0){
+            if(status == 0){
 				BOOL success = [self.avAdaptor appendPixelBuffer:pixelBuffer withPresentationTime:time];
 				if (!success)
 					NSLog(@"Warning:  Unable to write buffer to video");
 			}
 			
-			//clean up
+            //clean up
 			CVPixelBufferUnlockBaseAddress( pixelBuffer, 0 );
 			CVPixelBufferRelease( pixelBuffer );
 			CFRelease(image);
-			//CGImageRelease(cgImage);
+			CGImageRelease(cgImage);
+            NSLog(@"start writeVideoFrameAtTime.......");
+
 		}
 	}
 }
@@ -144,19 +148,23 @@ static NSString* const kFileName=@"output.mov";
     if (!_writing) {
         _writing = true;
         @try {
-            
+            NSLog(@"start getFrame.......");
+
             GLuint bufferLength = width * height *4;
             GLubyte* buffer =(GLubyte*)malloc(bufferLength);
             
             // Read Pixels from OpenGL
+            NSLog(@"start glReadPixels.......");
             glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
-            
+            NSLog(@"end glReadPixels.......");
+
             // Make data provider with data.
             CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceRGB();
             CGDataProviderRef provider = CGDataProviderCreateWithData(NULL, buffer, bufferLength, NULL);
             
             // Configure image
             CGImageRef iref = CGImageCreate(width, height, 8, 32, width *4, colorSpaceRef, kCGBitmapByteOrderDefault, provider, NULL, NO, kCGRenderingIntentDefault);
+
             // Create buffer for output image
             uint32_t* pixels =(uint32_t*)malloc(outWidth * outHeight *4);
             CGContextRef context = CGBitmapContextCreate(pixels, outWidth, outHeight, 8, outWidth *4, colorSpaceRef, kCGImageAlphaNoneSkipFirst);//kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);//kCGImageAlphaNoneSkipFirst
@@ -165,11 +173,13 @@ static NSString* const kFileName=@"output.mov";
             //CGContextSetAllowsAntialiasing(context,NO);
             //CGAffineTransform flipVertical = CGAffineTransformMake(1, 0, 0,-1, 0, height);
             //CGContextConcatCTM(context, flipVertical);
-            
+
             // Render
+            NSLog(@"start CGContextDrawImage.......");
             CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, outWidth , outHeight), iref);
+            NSLog(@"start CGBitmapContextCreateImage.......");
             CGImageRef cgImage = CGBitmapContextCreateImage(context);
-            
+            NSLog(@"end CGContextDrawImage.......");
             if (_recording) {
                 float millisElapsed = [[NSDate date] timeIntervalSinceDate:self.startedAt] * 1000.0;
                 //NSLog(@"millisElapsed = %f",millisElapsed);
@@ -184,6 +194,8 @@ static NSString* const kFileName=@"output.mov";
             CGContextRelease(context);
             free(buffer);
             free(pixels);
+            NSLog(@"end getFrame.......");
+
             
         }
         @catch (NSException *exception) {

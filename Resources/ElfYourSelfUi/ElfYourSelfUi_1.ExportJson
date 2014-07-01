@@ -11,11 +11,13 @@
   "designWidth": 1024,
   "textures": [
     "ElfYourSelfUi0.plist",
-    "ElfYourSelfUi1.plist"
+    "ElfYourSelfUi1.plist",
+    "ElfYourSelfUi2.plist"
   ],
   "texturesPng": [
     "ElfYourSelfUi0.png",
-    "ElfYourSelfUi1.png"
+    "ElfYourSelfUi1.png",
+    "ElfYourSelfUi2.png"
   ],
   "version": "1.4.0.1",
   "widgetTree": {
@@ -41,12 +43,12 @@
           "customProperty": "",
           "flipX": false,
           "flipY": false,
-          "height": 149,
+          "height": 139,
           "ignoreSize": true,
           "layoutParameter": null,
           "opacity": 255,
-          "positionPercentX": 0.478515625,
-          "positionPercentY": 0.186197922,
+          "positionPercentX": 0.5008371,
+          "positionPercentY": 0.18991816,
           "positionType": 0,
           "rotation": 0,
           "scaleX": 1,
@@ -58,9 +60,9 @@
           "touchAble": true,
           "useMergedTexture": true,
           "visible": true,
-          "width": 446,
-          "x": 490,
-          "y": 143,
+          "width": 140,
+          "x": 512,
+          "y": 145,
           "capInsetsHeight": 1,
           "capInsetsWidth": 1,
           "capInsetsX": 0,
@@ -87,8 +89,8 @@
             "resourceType": 1
           },
           "scale9Enable": false,
-          "scale9Height": 149,
-          "scale9Width": 446,
+          "scale9Height": 139,
+          "scale9Width": 140,
           "text": "",
           "textColorB": 255,
           "textColorG": 255,
