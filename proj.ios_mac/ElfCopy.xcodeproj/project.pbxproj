@@ -82,7 +82,6 @@
 		B7A2E2661945C9F600368A5F /* THCapture.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2601945C9F600368A5F /* THCapture.mm */; };
 		B7A2E2671945C9F600368A5F /* THCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */; };
 		B7A3D920193EAAC4002EF35B /* ELFCamera.mm in Sources */ = {isa = PBXBuildFile; fileRef = B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */; };
-		B7A430D91921B16200D3CDAB /* yuanshiren in Resources */ = {isa = PBXBuildFile; fileRef = B7A430D81921B16200D3CDAB /* yuanshiren */; };
 		B7A49FD3192CAFDC005C23E3 /* PhotoMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */; };
 		B7A49FD9192CC3A2005C23E3 /* StartLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */; };
 		B7A515E1192B880B00D44C31 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B7A515DF192B880B00D44C31 /* GameScene.cpp */; };
@@ -324,7 +323,6 @@
 		B7A2E2621945C9F600368A5F /* THCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCaptureUtilities.m; sourceTree = "<group>"; };
 		B7A3D91E193EAAC4002EF35B /* ELFCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ELFCamera.h; path = ../Classes/ELFCamera.h; sourceTree = "<group>"; };
 		B7A3D91F193EAAC4002EF35B /* ELFCamera.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ELFCamera.mm; path = ../Classes/ELFCamera.mm; sourceTree = "<group>"; };
-		B7A430D81921B16200D3CDAB /* yuanshiren */ = {isa = PBXFileReference; lastKnownFileType = folder; path = yuanshiren; sourceTree = "<group>"; };
 		B7A49FD1192CAFDC005C23E3 /* PhotoMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PhotoMenu.cpp; path = ../Classes/PhotoMenu.cpp; sourceTree = "<group>"; };
 		B7A49FD2192CAFDC005C23E3 /* PhotoMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoMenu.h; path = ../Classes/PhotoMenu.h; sourceTree = "<group>"; };
 		B7A49FD7192CC3A2005C23E3 /* StartLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = StartLayer.cpp; path = ../Classes/StartLayer.cpp; sourceTree = "<group>"; };
@@ -580,7 +578,6 @@
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 				B7B174FC1920F5570010B350 /* publish */,
 				B79CDBFC191E492F00311E24 /* scene */,
-				B7A430D81921B16200D3CDAB /* yuanshiren */,
 				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
 				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
 			);
@@ -815,7 +812,6 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				B7B174FD1920F5570010B350 /* publish in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
-				B7A430D91921B16200D3CDAB /* yuanshiren in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
