@@ -41,8 +41,8 @@ static NSString* const kFileName=@"output.mov";
             _frameRate=10;//默认帧率为10
             width = screenSize.width;
             height = screenSize.height;
-            outWidth = 512;//输出尺寸
-            outHeight = 384;
+            outWidth = 256;//输出尺寸
+            outHeight = 192;
         }
         NSLog(@"width=%zu,height=%zu",width,height);
     }
@@ -69,8 +69,8 @@ static NSString* const kFileName=@"output.mov";
             self.startedAt = [NSDate date];
             _recording = true;
             _writing = false;
-            //绘屏的定时器
-            NSLog(@"_frameRate=%lu",(unsigned long)_frameRate);
+            // 绘屏的定时器
+            NSLog(@"_frameRate=%lu", (unsigned long)_frameRate);
             NSDate *nowDate = [NSDate date];
             timer = [[NSTimer alloc] initWithFireDate:nowDate interval:1.0/_frameRate target:self selector:@selector(drawFrame) userInfo:nil repeats:YES];
             [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
