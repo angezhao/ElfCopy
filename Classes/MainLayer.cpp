@@ -35,11 +35,23 @@ bool MainLayer::init()
     Button* nextBtn = (Button*)node->getChildByName("nextBtn");
     nextBtn->addTouchEventListener(this, toucheventselector(MainLayer::goNext));
     
-    headBtn1 = (Button*)node->getChildByName("headBtn1");
+    headBtn1 = (CheckBox*)node->getChildByName("headBtn1");
     headBtn1->addTouchEventListener(this, toucheventselector(MainLayer::changePhoto1));
     
-    headBtn2 = (Button*)node->getChildByName("headBtn2");
+    headBtn2 = (CheckBox*)node->getChildByName("headBtn2");
     headBtn2->addTouchEventListener(this, toucheventselector(MainLayer::changePhoto2));
+    
+    if(this->getChildByTag(2)!=NULL){
+        headBtn1->setSelectedState(false);
+    }else{
+        headBtn1->setSelectedState(true);
+    }
+    
+    if(this->getChildByTag(3)!=NULL){
+        headBtn2->setSelectedState(false);
+    }else{
+        headBtn2->setSelectedState(true);
+    }
     
     this->addChild(node);
     
@@ -57,7 +69,7 @@ void MainLayer::goBack(Ref* pSender, TouchEventType type)
 void MainLayer::goNext(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        if (headBtn1->getChildrenCount() > 0 && headBtn2->getChildrenCount() > 0) {
+        if (this->getChildByTag(2)!=NULL && this->getChildByTag(3)!=NULL) {
             VidioLayer *layer = VidioLayer::create();
             this->addChild(layer);
         }
@@ -66,27 +78,14 @@ void MainLayer::goNext(Ref* pSender, TouchEventType type)
 
 void MainLayer::changeFace(ImageView* face)
 {
-    // face->setScale(2.6);
-
-    /*
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    if (visibleSize.height >= 768) {
-        // face->setPosition(Point(-40, -40));
-        // face->setPosition(position);
-    } else {
-        CCLOG("kering -> vw:%f,vh:%f", visibleSize.width, visibleSize.height);
-        // face->setPosition(Point(200, -200));
-        face->setPosition(Point(300, 200));
-    }
-    if (1 + 1 == 2) {
-        this->addChild(face, 100);
-        return;
-    }*/
-
     if (m_intHead == 1) {
-        headBtn1->addChild(face);
+        this->addChild(face,0,2);
+        face->setPosition(Point(333, 394));
+        headBtn1->setSelectedState(false);
     } else if (m_intHead == 2) {
-        headBtn2->addChild(face);
+        this->addChild(face,0,3);
+        face->setPosition(Point(705, 394));
+        headBtn2->setSelectedState(false);
     }
 
     std::string frameIndex = m_intHead == 1 ? "1" : "2";
@@ -99,17 +98,29 @@ void MainLayer::changeFace(ImageView* face)
 void MainLayer::changePhoto1(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        m_intHead = 1;
-        PhotoMenu *layer = PhotoMenu::create();
-        this->addChild(layer, 0, 1);
+        if (headBtn1->getSelectedState()) {
+            headBtn1->setSelectedState(false);
+            m_intHead = 1;
+            PhotoMenu *layer = PhotoMenu::create();
+            this->addChild(layer, 0, 1);
+        }
+        else{
+            this->removeChildByTag(2);
+        }
     }
 }
 
 void MainLayer::changePhoto2(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        m_intHead = 2;
-        PhotoMenu *layer = PhotoMenu::create();
-        this->addChild(layer, 0, 1);
+        if (headBtn2->getSelectedState()) {
+            headBtn2->setSelectedState(false);
+            m_intHead = 2;
+            PhotoMenu *layer = PhotoMenu::create();
+            this->addChild(layer, 0, 1);
+        }
+        else{
+            this->removeChildByTag(3);
+        }
     }
 }

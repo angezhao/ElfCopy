@@ -40,6 +40,7 @@ private:
     double mscale;   //初始地图缩放比例
     ImageView* head;
     ImageView *userHead;
+    ImageView* headBg;
     int touchId1;
     int touchId2;
     

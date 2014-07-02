@@ -29,11 +29,8 @@ public:
     void changePhoto1(Ref* pSender,TouchEventType type);
     void changePhoto2(Ref* pSender,TouchEventType type);
     
-    Button* headBtn1;
-    Button* headBtn2;
-
-    // ImageView* face1;
-    // ImageView* face2;
+    CheckBox* headBtn1;
+    CheckBox* headBtn2;
 };
 
 #endif /* defined(__ElfCopy__MainLayer__) */

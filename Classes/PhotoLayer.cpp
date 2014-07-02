@@ -36,7 +36,7 @@ bool PhotoLayer::init()
     okBtn->addTouchEventListener(this, toucheventselector(PhotoLayer::changeOk));
     
     this->head = (ImageView*)node->getChildByName("head");
-    
+    this->headBg = (ImageView*)node->getChildByName("Image_4");
     touchId1 = -1;
     touchId2 = -1;
     
@@ -226,7 +226,7 @@ void PhotoLayer::loadImage(Image* image)
     Sprite* userHeadSprite = (Sprite*)userHead->getVirtualRenderer();
     userHeadSprite->setSpriteFrame(imageSprite->getSpriteFrame());
 
-    Size headSize = this->head->getContentSize();
+    Size headSize = this->headBg->getContentSize();
     Size imageSize = imageSprite->getContentSize();
     CCLOG("kering -> hw:%f,hh:%f", headSize.width, headSize.height);
     CCLOG("kering -> iw:%f,ih:%f", imageSize.width, imageSize.height);

@@ -18,8 +18,13 @@ using namespace cocos2d::ui;
 using namespace cocostudio;
 
 typedef enum {
-	YUANSHIREN,
-    GONGFU,
+	YUANSHIREN = 1,
+    GONGFU = 2,
+    MAXITUAN = 3,
+    TONGXUEHUI = 4,
+    STARYOU = 5,
+    DALAOHU = 6,
+    VIDIOMAX = 7
 } AnimationName;
 
 class VidioLayer : public Layer
@@ -30,8 +35,10 @@ public:
     virtual bool init();
 
     void goBack(Ref* pSender, TouchEventType type);
-    void switchMan(Ref* pSender, TouchEventType type);
-    void switchGongfu(Ref* pSender, TouchEventType type);
+    void switchVidio(Ref* pSender, TouchEventType type);
+//    void switchGongfu(Ref* pSender, TouchEventType type);
+//    void switchMaxituan(Ref* pSender, TouchEventType type);
+//    void switchTongxuehui(Ref* pSender, TouchEventType type);
     void playVidio(Ref* pSender, TouchEventType type);
     void stopRecord();
     void drawFrame(float dt);
@@ -40,6 +47,17 @@ public:
 
     void playYuanShiRen();
     void playGongFu();
+    void playMaxituan();
+    void playTongxuehui();
+    void playStaryou();
+    void playDalaohu();
+    
+    CheckBox* yuanshirenBtn;
+    CheckBox* gongfuBtn;
+    CheckBox* maxituanBtn;
+    CheckBox* staryouBtn;
+    CheckBox* dalaohuBtn;
+    CheckBox* tongxuehuiBtn;
     
     // implement the "static create()" method manually
     CREATE_FUNC(VidioLayer);

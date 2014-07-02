@@ -35,18 +35,34 @@ bool VidioLayer::init()
     Button* playBack = (Button*)node->getChildByName("playBtn");
     playBack->addTouchEventListener(this, toucheventselector(VidioLayer::playVidio));
 
-    // 原始人，men是复数
-    Button* manBtn = (Button*)node->getChildByName("menBtn");
-    manBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchMan));
+    // 原始人
+    yuanshirenBtn = (CheckBox*)node->getChildByName("yuanshirenBtn");
+    yuanshirenBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
     
-    // 功夫，这命名真随意，，
-    Button* gongfuBtn = (Button*)node->getChildByName("gongFubtn");
-    gongfuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchGongfu));
+    // 功夫
+    gongfuBtn = (CheckBox*)node->getChildByName("gongfuBtn");
+    gongfuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    
+    // 马戏团
+    maxituanBtn = (CheckBox*)node->getChildByName("maxituanBtn");
+    maxituanBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    
+    // 星星的你
+    staryouBtn = (CheckBox*)node->getChildByName("staryouBtn");
+    staryouBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    
+    // 打老虎
+    dalaohuBtn = (CheckBox*)node->getChildByName("dalaohuBtn");
+    dalaohuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    
+    // 同学会
+    tongxuehuiBtn = (CheckBox*)node->getChildByName("tongxuehuiBtn");
+    tongxuehuiBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    //默认同学会
+    tongxuehuiBtn->setSelectedState(true);
+    animationName = TONGXUEHUI;
     
     this->addChild(node);
-    
-    animationName = YUANSHIREN;
-    
     return true;
 }
 
@@ -59,17 +75,50 @@ void VidioLayer::goBack(Ref* pSender,TouchEventType type)
     }
 }
 
-void VidioLayer::switchMan(Ref* pSender,TouchEventType type)
+void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        animationName = YUANSHIREN;
-    }
-}
+        CheckBox* selectVidio = (CheckBox*)pSender;
+        if (!selectVidio->getSelectedState()) {//选中
+            switch (animationName) {
+                case YUANSHIREN:
+                    yuanshirenBtn->setSelectedState(false);
+                    break;
+                case GONGFU:
+                    gongfuBtn->setSelectedState(false);
+                    break;
+                case MAXITUAN:
+                    maxituanBtn->setSelectedState(false);
+                    break;
+                case TONGXUEHUI:
+                    tongxuehuiBtn->setSelectedState(false);
+                    break;
+                case STARYOU:
+                    staryouBtn->setSelectedState(false);
+                    break;
+                case DALAOHU:
+                    dalaohuBtn->setSelectedState(false);
+                    break;
+                default:
+                    break;
+            }
 
-void VidioLayer::switchGongfu(Ref* pSender,TouchEventType type)
-{
-    if (type == TOUCH_EVENT_ENDED){
-        animationName = GONGFU;
+            const char* boxName = selectVidio->getName();
+            if(strcmp(boxName,"yuanshirenBtn")==0)
+                animationName = YUANSHIREN;
+            else if(strcmp(boxName,"gongfuBtn")==0)
+                animationName = GONGFU;
+            else if(strcmp(boxName,"maxituanBtn")==0)
+                animationName = MAXITUAN;
+            else if(strcmp(boxName,"staryouBtn")==0)
+                animationName = STARYOU;
+            else if(strcmp(boxName,"dalaohuBtn")==0)
+                animationName = DALAOHU;
+            else if(strcmp(boxName,"tongxuehuiBtn")==0)
+                animationName = TONGXUEHUI;
+        }else{//取消选中
+            animationName = VIDIOMAX;
+        }
     }
 }
 
@@ -158,6 +207,27 @@ void VidioLayer::playGongFu()
     tou2->changeDisplayWithIndex(1, true);
 }
 
+void VidioLayer::playTongxuehui()
+{
+    
+}
+
+void VidioLayer::playMaxituan()
+{
+    
+}
+
+
+void VidioLayer::playStaryou()
+{
+    
+}
+
+void VidioLayer::playDalaohu()
+{
+    
+}
+
 void VidioLayer::animationEvent(Armature *armature, MovementEventType movementType, const std::string& movementID)
 {
     std::string id = movementID;
@@ -181,7 +251,18 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
             case GONGFU:
                 this->playGongFu();
                 break;
-                
+            case MAXITUAN:
+                this->playMaxituan();
+                break;
+            case TONGXUEHUI:
+                this->playTongxuehui();
+                break;
+            case STARYOU:
+                this->playStaryou();
+                break;
+            case DALAOHU:
+                this->playDalaohu();
+                break;
             default:
                 break;
         }
