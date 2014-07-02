@@ -59,6 +59,14 @@ public:
     CheckBox* dalaohuBtn;
     CheckBox* tongxuehuiBtn;
     
+    ImageView* yuanshirenBg;
+    ImageView* gongfuBg;
+    ImageView* maxituanBg;
+    ImageView* staryouBg;
+    ImageView* dalaohuBg;
+    ImageView* tongxuehuiBg;
+
+    
     // implement the "static create()" method manually
     CREATE_FUNC(VidioLayer);
 };

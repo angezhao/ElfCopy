@@ -38,28 +38,46 @@ bool VidioLayer::init()
     // 原始人
     yuanshirenBtn = (CheckBox*)node->getChildByName("yuanshirenBtn");
     yuanshirenBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    yuanshirenBg = (ImageView*)node->getChildByName("yuanshirenBg");
     
     // 功夫
     gongfuBtn = (CheckBox*)node->getChildByName("gongfuBtn");
     gongfuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    gongfuBg = (ImageView*)node->getChildByName("gongfuBg");
     
     // 马戏团
     maxituanBtn = (CheckBox*)node->getChildByName("maxituanBtn");
     maxituanBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    maxituanBg = (ImageView*)node->getChildByName("maxituanBg");
     
     // 星星的你
     staryouBtn = (CheckBox*)node->getChildByName("staryouBtn");
     staryouBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    staryouBg = (ImageView*)node->getChildByName("staryouBg");
     
     // 打老虎
     dalaohuBtn = (CheckBox*)node->getChildByName("dalaohuBtn");
     dalaohuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    dalaohuBg = (ImageView*)node->getChildByName("dalaohuBg");
     
     // 同学会
     tongxuehuiBtn = (CheckBox*)node->getChildByName("tongxuehuiBtn");
     tongxuehuiBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    tongxuehuiBg = (ImageView*)node->getChildByName("tongxuehuiBg");
+    
     //默认同学会
     tongxuehuiBtn->setSelectedState(true);
+    yuanshirenBtn->setSelectedState(false);
+    gongfuBtn->setSelectedState(false);
+    maxituanBtn->setSelectedState(false);
+    staryouBtn->setSelectedState(false);
+    dalaohuBtn->setSelectedState(false);
+    tongxuehuiBg->setVisible(true);
+    yuanshirenBg->setVisible(false);
+    gongfuBg->setVisible(false);
+    maxituanBg->setVisible(false);
+    staryouBg->setVisible(false);
+    dalaohuBg->setVisible(false);
     animationName = TONGXUEHUI;
     
     this->addChild(node);
@@ -83,41 +101,68 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
             switch (animationName) {
                 case YUANSHIREN:
                     yuanshirenBtn->setSelectedState(false);
+                    yuanshirenBg->setVisible(false);
                     break;
                 case GONGFU:
                     gongfuBtn->setSelectedState(false);
+                    gongfuBg->setVisible(false);
                     break;
                 case MAXITUAN:
                     maxituanBtn->setSelectedState(false);
+                    maxituanBg->setVisible(false);
                     break;
                 case TONGXUEHUI:
                     tongxuehuiBtn->setSelectedState(false);
+                    tongxuehuiBg->setVisible(false);
                     break;
                 case STARYOU:
                     staryouBtn->setSelectedState(false);
+                    staryouBg->setVisible(false);
                     break;
                 case DALAOHU:
                     dalaohuBtn->setSelectedState(false);
+                    dalaohuBg->setVisible(false);
                     break;
                 default:
                     break;
             }
 
             const char* boxName = selectVidio->getName();
-            if(strcmp(boxName,"yuanshirenBtn")==0)
+            if(strcmp(boxName,"yuanshirenBtn")==0){
                 animationName = YUANSHIREN;
-            else if(strcmp(boxName,"gongfuBtn")==0)
+                yuanshirenBg->setVisible(true);
+            }else if(strcmp(boxName,"gongfuBtn")==0){
                 animationName = GONGFU;
-            else if(strcmp(boxName,"maxituanBtn")==0)
+                gongfuBg->setVisible(true);
+            }else if(strcmp(boxName,"maxituanBtn")==0){
                 animationName = MAXITUAN;
-            else if(strcmp(boxName,"staryouBtn")==0)
+                maxituanBg->setVisible(true);
+            }else if(strcmp(boxName,"staryouBtn")==0){
                 animationName = STARYOU;
-            else if(strcmp(boxName,"dalaohuBtn")==0)
+                staryouBg->setVisible(true);
+            }else if(strcmp(boxName,"dalaohuBtn")==0){
                 animationName = DALAOHU;
-            else if(strcmp(boxName,"tongxuehuiBtn")==0)
+                dalaohuBg->setVisible(true);
+            }else if(strcmp(boxName,"tongxuehuiBtn")==0){
                 animationName = TONGXUEHUI;
+                tongxuehuiBg->setVisible(true);
+            }
         }else{//取消选中
             animationName = VIDIOMAX;
+            const char* boxName = selectVidio->getName();
+            if(strcmp(boxName,"yuanshirenBtn")==0){
+                yuanshirenBg->setVisible(false);
+            }else if(strcmp(boxName,"gongfuBtn")==0){
+                gongfuBg->setVisible(false);
+            }else if(strcmp(boxName,"maxituanBtn")==0){
+                maxituanBg->setVisible(false);
+            }else if(strcmp(boxName,"staryouBtn")==0){
+                staryouBg->setVisible(false);
+            }else if(strcmp(boxName,"dalaohuBtn")==0){
+                dalaohuBg->setVisible(false);
+            }else if(strcmp(boxName,"tongxuehuiBtn")==0){
+                tongxuehuiBg->setVisible(false);
+            }
         }
     }
 }
