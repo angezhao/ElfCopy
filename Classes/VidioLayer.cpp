@@ -78,7 +78,7 @@ bool VidioLayer::init()
     maxituanBg->setVisible(false);
     staryouBg->setVisible(false);
     dalaohuBg->setVisible(false);
-    animationName = TONGXUEHUI;
+    animationIndex = TONGXUEHUI;
     
     this->addChild(node);
     return true;
@@ -98,7 +98,7 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
     if (type == TOUCH_EVENT_ENDED){
         CheckBox* selectVidio = (CheckBox*)pSender;
         if (!selectVidio->getSelectedState()) {//选中
-            switch (animationName) {
+            switch (animationIndex) {
                 case YUANSHIREN:
                     yuanshirenBtn->setSelectedState(false);
                     yuanshirenBg->setVisible(false);
@@ -129,26 +129,26 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
 
             const char* boxName = selectVidio->getName();
             if(strcmp(boxName,"yuanshirenBtn")==0){
-                animationName = YUANSHIREN;
+                animationIndex = YUANSHIREN;
                 yuanshirenBg->setVisible(true);
             }else if(strcmp(boxName,"gongfuBtn")==0){
-                animationName = GONGFU;
+                animationIndex = GONGFU;
                 gongfuBg->setVisible(true);
             }else if(strcmp(boxName,"maxituanBtn")==0){
-                animationName = MAXITUAN;
+                animationIndex = MAXITUAN;
                 maxituanBg->setVisible(true);
             }else if(strcmp(boxName,"staryouBtn")==0){
-                animationName = STARYOU;
+                animationIndex = STARYOU;
                 staryouBg->setVisible(true);
             }else if(strcmp(boxName,"dalaohuBtn")==0){
-                animationName = DALAOHU;
+                animationIndex = DALAOHU;
                 dalaohuBg->setVisible(true);
             }else if(strcmp(boxName,"tongxuehuiBtn")==0){
-                animationName = TONGXUEHUI;
+                animationIndex = TONGXUEHUI;
                 tongxuehuiBg->setVisible(true);
             }
         }else{//取消选中
-            animationName = VIDIOMAX;
+            animationIndex = VIDIOMAX;
             const char* boxName = selectVidio->getName();
             if(strcmp(boxName,"yuanshirenBtn")==0){
                 yuanshirenBg->setVisible(false);
@@ -254,18 +254,87 @@ void VidioLayer::playGongFu()
 
 void VidioLayer::playTongxuehui()
 {
+    Size winSize = Director::getInstance()->getWinSize();
     
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("tongxuehui/tongxuehui.ExportJson");
+    Armature *armature = Armature::create("tongxuehui");
+    armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
+    armature->getAnimation()->playWithIndex(0);
+    armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(VidioLayer::animationEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    this->addChild(armature, 0, 1);
+    
+    this->makeFace("player_face1");
+    Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
+    face1->setFlippedY(true);
+    face1->setAnchorPoint(Point(0.445, 0.57));
+    Bone *tou1 = armature->getBone("tou1");
+    tou1->addDisplay(face1, 1);
+    tou1->changeDisplayWithIndex(1, true);
+    
+    this->makeFace("player_face2");
+    Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
+    face2->setFlippedY(true);
+    face2->setAnchorPoint(Point(0.442, 0.58));
+    Bone *tou2 = armature->getBone("tou2");
+    tou2->addDisplay(face2, 1);
+    tou2->changeDisplayWithIndex(1, true);
 }
 
 void VidioLayer::playMaxituan()
 {
+    Size winSize = Director::getInstance()->getWinSize();
     
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("maxituan/maxituan.ExportJson");
+    Armature *armature = Armature::create("maxituan");
+    armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
+    armature->getAnimation()->playWithIndex(0);
+    armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(VidioLayer::animationEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    this->addChild(armature, 0, 1);
+    
+    this->makeFace("player_face1");
+    Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
+    face1->setFlippedY(true);
+    face1->setAnchorPoint(Point(0.445, 0.57));
+    Bone *tou1 = armature->getBone("tou1");
+    tou1->addDisplay(face1, 1);
+    tou1->changeDisplayWithIndex(1, true);
+    
+    this->makeFace("player_face2");
+    Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
+    face2->setFlippedY(true);
+    face2->setAnchorPoint(Point(0.442, 0.585));
+    Bone *tou2 = armature->getBone("tou2");
+    tou2->addDisplay(face2, 1);
+    tou2->changeDisplayWithIndex(1, true);
 }
 
 
 void VidioLayer::playStaryou()
 {
+    Size winSize = Director::getInstance()->getWinSize();
     
+    ArmatureDataManager::getInstance()->addArmatureFileInfo("laizixingxingdeni/laizixingxingdeni.ExportJson");
+    Armature *armature = Armature::create("laizixingxingdeni");
+    armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
+    armature->getAnimation()->playWithIndex(0);
+    armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(VidioLayer::animationEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+    this->addChild(armature, 0, 1);
+    
+    this->makeFace("player_face1");
+    Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
+    face1->setFlippedY(true);
+    face1->setAnchorPoint(Point(0.445, 0.58));
+    Bone *tou1 = armature->getBone("tou1");
+    tou1->addDisplay(face1, 1);
+    tou1->changeDisplayWithIndex(1, true);
+    
+    this->makeFace("player_face2");
+    Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
+    face2->setFlippedY(true);
+    face2->setAnchorPoint(Point(0.442, 0.60));
+    Bone *tou2 = armature->getBone("tou2");
+    tou2->addDisplay(face2, 1);
+    tou2->changeDisplayWithIndex(1, true);
 }
 
 void VidioLayer::playDalaohu()
@@ -289,7 +358,7 @@ void VidioLayer::animationEvent(Armature *armature, MovementEventType movementTy
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        switch (animationName) {
+        switch (animationIndex) {
             case YUANSHIREN:
                 this->playYuanShiRen();
                 break;

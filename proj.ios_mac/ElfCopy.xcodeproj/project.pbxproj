@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1610FEDA19533FF4008E6C6C /* gongfu in Resources */ = {isa = PBXBuildFile; fileRef = 1610FED919533FF4008E6C6C /* gongfu */; };
+		16457A1F1967B5FA00525563 /* laizixingxingdeni in Resources */ = {isa = PBXBuildFile; fileRef = 16457A1E1967B5FA00525563 /* laizixingxingdeni */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -249,6 +250,7 @@
 
 /* Begin PBXFileReference section */
 		1610FED919533FF4008E6C6C /* gongfu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gongfu; sourceTree = "<group>"; };
+		16457A1E1967B5FA00525563 /* laizixingxingdeni */ = {isa = PBXFileReference; lastKnownFileType = folder; path = laizixingxingdeni; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -570,14 +572,15 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B7A0562F1963EBAE001860E3 /* ElfYourSelfUi */,
-				B7A0562B1963EA0A001860E3 /* maxituan */,
-				B7A0562C1963EA0A001860E3 /* tongxuehui */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
+				B7A0562F1963EBAE001860E3 /* ElfYourSelfUi */,
 				B7A0EB51190A6BC20009C47B /* face */,
 				1610FED919533FF4008E6C6C /* gongfu */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
+				16457A1E1967B5FA00525563 /* laizixingxingdeni */,
+				B7A0562B1963EA0A001860E3 /* maxituan */,
+				B7A0562C1963EA0A001860E3 /* tongxuehui */,
 				B7AB5819192DF07E00FEEC21 /* yuanshiren1 */,
 				B7AB581A192DF07E00FEEC21 /* yuanshiren2 */,
 			);
@@ -809,6 +812,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				B7A0562E1963EA0A001860E3 /* tongxuehui in Resources */,
+				16457A1F1967B5FA00525563 /* laizixingxingdeni in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
