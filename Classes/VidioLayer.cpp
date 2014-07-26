@@ -169,10 +169,16 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
 
 void VidioLayer::makeFace(std::string spriteFrameName)
 {
-    float uiSacle = 0.38f;
+    // 114*121
+    // 261*281
+    // 0.436
+    // 0.431
+    float uiSacleX = 0.436f;
+    float uiSacleY = 0.431f;
     Sprite *face = Sprite::createWithSpriteFrameName(spriteFrameName);
     face->setFlippedY(true);
-    face->setScale(uiSacle);
+    face->setScaleX(uiSacleX);
+    face->setScaleY(uiSacleY);
     Size size = face->getContentSize();
     face->setPosition(Point(size.width / 2, size.height / 2));
 
@@ -209,7 +215,7 @@ void VidioLayer::playYuanShiRen()
     Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
     face1->setFlippedY(true);
     // face1->setAnchorPoint(Point(0.453, 0.65));
-    face1->setAnchorPoint(Point(0.44, 0.62));
+    face1->setAnchorPoint(Point(0.44, 0.625));
     Bone *tou1 = armature1->getBone("tou1");
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
@@ -217,8 +223,7 @@ void VidioLayer::playYuanShiRen()
     this->makeFace("player_face2");
     Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
     face2->setFlippedY(true);
-    // face2->setAnchorPoint(Point(0.43, 0.68));
-    face2->setAnchorPoint(Point(0.418, 0.64));
+    face2->setAnchorPoint(Point(0.445, 0.58));
     Bone *tou2 = armature2->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
