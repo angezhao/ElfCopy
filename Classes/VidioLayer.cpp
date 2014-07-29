@@ -148,6 +148,8 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
                 tongxuehuiBg->setVisible(true);
             }
         }else{//取消选中
+            selectVidio->setSelectedState(false);
+            /*
             animationIndex = VIDIOMAX;
             const char* boxName = selectVidio->getName();
             if(strcmp(boxName,"yuanshirenBtn")==0){
@@ -163,6 +165,7 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
             }else if(strcmp(boxName,"tongxuehuiBtn")==0){
                 tongxuehuiBg->setVisible(false);
             }
+            */
         }
     }
 }
