@@ -148,8 +148,6 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
                 tongxuehuiBg->setVisible(true);
             }
         }else{//取消选中
-            selectVidio->setSelectedState(false);
-            /*
             animationIndex = VIDIOMAX;
             const char* boxName = selectVidio->getName();
             if(strcmp(boxName,"yuanshirenBtn")==0){
@@ -165,7 +163,6 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
             }else if(strcmp(boxName,"tongxuehuiBtn")==0){
                 tongxuehuiBg->setVisible(false);
             }
-            */
         }
     }
 }
@@ -274,7 +271,7 @@ void VidioLayer::playTongxuehui()
     this->makeFace("player_face1");
     Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
     face1->setFlippedY(true);
-    face1->setAnchorPoint(Point(0.445, 0.57));
+    face1->setAnchorPoint(Point(0.445, 0.58));
     Bone *tou1 = armature->getBone("tou1");
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
@@ -282,7 +279,7 @@ void VidioLayer::playTongxuehui()
     this->makeFace("player_face2");
     Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
     face2->setFlippedY(true);
-    face2->setAnchorPoint(Point(0.442, 0.58));
+    face2->setAnchorPoint(Point(0.445, 0.58));
     Bone *tou2 = armature->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
@@ -302,7 +299,7 @@ void VidioLayer::playMaxituan()
     this->makeFace("player_face1");
     Skin* face1 = Skin::createWithSpriteFrameName("scale_player_face1");
     face1->setFlippedY(true);
-    face1->setAnchorPoint(Point(0.445, 0.57));
+    face1->setAnchorPoint(Point(0.445, 0.58));
     Bone *tou1 = armature->getBone("tou1");
     tou1->addDisplay(face1, 1);
     tou1->changeDisplayWithIndex(1, true);
@@ -310,7 +307,7 @@ void VidioLayer::playMaxituan()
     this->makeFace("player_face2");
     Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
     face2->setFlippedY(true);
-    face2->setAnchorPoint(Point(0.442, 0.585));
+    face2->setAnchorPoint(Point(0.442, 0.58));
     Bone *tou2 = armature->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
