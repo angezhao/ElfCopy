@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -65,6 +66,8 @@ public:
     ImageView* staryouBg;
     ImageView* dalaohuBg;
     ImageView* tongxuehuiBg;
+    
+    char *audioPath;
 
     
     // implement the "static create()" method manually

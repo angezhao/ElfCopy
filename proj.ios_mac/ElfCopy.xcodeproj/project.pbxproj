@@ -64,6 +64,7 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		B713E011198BB1EE0030F63D /* Music in Resources */ = {isa = PBXBuildFile; fileRef = B713E010198BB1EE0030F63D /* Music */; };
 		B72B697C194A1EA4004DEAFB /* AWScreenshot.mm in Sources */ = {isa = PBXBuildFile; fileRef = B72B697B194A1EA4004DEAFB /* AWScreenshot.mm */; };
 		B77C6FE4193470890048B648 /* PickPhoto4Ios.mm in Sources */ = {isa = PBXBuildFile; fileRef = B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */; };
 		B794A5AB19473DB70048F40F /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B794A5AA19473DB70048F40F /* CoreMedia.framework */; };
@@ -296,6 +297,7 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		B713E010198BB1EE0030F63D /* Music */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Music; sourceTree = "<group>"; };
 		B72B697A194A1EA4004DEAFB /* AWScreenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWScreenshot.h; sourceTree = "<group>"; };
 		B72B697B194A1EA4004DEAFB /* AWScreenshot.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AWScreenshot.mm; sourceTree = "<group>"; };
 		B77C6FE2193470890048B648 /* PickPhoto4Ios.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PickPhoto4Ios.mm; path = ../Classes/PickPhoto4Ios.mm; sourceTree = "<group>"; };
@@ -572,6 +574,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B713E010198BB1EE0030F63D /* Music */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				B7A0562F1963EBAE001860E3 /* ElfYourSelfUi */,
@@ -803,6 +806,7 @@
 				B7A056301963EBAE001860E3 /* ElfYourSelfUi in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				B7A0562D1963EA0A001860E3 /* maxituan in Resources */,
+				B713E011198BB1EE0030F63D /* Music in Resources */,
 				1610FEDA19533FF4008E6C6C /* gongfu in Resources */,
 				B7A0EB54190A6BC20009C47B /* face in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
