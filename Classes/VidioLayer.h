@@ -67,7 +67,7 @@ public:
     ImageView* dalaohuBg;
     ImageView* tongxuehuiBg;
     
-    char *audioPath;
+    std::string audioPath;
 
     
     // implement the "static create()" method manually

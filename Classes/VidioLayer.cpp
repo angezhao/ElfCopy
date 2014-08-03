@@ -336,7 +336,7 @@ void VidioLayer::playStaryou()
     this->makeFace("player_face2");
     Skin* face2 = Skin::createWithSpriteFrameName("scale_player_face2");
     face2->setFlippedY(true);
-    face2->setAnchorPoint(Point(0.442, 0.60));
+    face2->setAnchorPoint(Point(0.442, 0.58));
     Bone *tou2 = armature->getBone("tou2");
     tou2->addDisplay(face2, 1);
     tou2->changeDisplayWithIndex(1, true);
@@ -363,35 +363,36 @@ void VidioLayer::animationEvent(Armature *armature, MovementEventType movementTy
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
+        audioPath = "";
         switch (animationIndex) {
             case YUANSHIREN:
-                this->audioPath = "Music/yuanshiren.mp3";
+                audioPath = "Music/yuanshiren.mp3";
                 this->playYuanShiRen();
-                CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(this->audioPath);
                 break;
             case GONGFU:
                 this->playGongFu();
                 break;
             case MAXITUAN:
-                this->audioPath = "Music/maxituan.mp3";
+                audioPath = "Music/maxituan.mp3";
                 this->playMaxituan();
-                CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(this->audioPath);
                 break;
             case TONGXUEHUI:
-                this->audioPath = "Music/tongxuehui.mp3";
+                audioPath = "Music/tongxuehui.mp3";
                 this->playTongxuehui();
-                CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(this->audioPath);
                 break;
             case STARYOU:
-                this->audioPath = "Music/laizixingxingdeni.mp3";
+                audioPath = "Music/laizixingxingdeni.mp3";
                 this->playStaryou();
-                CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(this->audioPath);
                 break;
             case DALAOHU:
                 this->playDalaohu();
                 break;
             default:
                 break;
+        }
+
+        if (audioPath != "") {
+            CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
         }
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -411,7 +412,7 @@ void VidioLayer::drawFrame(float dt)
 void VidioLayer::stopRecord()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CaptureScreen::stopRecord(this->audioPath);
+    CaptureScreen::stopRecord();
 #endif
     for (int i = 1; i < 10; i ++) {
         if (this->getChildByTag(i)) {
