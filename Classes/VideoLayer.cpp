@@ -1,5 +1,5 @@
 //
-//  VidioLayer.cpp
+//  VideoLayer.cpp
 //  ElfCopy
 //
 //  Created by Ange Zhao on 14-5-20.
@@ -7,13 +7,13 @@
 //
 
 #include "MainLayer.h"
-#include "VidioLayer.h"
+#include "VideoLayer.h"
 #include "cocostudio/CocoStudio.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
 #include "CaptureScreen.h"
 #endif
 
-bool VidioLayer::init()
+bool VideoLayer::init()
 {
     //////////////////////////////
     // 1. super init first
@@ -32,39 +32,39 @@ bool VidioLayer::init()
 	}
     
     Button* btnBack = (Button*)node->getChildByName("btnBack");
-    btnBack->addTouchEventListener(this, toucheventselector(VidioLayer::goBack));
+    btnBack->addTouchEventListener(this, toucheventselector(VideoLayer::goBack));
     
     Button* playBack = (Button*)node->getChildByName("playBtn");
-    playBack->addTouchEventListener(this, toucheventselector(VidioLayer::playVidio));
+    playBack->addTouchEventListener(this, toucheventselector(VideoLayer::playVidio));
 
     // 原始人
     yuanshirenBtn = (CheckBox*)node->getChildByName("yuanshirenBtn");
-    yuanshirenBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    yuanshirenBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     yuanshirenBg = (ImageView*)node->getChildByName("yuanshirenBg");
     
     // 功夫
     gongfuBtn = (CheckBox*)node->getChildByName("gongfuBtn");
-    gongfuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    gongfuBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     gongfuBg = (ImageView*)node->getChildByName("gongfuBg");
     
     // 马戏团
     maxituanBtn = (CheckBox*)node->getChildByName("maxituanBtn");
-    maxituanBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    maxituanBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     maxituanBg = (ImageView*)node->getChildByName("maxituanBg");
     
     // 星星的你
     staryouBtn = (CheckBox*)node->getChildByName("staryouBtn");
-    staryouBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    staryouBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     staryouBg = (ImageView*)node->getChildByName("staryouBg");
     
     // 打老虎
     dalaohuBtn = (CheckBox*)node->getChildByName("dalaohuBtn");
-    dalaohuBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    dalaohuBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     dalaohuBg = (ImageView*)node->getChildByName("dalaohuBg");
     
     // 同学会
     tongxuehuiBtn = (CheckBox*)node->getChildByName("tongxuehuiBtn");
-    tongxuehuiBtn->addTouchEventListener(this, toucheventselector(VidioLayer::switchVidio));
+    tongxuehuiBtn->addTouchEventListener(this, toucheventselector(VideoLayer::switchVidio));
     tongxuehuiBg = (ImageView*)node->getChildByName("tongxuehuiBg");
     
     //默认同学会
@@ -87,7 +87,7 @@ bool VidioLayer::init()
     return true;
 }
 
-void VidioLayer::goBack(Ref* pSender,TouchEventType type)
+void VideoLayer::goBack(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         Layer* parent = (Layer*)this->getParent();
@@ -96,7 +96,7 @@ void VidioLayer::goBack(Ref* pSender,TouchEventType type)
     }
 }
 
-void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
+void VideoLayer::switchVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         CheckBox* selectVidio = (CheckBox*)pSender;
@@ -170,7 +170,7 @@ void VidioLayer::switchVidio(Ref* pSender,TouchEventType type)
     }
 }
 
-void VidioLayer::makeFace(std::string spriteFrameName)
+void VideoLayer::makeFace(std::string spriteFrameName)
 {
     // 114*121
     // 261*281
@@ -197,7 +197,7 @@ void VidioLayer::makeFace(std::string spriteFrameName)
     SpriteFrameCache::getInstance()->addSpriteFrame(spriteFrame, scaleSpriteFrameName);
 }
 
-Armature * VidioLayer::addArmature(std::string fileInfo, std::string name, bool addEvent, int tag)
+Armature * VideoLayer::addArmature(std::string fileInfo, std::string name, bool addEvent, int tag)
 {
     Size winSize = Director::getInstance()->getWinSize();
     ArmatureDataManager::getInstance()->addArmatureFileInfo(fileInfo);
@@ -205,13 +205,13 @@ Armature * VidioLayer::addArmature(std::string fileInfo, std::string name, bool 
     armature->setPosition(Point(winSize.width / 2, winSize.height / 2));
     armature->getAnimation()->playWithIndex(0);
     if (addEvent) {
-        armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(VidioLayer::animationEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        armature->getAnimation()->setMovementEventCallFunc(CC_CALLBACK_0(VideoLayer::animationEvent, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
     }
     this->addChild(armature, 0, tag);
     return armature;
 }
 
-void VidioLayer::updateFace(Armature *armature, std::string name, Point anchor, std::string boneName)
+void VideoLayer::updateFace(Armature *armature, std::string name, Point anchor, std::string boneName)
 {
     makeFace(name);
     Skin* face = Skin::createWithSpriteFrameName("scale_" + name);
@@ -222,13 +222,13 @@ void VidioLayer::updateFace(Armature *armature, std::string name, Point anchor, 
     tou->changeDisplayWithIndex(1, true);
 }
 
-void VidioLayer::playAudio(std::string audioPath)
+void VideoLayer::playAudio(std::string audioPath)
 {
     if (audioPath == "") return;
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
 }
 
-void VidioLayer::playYuanShiRen()
+void VideoLayer::playYuanShiRen()
 {
     Size winSize = Director::getInstance()->getWinSize();
     Armature *armature2 = addArmature("yuanshiren2/yuanshiren2.ExportJson", "yuanshiren2", false, 2);
@@ -238,7 +238,7 @@ void VidioLayer::playYuanShiRen()
     playAudio("Music/yuanshiren.mp3");
 }
 
-void VidioLayer::playGongFu()
+void VideoLayer::playGongFu()
 {
     Armature *armature = addArmature("gongfu/gongfu.ExportJson", "gongfu");
     updateFace(armature, "player_face1", Point(0.445, 0.58), "tou1");
@@ -246,7 +246,7 @@ void VidioLayer::playGongFu()
     playAudio("");
 }
 
-void VidioLayer::playTongxuehui()
+void VideoLayer::playTongxuehui()
 {
     Armature *armature = addArmature("tongxuehui/tongxuehui.ExportJson", "tongxuehui");
     updateFace(armature, "player_face1", Point(0.445, 0.58), "tou1");
@@ -254,7 +254,7 @@ void VidioLayer::playTongxuehui()
     playAudio("Music/tongxuehui.mp3");
 }
 
-void VidioLayer::playMaxituan()
+void VideoLayer::playMaxituan()
 {
     Armature *armature = addArmature("maxituan/maxituan.ExportJson", "maxituan");
     updateFace(armature, "player_face1", Point(0.445, 0.58), "tou1");
@@ -263,7 +263,7 @@ void VidioLayer::playMaxituan()
 }
 
 
-void VidioLayer::playStaryou()
+void VideoLayer::playStaryou()
 {
     Armature *armature = addArmature("laizixingxingdeni/laizixingxingdeni.ExportJson", "laizixingxingdeni");
     updateFace(armature, "player_face1", Point(0.445, 0.58), "tou1");
@@ -271,12 +271,12 @@ void VidioLayer::playStaryou()
     playAudio("Music/laizixingxingdeni.mp3");
 }
 
-void VidioLayer::playDalaohu()
+void VideoLayer::playDalaohu()
 {
     
 }
 
-void VidioLayer::animationEvent(Armature *armature, MovementEventType movementType, const std::string& movementID)
+void VideoLayer::animationEvent(Armature *armature, MovementEventType movementType, const std::string& movementID)
 {
     std::string id = movementID;
     
@@ -289,7 +289,7 @@ void VidioLayer::animationEvent(Armature *armature, MovementEventType movementTy
     }
 }
 
-void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
+void VideoLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         if (isPlaying) {
@@ -322,12 +322,12 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
         }
         
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-        // CaptureScreen::startRecord();
+        CaptureScreen::startRecord();
 #endif
     }
 }
 
-void VidioLayer::drawFrame(float dt)
+void VideoLayer::drawFrame(float dt)
 {
     log("drawFrame");
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -335,7 +335,7 @@ void VidioLayer::drawFrame(float dt)
 #endif
 }
 
-void VidioLayer::stopRecord()
+void VideoLayer::stopRecord()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     CaptureScreen::stopRecord();

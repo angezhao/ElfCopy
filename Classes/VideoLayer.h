@@ -1,13 +1,13 @@
 //
-//  VidioLayer.h
+//  VideoLayer.h
 //  ElfCopy
 //
 //  Created by Ange Zhao on 14-5-20.
 //
 //
 
-#ifndef __ElfCopy__VidioLayer__
-#define __ElfCopy__VidioLayer__
+#ifndef __ElfCopy__VideoLayer__
+#define __ElfCopy__Vid3oLayer__
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -28,7 +28,7 @@ typedef enum {
     VIDIOMAX = 7
 } AnimationIndex;
 
-class VidioLayer : public Layer
+class VideoLayer : public Layer
 {
 public:
     AnimationIndex animationIndex;
@@ -68,7 +68,7 @@ public:
     ImageView* tongxuehuiBg;
     
     // implement the "static create()" method manually
-    CREATE_FUNC(VidioLayer);
+    CREATE_FUNC(VideoLayer);
 
 private:
     // CCArray *animationFiles;
@@ -80,4 +80,4 @@ private:
     
     bool isPlaying;
 };
-#endif /* defined(__ElfCopy__VidioLayer__) */
+#endif /* defined(__ElfCopy__VideoLayer__) */

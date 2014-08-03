@@ -8,7 +8,7 @@
 
 #include "MainLayer.h"
 #include "PhotoMenu.h"
-#include "VidioLayer.h"
+#include "VideoLayer.h"
 #include "Constants.h"
 #include "cocostudio/CocoStudio.h"
 
@@ -70,7 +70,7 @@ void MainLayer::goNext(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
         if (this->getChildByTag(2)!=NULL && this->getChildByTag(3)!=NULL) {
-            VidioLayer *layer = VidioLayer::create();
+            VideoLayer *layer = VideoLayer::create();
             this->addChild(layer);
         }
     }
