@@ -4,16 +4,16 @@
 	<dict>
 		<key>frames</key>
 		<dict>
-			<key>dh-019--1_747_63626.png</key>
+			<key>zly--1_531_33640.png</key>
 			<dict>
 				<key>width</key>
-				<integer>913</integer>
+				<integer>1090</integer>
 				<key>height</key>
-				<integer>913</integer>
+				<integer>735</integer>
 				<key>originalWidth</key>
-				<integer>913</integer>
+				<integer>1090</integer>
 				<key>originalHeight</key>
-				<integer>913</integer>
+				<integer>735</integer>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>
@@ -23,20 +23,39 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>dh-019--1_656_42714.png</key>
+			<key>zly--1_456_33333.png</key>
 			<dict>
 				<key>width</key>
-				<integer>1144</integer>
+				<integer>1044</integer>
 				<key>height</key>
-				<integer>774</integer>
+				<integer>735</integer>
 				<key>originalWidth</key>
-				<integer>1144</integer>
+				<integer>1044</integer>
 				<key>originalHeight</key>
-				<integer>774</integer>
+				<integer>735</integer>
 				<key>x</key>
 				<integer>0</integer>
 				<key>y</key>
-				<integer>915</integer>
+				<integer>737</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>zly--1_1046_60591.png</key>
+			<dict>
+				<key>width</key>
+				<integer>913</integer>
+				<key>height</key>
+				<integer>913</integer>
+				<key>originalWidth</key>
+				<integer>913</integer>
+				<key>originalHeight</key>
+				<integer>913</integer>
+				<key>x</key>
+				<integer>1046</integer>
+				<key>y</key>
+				<integer>737</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
