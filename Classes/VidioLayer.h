@@ -67,10 +67,15 @@ public:
     ImageView* dalaohuBg;
     ImageView* tongxuehuiBg;
     
-    std::string audioPath;
-
-    
     // implement the "static create()" method manually
     CREATE_FUNC(VidioLayer);
+
+private:
+    // CCArray *animationFiles;
+    std::string audioPath;
+    
+    Armature * addArmature(std::string fileInfo, std::string name, bool addEvent = true, int tag = 1);
+    void updateFace(Armature *armature, std::string name, Point anchor, std::string boneName);
+    void playAudio(std::string audioPath);
 };
 #endif /* defined(__ElfCopy__VidioLayer__) */
