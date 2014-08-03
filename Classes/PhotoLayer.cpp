@@ -164,7 +164,6 @@ void PhotoLayer::TouchesMoved(const std::vector<Touch*>& pTouches, Event  *event
             nextPos.y = 300;
         }
         userHead->setPosition(nextPos);
-        CCLOG("kering -> x:%f,y:%f", nextPos.x, nextPos.y);
     }
 }
 
@@ -228,13 +227,9 @@ void PhotoLayer::loadImage(Image* image)
 
     Size headSize = this->headBg->getContentSize();
     Size imageSize = imageSprite->getContentSize();
-    CCLOG("kering -> hw:%f,hh:%f", headSize.width, headSize.height);
-    CCLOG("kering -> iw:%f,ih:%f", imageSize.width, imageSize.height);
     double mscalex = headSize.width / imageSize.width;
     double mscaley = headSize.height / imageSize.height;
     mscale =  mscalex > mscaley ? mscalex : mscaley;
-
-    log("mscale=%f", mscale);
 
     userHead->setScale(mscale);
     userHead->setTouchEnabled(true);
@@ -259,7 +254,6 @@ Sprite* PhotoLayer::mask()
     Sprite* textureSprite = Sprite::createWithSpriteFrame(userHeadSprite->getSpriteFrame());
     Point userHeadPos = Node::convertToWorldSpaceAR(this->userHead->getPosition());
     Point texturePosition = this->convertToNodeSpace(userHeadPos);
-    CCLOG("kering -> px:%f,py:%f", texturePosition.x, texturePosition.y);
     textureSprite->setPosition(texturePosition);
     textureSprite->setScale(mscale * uiSacle);
     textureSprite->setRotation(this->userHead->getRotation());
