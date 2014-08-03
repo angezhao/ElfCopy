@@ -77,5 +77,7 @@ private:
     Armature * addArmature(std::string fileInfo, std::string name, bool addEvent = true, int tag = 1);
     void updateFace(Armature *armature, std::string name, Point anchor, std::string boneName);
     void playAudio(std::string audioPath);
+    
+    bool isPlaying;
 };
 #endif /* defined(__ElfCopy__VidioLayer__) */

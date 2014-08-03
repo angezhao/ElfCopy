@@ -22,6 +22,8 @@ bool VidioLayer::init()
         return false;
     }
     
+    isPlaying = false;
+    
     /////////////////////////////////
     Widget *node = GUIReader::getInstance()->widgetFromJsonFile("ElfYourSelfUi/ElfYourSelfUi_5.ExportJson");
 	if (node == nullptr)
@@ -290,6 +292,11 @@ void VidioLayer::animationEvent(Armature *armature, MovementEventType movementTy
 void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
+        if (isPlaying) {
+            return;
+        }
+
+        isPlaying = true;
         switch (animationIndex) {
             case YUANSHIREN:
                 this->playYuanShiRen();
@@ -310,6 +317,7 @@ void VidioLayer::playVidio(Ref* pSender,TouchEventType type)
                 this->playDalaohu();
                 break;
             default:
+                isPlaying = false;
                 break;
         }
         
@@ -360,4 +368,6 @@ void VidioLayer::stopRecord()
         default:
             break;
     }
+    
+    isPlaying = false;
 }
