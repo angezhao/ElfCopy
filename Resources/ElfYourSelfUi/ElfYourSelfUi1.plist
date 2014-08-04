@@ -42,37 +42,18 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn_03.png</key>
+			<key>ui5/backBtn.png</key>
 			<dict>
 				<key>width</key>
-				<integer>98</integer>
+				<integer>100</integer>
 				<key>height</key>
-				<integer>94</integer>
+				<integer>96</integer>
 				<key>originalWidth</key>
-				<integer>98</integer>
+				<integer>100</integer>
 				<key>originalHeight</key>
-				<integer>94</integer>
+				<integer>96</integer>
 				<key>x</key>
 				<integer>0</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/playBtn.png</key>
-			<dict>
-				<key>width</key>
-				<integer>140</integer>
-				<key>height</key>
-				<integer>141</integer>
-				<key>originalWidth</key>
-				<integer>140</integer>
-				<key>originalHeight</key>
-				<integer>141</integer>
-				<key>x</key>
-				<integer>100</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>
@@ -91,7 +72,7 @@
 				<key>originalHeight</key>
 				<integer>94</integer>
 				<key>x</key>
-				<integer>242</integer>
+				<integer>102</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>
@@ -99,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/btn_02.png</key>
+			<key>ui5/btn_03.png</key>
 			<dict>
 				<key>width</key>
 				<integer>98</integer>
@@ -110,275 +91,9 @@
 				<key>originalHeight</key>
 				<integer>94</integer>
 				<key>x</key>
-				<integer>341</integer>
+				<integer>201</integer>
 				<key>y</key>
 				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_04.png</key>
-			<dict>
-				<key>width</key>
-				<integer>99</integer>
-				<key>height</key>
-				<integer>94</integer>
-				<key>originalWidth</key>
-				<integer>99</integer>
-				<key>originalHeight</key>
-				<integer>94</integer>
-				<key>x</key>
-				<integer>441</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_05.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>72</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>72</integer>
-				<key>x</key>
-				<integer>542</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_11.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>712</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_06.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>880</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_12.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>1050</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_07.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>72</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>72</integer>
-				<key>x</key>
-				<integer>1218</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_13.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>1388</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_08.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>73</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>73</integer>
-				<key>x</key>
-				<integer>1556</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_14.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>1726</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_09.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>0</integer>
-				<key>y</key>
-				<integer>1683</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_15.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>170</integer>
-				<key>y</key>
-				<integer>1683</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_10.png</key>
-			<dict>
-				<key>width</key>
-				<integer>168</integer>
-				<key>height</key>
-				<integer>72</integer>
-				<key>originalWidth</key>
-				<integer>168</integer>
-				<key>originalHeight</key>
-				<integer>72</integer>
-				<key>x</key>
-				<integer>338</integer>
-				<key>y</key>
-				<integer>1683</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/btn_16.png</key>
-			<dict>
-				<key>width</key>
-				<integer>166</integer>
-				<key>height</key>
-				<integer>70</integer>
-				<key>originalWidth</key>
-				<integer>166</integer>
-				<key>originalHeight</key>
-				<integer>70</integer>
-				<key>x</key>
-				<integer>508</integer>
-				<key>y</key>
-				<integer>1683</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/tongxuehui.png</key>
-			<dict>
-				<key>width</key>
-				<integer>606</integer>
-				<key>height</key>
-				<integer>346</integer>
-				<key>originalWidth</key>
-				<integer>606</integer>
-				<key>originalHeight</key>
-				<integer>346</integer>
-				<key>x</key>
-				<integer>676</integer>
-				<key>y</key>
-				<integer>1683</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>
@@ -395,9 +110,47 @@
 				<key>originalHeight</key>
 				<integer>346</integer>
 				<key>x</key>
-				<integer>1284</integer>
+				<integer>301</integer>
 				<key>y</key>
-				<integer>1683</integer>
+				<integer>1540</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>ui5/playBtn.png</key>
+			<dict>
+				<key>width</key>
+				<integer>140</integer>
+				<key>height</key>
+				<integer>141</integer>
+				<key>originalWidth</key>
+				<integer>140</integer>
+				<key>originalHeight</key>
+				<integer>141</integer>
+				<key>x</key>
+				<integer>909</integer>
+				<key>y</key>
+				<integer>1540</integer>
+				<key>offsetX</key>
+				<real>0</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
+			<key>C:/Program Files (x86)/CocoStudio/EditorDefaultRes/GUI/image.png</key>
+			<dict>
+				<key>width</key>
+				<integer>80</integer>
+				<key>height</key>
+				<integer>80</integer>
+				<key>originalWidth</key>
+				<integer>80</integer>
+				<key>originalHeight</key>
+				<integer>80</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>1888</integer>
 				<key>offsetX</key>
 				<real>0</real>
 				<key>offsetY</key>

@@ -42,7 +42,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/yuanshiren.png</key>
+			<key>ui5/staryou.png</key>
 			<dict>
 				<key>width</key>
 				<integer>606</integer>
@@ -61,7 +61,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/gongfu.png</key>
+			<key>ui5/tongxuehui.png</key>
 			<dict>
 				<key>width</key>
 				<integer>606</integer>
@@ -80,7 +80,7 @@
 				<key>offsetY</key>
 				<real>0</real>
 			</dict>
-			<key>ui5/staryou.png</key>
+			<key>ui5/yuanshiren.png</key>
 			<dict>
 				<key>width</key>
 				<integer>606</integer>
@@ -92,25 +92,6 @@
 				<integer>346</integer>
 				<key>x</key>
 				<integer>608</integer>
-				<key>y</key>
-				<integer>1540</integer>
-				<key>offsetX</key>
-				<real>0</real>
-				<key>offsetY</key>
-				<real>0</real>
-			</dict>
-			<key>ui5/dalaohu.png</key>
-			<dict>
-				<key>width</key>
-				<integer>606</integer>
-				<key>height</key>
-				<integer>346</integer>
-				<key>originalWidth</key>
-				<integer>606</integer>
-				<key>originalHeight</key>
-				<integer>346</integer>
-				<key>x</key>
-				<integer>1216</integer>
 				<key>y</key>
 				<integer>1540</integer>
 				<key>offsetX</key>

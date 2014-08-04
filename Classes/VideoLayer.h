@@ -7,7 +7,7 @@
 //
 
 #ifndef __ElfCopy__VideoLayer__
-#define __ElfCopy__Vid3oLayer__
+#define __ElfCopy__VideoLayer__
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
@@ -54,17 +54,10 @@ public:
     void playDalaohu();
     
     CheckBox* yuanshirenBtn;
-    CheckBox* gongfuBtn;
     CheckBox* maxituanBtn;
     CheckBox* staryouBtn;
-    CheckBox* dalaohuBtn;
     CheckBox* tongxuehuiBtn;
-    
-    ImageView* yuanshirenBg;
-    ImageView* gongfuBg;
-    ImageView* maxituanBg;
-    ImageView* staryouBg;
-    ImageView* dalaohuBg;
+
     ImageView* tongxuehuiBg;
     
     // implement the "static create()" method manually
