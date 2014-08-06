@@ -11,6 +11,8 @@
 		16457A1F1967B5FA00525563 /* laizixingxingdeni in Resources */ = {isa = PBXBuildFile; fileRef = 16457A1E1967B5FA00525563 /* laizixingxingdeni */; };
 		16B7339E1990FF6100D01C60 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B7339C1990FF6100D01C60 /* Icon.png */; };
 		16B7339F1990FF6100D01C60 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16B7339D1990FF6100D01C60 /* Icon@2x.png */; };
+		16F535F61991C28800AA4643 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F535F41991C28800AA4643 /* Icon-57.png */; };
+		16F535F71991C28800AA4643 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = 16F535F51991C28800AA4643 /* Icon-114.png */; };
 		1AC6FB1F180E996B004C840B /* libbox2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFF180E9839004C840B /* libbox2d Mac.a */; };
 		1AC6FB20180E996B004C840B /* libchipmunk Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAFD180E9839004C840B /* libchipmunk Mac.a */; };
 		1AC6FB21180E996B004C840B /* libcocos2dx Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC6FAF9180E9839004C840B /* libcocos2dx Mac.a */; };
@@ -254,6 +256,8 @@
 		16457A1E1967B5FA00525563 /* laizixingxingdeni */ = {isa = PBXFileReference; lastKnownFileType = folder; path = laizixingxingdeni; sourceTree = "<group>"; };
 		16B7339C1990FF6100D01C60 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		16B7339D1990FF6100D01C60 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		16F535F41991C28800AA4643 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
+		16F535F51991C28800AA4643 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-114.png"; sourceTree = "<group>"; };
 		1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = ../cocos2d/build/cocos2d_libs.xcodeproj; sourceTree = "<group>"; };
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
@@ -553,12 +557,14 @@
 				5087E77317EB970100C73F5D /* Default.png */,
 				5087E77417EB970100C73F5D /* Default@2x.png */,
 				50EF629517ECD46A001EB2F8 /* Icon-100.png */,
+				16F535F51991C28800AA4643 /* Icon-114.png */,
 				5087E77617EB970100C73F5D /* Icon-120.png */,
 				5087E77717EB970100C73F5D /* Icon-144.png */,
 				5087E77817EB970100C73F5D /* Icon-152.png */,
 				50EF62A017ECD613001EB2F8 /* Icon-29.png */,
 				50EF629217ECD46A001EB2F8 /* Icon-40.png */,
 				50EF62A117ECD613001EB2F8 /* Icon-50.png */,
+				16F535F41991C28800AA4643 /* Icon-57.png */,
 				50EF629317ECD46A001EB2F8 /* Icon-58.png */,
 				5087E77A17EB970100C73F5D /* Icon-72.png */,
 				5087E77B17EB970100C73F5D /* Icon-76.png */,
@@ -805,6 +811,7 @@
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
+				16F535F71991C28800AA4643 /* Icon-114.png in Resources */,
 				B7A056301963EBAE001860E3 /* ElfYourSelfUi in Resources */,
 				B7A0562D1963EA0A001860E3 /* maxituan in Resources */,
 				B713E011198BB1EE0030F63D /* Music in Resources */,
@@ -820,6 +827,7 @@
 				16457A1F1967B5FA00525563 /* laizixingxingdeni in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
+				16F535F61991C28800AA4643 /* Icon-57.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
