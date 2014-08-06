@@ -15,7 +15,7 @@ class CaptureScreen
 {
 public:
     static void startRecord();
-    static void stopRecord();
+    static void stopRecord(const char * audioPath);
     static void drawFrame();
 };
 

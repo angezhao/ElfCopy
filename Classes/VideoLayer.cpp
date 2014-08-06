@@ -177,6 +177,7 @@ void VideoLayer::updateFace(Armature *armature, std::string name, Point anchor, 
 void VideoLayer::playAudio(std::string audioPath)
 {
     if (audioPath == "") return;
+    this->audioPath = audioPath;
     CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(audioPath.c_str());
 }
 
@@ -290,7 +291,7 @@ void VideoLayer::drawFrame(float dt)
 void VideoLayer::stopRecord()
 {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    CaptureScreen::stopRecord();
+    CaptureScreen::stopRecord(CCFileUtils::getInstance()->fullPathForFilename(this->audioPath).c_str());
 #endif
     for (int i = 1; i < 10; i ++) {
         if (this->getChildByTag(i)) {

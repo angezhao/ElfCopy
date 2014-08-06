@@ -24,18 +24,17 @@ void CaptureScreen::startRecord()
     [capture startRecording];
 }
 
-void CaptureScreen::stopRecord()
+void CaptureScreen::stopRecord(const char * audioPath)
 {
     bool ret = [capture stopRecording];
     if (ret) {
         //处理保存的视频
         const char *outputPath = [capture.outputPath UTF8String];
         CCLOG("outputPath=%s", outputPath);
-        // NSString *aPath= [NSString stringWithUTF8String:audioPath];
-        // log("audioPath=%s",audioPath);
-        // log("aPath=%s",aPath);
+        NSString *aPath= [NSString stringWithUTF8String:audioPath];
+        log("audioPath=%s",audioPath);
         //混合保存
-        [THCaptureUtilities mergeVideo:capture.outputPath andAudio:nil];
+        [THCaptureUtilities mergeVideo:capture.outputPath andAudio:aPath];
     }
 }
 
