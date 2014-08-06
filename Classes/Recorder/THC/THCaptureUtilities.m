@@ -8,17 +8,16 @@
 
 #import "THCaptureUtilities.h"
 
-
 @implementation THCaptureUtilities
 
-+ (void)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath
++ (NSString*)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath
 {
     if (audioPath == nil) {
         //直接存入相册中
-        if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoPath)) {
-            UISaveVideoAtPathToSavedPhotosAlbum(videoPath, nil, @selector(video:didFinishSavingWithError:contextInfo:), nil);
-        }
-        return;
+        //if (UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoPath)) {
+        //    UISaveVideoAtPathToSavedPhotosAlbum(videoPath, nil, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+        //}
+        return videoPath;
     }
     
     AVMutableComposition* mixComposition = [AVMutableComposition composition];
@@ -60,14 +59,15 @@
 	_assetExport.outputURL = exportUrl;
 	_assetExport.shouldOptimizeForNetworkUse = YES;
 	
+    
 	[_assetExport exportAsynchronouslyWithCompletionHandler:
 	 ^(void ) 
     {    
         NSLog(@"完成了");
-        [THCaptureUtilities mergedidFinish:exportPath];
+        //[THCaptureUtilities mergedidFinish:exportPath];
      }];
-    
-	//[_assetExport release];
+    //[_assetExport release];
+    return exportPath;
 }
 
 +(void)mergedidFinish:(NSString *)videoPath

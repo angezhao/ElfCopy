@@ -17,6 +17,7 @@ public:
     static void startRecord();
     static void stopRecord(const char * audioPath);
     static void drawFrame();
+    static void saveVideo();
 };
 
 #endif /* defined(__ElfCopy__CaptureScreen__) */

@@ -41,6 +41,7 @@ public:
 //    void switchMaxituan(Ref* pSender, TouchEventType type);
 //    void switchTongxuehui(Ref* pSender, TouchEventType type);
     void playVidio(Ref* pSender, TouchEventType type);
+    void saveVidio(Ref* pSender, TouchEventType type);
     void stopRecord();
     void drawFrame(float dt);
     void animationEvent(cocostudio::Armature *armature, cocostudio::MovementEventType movementType, const std::string& movementID);

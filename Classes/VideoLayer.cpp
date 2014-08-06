@@ -37,6 +37,9 @@ bool VideoLayer::init()
     Button* playBack = (Button*)node->getChildByName("playBtn");
     playBack->addTouchEventListener(this, toucheventselector(VideoLayer::playVidio));
     
+    Button* saveBtn = (Button*)node->getChildByName("saveBtn");
+    saveBtn->addTouchEventListener(this, toucheventselector(VideoLayer::saveVidio));
+    
     // 同学会
     tongxuehuiBtn = (CheckBox*)node->getChildByName("tongxuehuiBtn");
     tongxuehuiBtn->setTag(TONGXUEHUI);
@@ -79,6 +82,14 @@ void VideoLayer::goBack(Ref* pSender, TouchEventType type)
         Layer* parent = (Layer*)this->getParent();
         this->removeFromParentAndCleanup(true);
         parent->removeFromParentAndCleanup(true);
+    }
+}
+
+
+void VideoLayer::saveVidio(Ref* pSender,TouchEventType type)
+{
+    if (type == TOUCH_EVENT_ENDED){
+        CaptureScreen::saveVideo();
     }
 }
 

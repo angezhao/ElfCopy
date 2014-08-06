@@ -12,6 +12,7 @@
 #include "AWScreenshot.h"
 #include "CCEAGLView.h"
 #include "cocos2d.h"
+
 using namespace cocos2d;
 
 static THCapture *capture;
@@ -34,8 +35,16 @@ void CaptureScreen::stopRecord(const char * audioPath)
         NSString *aPath= [NSString stringWithUTF8String:audioPath];
         log("audioPath=%s",audioPath);
         //混合保存
-        [THCaptureUtilities mergeVideo:capture.outputPath andAudio:aPath];
+        [capture setVideoPath:[THCaptureUtilities mergeVideo:capture.outputPath andAudio:aPath]];
     }
+}
+
+void CaptureScreen::saveVideo()
+{
+    if([capture videoPath] == nil)
+        return;
+    [THCaptureUtilities mergedidFinish:[capture videoPath]];
+    [capture setVideoPath:nil];
 }
 
 //测试用

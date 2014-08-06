@@ -14,7 +14,7 @@
 @interface THCaptureUtilities : NSObject
 
 // 音频与视频的合并. action的形式如下:
-+ (void)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath;
++ (NSString*)mergeVideo:(NSString *)videoPath andAudio:(NSString *)audioPath;
 + (void)mergedidFinish:(NSString *)videoPath;
 
 @end

@@ -26,10 +26,12 @@
     
     NSUInteger  _frameRate;              //帧速
     NSString *_outputPath;//输出结果
+    NSString *_videoPath;//混合视频缓存文件
 }
 @property(nonatomic, strong) NSDate *startedAt;
 @property(nonatomic, strong) AVAssetWriterInputPixelBufferAdaptor *avAdaptor;
 @property(nonatomic, strong) NSString *outputPath;
+@property(nonatomic, strong) NSString *videoPath;
 
 //开始录制
 - (bool)startRecording;

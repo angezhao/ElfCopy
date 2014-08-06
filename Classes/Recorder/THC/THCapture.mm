@@ -25,6 +25,7 @@ static NSString* const kFileName=@"output.mov";
 @synthesize startedAt=_startedAt;
 @synthesize avAdaptor=_avAdaptor;
 @synthesize outputPath=_outputPath;
+@synthesize videoPath=_videoPath;
 
 - (id)init
 {
@@ -60,6 +61,7 @@ static NSString* const kFileName=@"output.mov";
 
 - (bool)startRecording
 {
+    self.videoPath = nil;
     bool result = NO;
     if (! _recording)
     {
