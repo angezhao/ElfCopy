@@ -45,26 +45,26 @@ bool PhotoMenu::init()
 
 void PhotoMenu::goBack(Ref* pSender,TouchEventType type)
 {
-    if (type == TOUCH_EVENT_ENDED){
+    if (type == TOUCH_EVENT_ENDED) {
         this->removeFromParentAndCleanup(true);
     }
 }
 
 void PhotoMenu::takePhoto(Ref* pSender,TouchEventType type)
 {
-    if (type == TOUCH_EVENT_ENDED){
+    if (type == TOUCH_EVENT_ENDED) {
         selectOrPick = true;
         PickPhoto * layer = PickPhoto::create();
-        this->addChild(layer,0,1);
+        this->addChild(layer, 0, 1);
     }
 }
 
 void PhotoMenu::selectPhoto(Ref* pSender,TouchEventType type)
 {
-    if(type == TOUCH_EVENT_ENDED){
+    if(type == TOUCH_EVENT_ENDED) {
         selectOrPick = false;
         PickPhoto * layer = PickPhoto::create();
-        this->addChild(layer,0,1);
+        this->addChild(layer, 0, 1);
     }
 }
 

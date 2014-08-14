@@ -69,9 +69,10 @@ void MainLayer::goBack(Ref* pSender, TouchEventType type)
 void MainLayer::goNext(Ref* pSender, TouchEventType type)
 {
     if (type == TOUCH_EVENT_ENDED){
-        if (this->getChildByTag(2)!=NULL && this->getChildByTag(3)!=NULL) {
+        if (this->getChildByTag(2) != NULL && this->getChildByTag(3) != NULL) {
             VideoLayer *layer = VideoLayer::create();
-            this->addChild(layer);
+            this->getParent()->addChild(layer);
+            this->removeFromParentAndCleanup(true);
         }
     }
 }

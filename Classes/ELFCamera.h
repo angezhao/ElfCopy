@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-@interface ELFCamera :UIViewController<UIImagePickerControllerDelegate,UINavigationControllerDelegate> {
+@interface ELFCamera :UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
     UIPopoverController *popoverController;
 }
 

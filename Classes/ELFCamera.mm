@@ -83,7 +83,8 @@
     }
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
-        [self presentModalViewController:imagePickerController animated:YES];
+        // [self presentModalViewController:imagePickerController animated:YES];
+        [self presentViewController:imagePickerController animated:YES completion:nil];
     }
     else {
         popoverController = [[UIPopoverController alloc] initWithContentViewController:imagePickerController];
@@ -122,6 +123,18 @@
     {
         // use this method on ios6
         [window setRootViewController:[self rootViewController]];
+    }
+
+    // NSLog(@"kering -> width:%f,height:%f", originImage.size.width, originImage.size.height);
+    if (originImage.size.width > 2048 || originImage.size.height > 2048) {
+        UIAlertView *alert = [[UIAlertView alloc]
+                              initWithTitle:@"亲"
+                              message:@"图片太大了，换张小点滴试试吧？"
+                              delegate:nil
+                              cancelButtonTitle:@"确认"
+                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     NSData *imageData = UIImageJPEGRepresentation(originImage, 0.8);

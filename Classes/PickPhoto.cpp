@@ -53,8 +53,8 @@ void PickPhoto::pickOk(Image* image)
 {
     // 退回上一层
     Layer* parent = (Layer*)this->getParent();
-    this->removeFromParentAndCleanup(true);
     PhotoLayer * layer = PhotoLayer::create();
     layer->loadImage(image);
     parent->addChild(layer, 0, 1);
+    this->removeFromParentAndCleanup(true);
 }
